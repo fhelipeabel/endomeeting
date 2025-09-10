@@ -1,0 +1,849 @@
+<!-- =========================
+     AGENDA ESTILO APP/CALENDÁRIO + MODAL DE CURRÍCULO
+     (Compatível com Greatpages)
+========================= -->
+
+<style>
+:root{
+  /* Base neutra */
+  --bg:#FBFAFE;
+  --card:#FFFFFF;
+  --line:#E8E8EE;
+  --text:#1F2430;
+  --muted:#61667A;
+
+  /* Marca */
+  --brand:#8F1A1A;    /* vinho mais escuro (melhor contraste) */
+  --brand-2:#B73A3A;  /* apoio/hover */
+
+  /* Secundárias */
+  --secondary:#264653; /* azul petróleo */
+  --accent:#2A9D8F;    /* esmeralda */
+
+  /* Estados */
+  --success:#2E7D32;
+  --warning:#B26A00;
+  --danger:#C62828;
+
+  /* Realce de foco (com transparência) */
+  --ring:#2A9D8F20;
+}
+
+/* ====== Seção Agenda ====== */
+.agenda-app{
+  padding: 48px 16px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Aumento global + centralização */
+  transform: scale(1.3);
+  transform-origin: center top;
+
+  /* Base tipográfica maior */
+  font-size: 1.125rem; /* ~18px */
+}
+
+.agenda-app-title{
+  max-width: 960px !important;
+  margin: 0 auto 36px !important;
+  margin-bottom: 40px !important;
+  font-size: 2.2rem !important;   /* ~40px */
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  color: var(--brand) !important;
+  text-align: center !important;
+}
+
+.agenda-list{
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.agenda-item{
+  display: flex;
+  border-radius: 14px;
+  background: var(--card);
+  border-left: 6px solid var(--brand);
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08), 6px 0 12px rgba(0,0,0,.08);
+}
+
+.agenda-item:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.12);
+}
+
+.agenda-time{
+  min-width: 110px;
+  background: color-mix(in srgb, var(--secondary), #fff 85%);
+  background: rgba(38,70,83,.15);
+  color: var(--secondary);
+  font-weight: 800;
+  font-size: 1.375rem !important; /* ~22px */
+  display: flex; justify-content: center; align-items: center;
+  border-right: 1px solid var(--line);
+  text-align: center;
+}
+
+.agenda-time.is-pending{
+  font-style: italic;
+  letter-spacing: .2px;
+}
+
+.agenda-info{
+  flex: 1;
+  padding: 18px 20px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+
+.agenda-header{
+  display: flex; align-items: center; gap: 14px;
+}
+
+.agenda-photo{
+  width: 160px; height: 160px; border-radius: 50%;
+  object-fit: cover; border: 2px solid var(--brand-2);
+}
+
+.talk-title{
+  margin: 0 0 4px;
+  font-size: 1.3rem !important; /* ~25px */
+  font-weight: 800; 
+  color: var(--text); 
+  line-height: 1.3;
+}
+
+.speaker-name{
+  margin: 0; 
+  font-weight: 600; 
+  color: var(--brand);
+  font-size: 30px !important; /* ~20px */
+}
+
+.mini-bio{
+  margin: 0 !important; 
+  font-size: 16px !important; /* ~20px */
+  color: var(--muted) !important; 
+  line-height: 1.6 !important;
+}
+
+.actions{
+  margin-top: auto; display:flex; gap:10px; flex-wrap: wrap;
+}
+
+.btn{
+  padding: 12px 16px; 
+  border-radius: 10px; 
+  font-weight: 700; 
+  font-size: 1.375rem; /* ~22px */
+  text-decoration: none; 
+  transition: .2s; 
+  border: 1px solid transparent; 
+  cursor: pointer;
+}
+
+/* Botão primário */
+.btn.primary{
+  background: linear-gradient(180deg, var(--brand), var(--brand-2));
+  color:#fff;
+}
+.btn.primary:hover{ filter: saturate(1.05) brightness(1.02); }
+.btn.primary:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+.btn.ghost{ background: #f3f3f3; color:var(--brand); }
+.btn.ghost:hover{ background:#eee; }
+
+@media (max-width:768px){
+  .agenda-item{ flex-direction: column; }
+  .agenda-time{ width: 100%; border-right: none; border-bottom: 1px solid var(--line); }
+  .agenda-header{ flex-direction: column; text-align: center; }
+}
+
+/* ====== Modal ====== */
+.modal{ 
+  position:fixed; 
+  inset:0; 
+  display:none; 
+  z-index:999; 
+}
+.modal.is-open{ display:block; }
+
+.modal__overlay{ 
+  position:absolute; 
+  inset:0; 
+  background:rgba(0,0,0,.5);
+  opacity:0;
+  transition:opacity .2s ease;
+}
+.modal.is-open .modal__overlay{ opacity:1; }
+
+.modal__dialog{
+  position:fixed;          
+  left:50%; top:50%;
+  transform:translate(-50%,-50%) scale(.98);
+  width:min(820px, 92vw); 
+  max-height:88vh; 
+  overflow:auto;
+  background:#fff; 
+  border-radius:16px; 
+  box-shadow:0 10px 40px rgba(0,0,0,.28);
+  padding:20px; 
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+
+  opacity:0;
+  transition: opacity .22s ease, transform .22s ease;
+}
+.modal.is-open .modal__dialog{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .modal__overlay,
+  .modal__dialog{ transition:none !important; }
+}
+
+.modal__close{
+  position:absolute; 
+  top:10px; 
+  right:12px; 
+  border:none; 
+  background:transparent;
+  font-size:28px; 
+  line-height:1; 
+  cursor:pointer;
+}
+
+.modal__speaker-block{border-top:1px solid #eee;padding:16px 0;}
+.modal__speaker-block:first-child{border-top:none;}
+.modal__header{display:flex;align-items:center;gap:14px;margin-bottom:10px;}
+.modal__photo{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid var(--brand-2);}
+.modal__name{margin:0;font-size:1.375rem;font-weight:800;color:#222;}  
+.modal__talk{margin:2px 0 0;color:var(--secondary);font-weight:600;}
+.modal__body{color:#444;line-height:1.65;margin-top:8px;font-size:1rem;} 
+.modal__links{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;}
+.modal__links a{padding:8px 10px;border:1px solid var(--line);border-radius:10px;text-decoration:none;font-weight:700;color:var(--secondary);}
+.modal__links a:hover{background:rgba(0,0,0,.03);}
+.modal__banner{margin-top:18px;text-align:center;}
+.modal__banner img{max-width:100%;height:auto;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.08);}
+
+/* --- Força o tamanho do título da palestra dentro da seção --- */
+.agenda-app .agenda-item .agenda-info h3.talk-title,
+.agenda-app .agenda-info h3.talk-title,
+.agenda-app h3.talk-title {
+  font-size: 1.5625rem !important; /* ~25px */
+  line-height: 1.3 !important;
+  font-weight: 800 !important;
+  margin: 0 0 4px !important;
+  color: var(--text) !important;
+}
+
+/* ========= CORREÇÃO 1: GARANTIR TAMANHO DO NOME DO PALESTRANTE ========= */
+.agenda-app .agenda-item .agenda-info .speaker-name{
+  font-size: 1.4rem !important;
+  line-height: 1.25 !important;
+}
+             
+             /* Força o tamanho do nome do palestrante */
+.agenda-app .agenda-item .agenda-info p.speaker-name,
+.agenda-app .agenda-item .agenda-info .speaker-name,
+.speaker-name {
+  font-size: 2rem !important;   /* ajuste o tamanho que quiser */
+  font-weight: 800 !important;  /* bem destacado */
+  color: var(--brand) !important;
+  line-height: 1.3 !important;
+}
+
+/* Força o tamanho do nome do palestrante dentro do modal */
+.modal__name {
+  font-size: 2rem !important;   /* aumenta o tamanho */
+  font-weight: 800 !important;  /* deixa bem forte */
+  color: var(--brand) !important; /* mantém a cor vinho */
+  line-height: 1.3 !important;
+}
+
+/* Nome do palestrante no modal */
+.modal__name {
+  font-size: 2rem !important;   /* ~32px */
+  font-weight: 800 !important;
+  color: var(--brand) !important;
+  line-height: 1.3 !important;
+}
+
+/* Título da palestra no modal */
+.modal__talk {
+  font-size: 1.4rem !important; /* maior que o padrão (~22px) */
+  font-weight: 600 !important;
+  color: var(--secondary) !important; /* mantém o azul petróleo */
+  line-height: 1.4 !important;
+  margin-top: 4px !important;
+}
+
+/* Links no modal */
+.modal__links a {
+  font-size: 1.1rem !important;  /* aumenta o tamanho dos botões/links */
+  font-weight: 700 !important;
+  color: var(--secondary) !important;
+  padding: 10px 14px !important;
+  border-radius: 12px !important;
+  display: inline-block !important;
+}
+
+             /* Ajuste do parágrafo dentro do modal */
+.modal .modal__body,
+.modal .modal__body p {
+  font-size: 18px !important;   /* ~18px (ajuste conforme desejar) */
+  line-height: 1.6 !important;  /* melhor leitura */
+  color: #333 !important;       /* contraste mais escuro */
+  font-weight: 400 !important;  /* peso normal, sem ficar “pesado” */
+}
+
+             
+</style>
+
+<!-- =========================
+     HTML DA SEÇÃO
+========================= -->
+<section class="agenda-app">
+  <!-- <h2 class="agenda-app-title">Programação – 01 e 02 de maio/2025</h2> -->
+
+  <div class="agenda-list">
+    
+    <!-- Henrique Bassi -->
+    <div class="agenda-item">
+      <div class="agenda-time is-pending"><!-- Horário a<br> confirmar --></div>
+      <div class="agenda-info">
+        <div class="agenda-header">
+          <img src="https://files.greatpages.com.br/arquivos/paginas_editor/95266-68b506c786d69c8f98a54dc3102aa3d3.png" alt="Professor a confirmar" class="agenda-photo">
+          <div>
+            <h3 class="talk-title"><!-- Nome da palestra a confirmar --></h3>
+            <p class="speaker-name">Dr. Henrique Bassi</p>
+          </div>
+        </div>
+
+        <p class="mini-bio">
+          Especialista em Endodontia | Fundador da Easy Equipamentos Odontológicos, reconhecida por sua excelência, a empresa Easy-Bassi consolidou-se como uma marca 100% brasileira, que acompanha o avanço da endodontia nacional e expandiu sua atuação para o mercado internacional.
+        </p>
+
+        <div class="actions">
+          <button class="btn primary"
+                  data-open-modal
+                  data-name="Dr. Henrique Bassi"
+                  data-photo="https://files.greatpages.com.br/arquivos/paginas_editor/95266-68b506c786d69c8f98a54dc3102aa3d3.png"
+                  data-title="Nome da palestra a confirmar"
+                  data-bio="Dr. Henrique Bassi
+
+Especialista em Endodontia | Diretor do Instituto Henrique Bassi | Consultor da Easy Equipamentos Odontológicos.
+
+Graduado em Odontologia pela Pontifícia Universidade Católica de Minas Gerais (1986), o Dr. Henrique Bassi concluiu sua Especialização em Endodontia pelo Centro de Estudos Odontológicos do IPSEMG (1991).
+
+Atualmente, é Diretor do Instituto Henrique Bassi, centro dedicado ao ensino, pesquisa e inovação em Endodontia, além de atuar como consultor da Easy Equipamentos Odontológicos, empresa da qual é fundador.
+
+A Easy Bassi, criada em 1999, nasceu da visão empreendedora do Dr. Bassi em parceria com um grupo seleto de endodontistas. Reconhecida por sua excelência, a empresa consolidou-se como uma marca 100% brasileira, que acompanha o avanço da endodontia nacional e expandiu sua atuação para o mercado internacional, levando inovação e qualidade aos profissionais da área."
+                  data-site="https://files.greatpages.com.br/arquivos/paginas_editor/95266-68b506c786d69c8f98a54dc3102aa3d3.png"
+                  data-ig=""
+                  data-banner="https://files.greatpages.com.br/arquivos/paginas_editor/95266-68b506c786d69c8f98a54dc3102aa3d3.png">
+            Conheça mais
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PATRICIA FERRATRI -->
+    <div class="agenda-item">
+      <div class="agenda-time is-pending"><!-- Horário a<br> confirmar --></div>
+      <div class="agenda-info">
+        <div class="agenda-header">
+          <img src="https://files.greatpages.com.br/arquivos/paginas_editor/95266-d04167493f10ddde8a1c2a44cbb8d56b.jpeg" alt="Professora Patrícia Ferrari" class="agenda-photo">
+          <div>
+           <!-- <h3 class="talk-title"><!-- Nome da palestra a confirmar --> </h3>
+            <p class="speaker-name">Dra. Patrícia Ferrari</p>
+          </div>
+        </div>
+
+        <p class="mini-bio">
+          Doutora em Endodontia pela FOUSP (com graduação e mestrado na FOUSP) e especialista pela APCD — atuação exclusiva em Endodontia.<br>
+          Autora de A Infecção Endodôntica e Sua Resolução e vencedora do Prêmio Ápice em Endodontia (2022); coordena o Instituto PF de Ensino em Endodontia.
+        </p>
+
+        <div class="actions">
+          <button class="btn primary"
+                  data-open-modal
+                  data-name="Professor a confirmar"
+                  data-photo="https://files.greatpages.com.br/arquivos/paginas_editor/95266-d04167493f10ddde8a1c2a44cbb8d56b.jpeg"
+                  data-title="Nome da palestra a confirmar"
+                  data-bio="Profª. Patrícia Ferrari é cirurgiã-dentista com atuação exclusiva em Endodontia. Graduada, mestre e doutora pela FOUSP e especialista pela APCD, coordena o Instituto PF de Ensino em Endodontia e é autora do livro A Infecção Endodôntica e Sua Resolução. Na clínica privada, alia diagnóstico preciso, tratamento e retratamento com protocolos claros e baseados em evidência, priorizando conforto, segurança e previsibilidade. Em sala, transforma ciência em prática com foco em planejamento, controle da dor, desinfecção e modelagem de canais, além de retratamentos e casos complexos. Vencedora do Prêmio Ápice em Endodontia (2022).<br>
+Saiba mais: www.patriciaferrariendodontia.com.br
+."
+                  data-site="https://files.greatpages.com.br/arquivos/paginas_editor/95266-d04167493f10ddde8a1c2a44cbb8d56b.jpeg"
+                  data-ig=""
+                  data-banner="https://files.greatpages.com.br/arquivos/paginas_editor/95266-d04167493f10ddde8a1c2a44cbb8d56b.jpeg">
+            Conheça mais
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- ANGELO FREIRE -->
+    <div class="agenda-item">
+      <div class="agenda-time is-pending"><!-- Horário a<br> confirmar --></div>
+      <div class="agenda-info">
+        <div class="agenda-header">
+          <img src="https://files.greatpages.com.br/arquivos/paginas_editor/95266-5260176f8314b3827e2077779b7e1fe9.jpeg" alt="Professor Ângelo Menezes Freire" class="agenda-photo">
+          <div>
+            <h3 class="talk-title"><!-- Nome da palestra a confirmar --></h3>
+            <p class="speaker-name">Dr. Ângelo Freire</p>
+          </div>
+        </div>
+
+        <p class="mini-bio">
+          Especialista e mestre em Endodontia, com contribuições relevantes em livros de referência na área.<br>
+          Coordenador Científico e Professor do Inmagni – Centro Avançado de Endodontia com Microscopia, além de professor convidado em cursos de especialização e mestrado.
+        </p>
+
+        <div class="actions">
+          <button class="btn primary"
+                  data-open-modal
+                  data-name="Dr. Ângelo Menezes Freire"
+                  data-photo="https://files.greatpages.com.br/arquivos/paginas_editor/95266-5260176f8314b3827e2077779b7e1fe9.jpeg"
+                  data-title="Nome da palestra a confirmar"
+                  data-bio="O Dr. Ângelo Menezes Freire é especialista em Endodontia pela FOUFBa e mestre em Endodontia pela SL Mandic, em Campinas. Reconhecido por sua contribuição acadêmica, é autor de capítulos em obras de referência, como Endodontia – Visão Contemporânea (FBE), no qual abordou o uso da clorexidina gel 2%, e Endodontia: Princípios Biológicos e Técnicos, no qual escreveu sobre microscopia operatória. Atua como Coordenador Científico e Professor no Inmagni – Centro Avançado de Endodontia com Microscopia, além de ser professor convidado em diversos cursos de especialização e mestrado na área. Sua trajetória combina experiência clínica, produção científica e dedicação ao ensino, tornando-o uma referência em Endodontia."
+                  data-site="https://helse.com.br/"
+                  data-ig="https://www.instagram.com/capelli.alexandre/"
+                  data-banner="https://files.greatpages.com.br/arquivos/paginas_editor/95266-5260176f8314b3827e2077779b7e1fe9.jpeg">
+            Conheça mais
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Carlos e Priscilla -->
+<div class="agenda-item">
+  <div class="agenda-time is-pending"><!-- Horário a<br> confirmar --></div>
+  <div class="agenda-info">
+    <div class="agenda-header">
+      <img src="https://files.greatpages.com.br/arquivos/paginas_editor/95266-5ad1a56bd4a79b62072ef8e54adb5821.jpg" alt="Professores Carlos José Soares & Priscilla Barbosa Ferreira Soares" class="agenda-photo">
+      <div>
+        <h3 class="talk-title"><!-- Nome da palestra a confirmar --></h3>
+        <p class="speaker-name">Dr. Carlos José Soares & Dra. Priscilla Soares</p>
+      </div>
+    </div>
+
+    <p class="mini-bio">
+      <strong>Dr. Carlos Soares</strong> — Professor Titular da UFU e Pesquisador 1B do CNPq; atua no Programa de Pós-Graduação em Odontologia da UFU.<br>
+      Formação e internacionalização: Graduação UFU, Mestrado/Doutorado FOP-UNICAMP e pós-doutorado na University of Minnesota (EUA).<br><br>
+      <strong>Dra. Priscilla Soares</strong> — Coordena o curso de Odontologia da UFU e o Serviço de Traumatismo Dento-alveolar (referência do Hospital Odontológico-UFU).<br>
+      Pesquisa e formação avançada: Bolsista de Produtividade CNPq (nível C) e professora permanente do PPG-FOUFU em Periodontia e Implantodontia.
+    </p>
+
+    <div class="actions">
+      <button class="btn primary"
+              data-open-modal
+              data-multi="true"
+              data-speakers='[
+                {
+                  "name":"Dr. Carlos José Soares",
+                  "photo":"https://files.greatpages.com.br/arquivos/paginas_editor/95266-5ad1a56bd4a79b62072ef8e54adb5821.jpg",
+                  "title":"Nome da palestra a confirmar",
+                  "bio":"Professor Titular de Dentística e Materiais Odontológicos da UFU, com trajetória acadêmica construída da graduação ao pós-doutorado. Graduado em Odontologia pela UFU, concluiu Mestrado e Doutorado em Dentística pela FOP-UNICAMP e realizou pós-doutorado na University of Minnesota (EUA). Atua no Programa de Pós-Graduação em Odontologia da UFU, contribuindo para a formação avançada de cirurgiões-dentistas e para a produção científica da área. É Pesquisador 1B do CNPq, reconhecimento que atesta a relevância e a continuidade de sua produção acadêmica. Sua atuação integra ensino, pesquisa e aplicação clínica em Dentística e Materiais Odontológicos, com foco em rigor metodológico, inovação e impacto para a prática clínica.",
+                  "site":"",
+                  "ig":"",
+                  "banner":"https://files.greatpages.com.br/arquivos/paginas_editor/95266-5ad1a56bd4a79b62072ef8e54adb5821.jpg"
+                },
+                {
+                  "name":"Dra. Priscilla Barbosa Ferreira Soares",
+                  "photo":"https://files.greatpages.com.br/arquivos/paginas_editor/95266-5ad1a56bd4a79b62072ef8e54adb5821.jpg",
+                  "title":"Nome da palestra a confirmar",
+                  "bio":"Professora de Periodontia e Implantodontia da FOUFU, integra ensino, pesquisa e gestão acadêmica com foco em resultados clínicos previsíveis e formação de excelência. É Bolsista de Produtividade em Pesquisa do CNPq (nível C), professora permanente do Programa de Pós-Graduação em Odontologia da FOUFU e coordenadora do curso de Graduação em Odontologia da UFU, liderando iniciativas curriculares, preceptoria clínica e projetos de inovação. Na assistência, coordena o Serviço de Traumatismo Dento-alveolar, referência ambulatorial do Hospital Odontológico da UFU, articulando protocolos de urgência, integração multiprofissional e acompanhamento longitudinal de casos.",
+                  "ig":"https://www.instagram.com/",
+                  "banner":"https://files.greatpages.com.br/arquivos/paginas_editor/95266-5ad1a56bd4a79b62072ef8e54adb5821.jpg"
+                }
+              ]'>
+        Conheça mais
+      </button>
+    </div>
+  </div>
+</div>
+    
+    <!-- Paulo Vinícius Soares -->
+    <div class="agenda-item">
+      <div class="agenda-time is-pending"><!-- Horário a<br> confirmar --></div>
+      <div class="agenda-info">
+        <div class="agenda-header">
+          <img src="https://files.greatpages.com.br/arquivos/paginas_editor/95266-e3459fea36b60afd7090d48bdc98ee70.jpg" alt="Professora Patrícia Ferrari" class="agenda-photo">
+          <div>
+            <!-- <h3 class="talk-title">Nome da palestra a confirmar</h3> -->
+            <p class="speaker-name">Dr. Paulo Vinícius Soares</p>
+          </div>
+        </div>
+
+        <p class="mini-bio">
+          Professor Associado da FOUFU e referência científica internacional em Dentística, Reabilitação Oral e Estética.<br>
+Fundador do Instituto IPV Odontologia, autor de livros traduzidos para diversos idiomas e editor-chefe de revista científica internacional.
+        </p>
+
+        <div class="actions">
+          <button class="btn primary"
+                  data-open-modal
+                  data-name="Dr. Paulo Vinícius Soares"
+                  data-photo="https://files.greatpages.com.br/arquivos/paginas_editor/95266-e3459fea36b60afd7090d48bdc98ee70.jpg"
+                  data-title="<!-- Nome da palestra a confirmar -->"
+                  data-bio="Professor Associado de Dentística e Materiais Odontológicos da Faculdade de Odontologia da Universidade Federal de Uberlândia (FOUFU), onde também atua como professor e orientador do Programa de Pós-Graduação em Mestrado e Doutorado. Possui Especialização em Dentística, Mestrado em Reabilitação Oral pela FOUFU, Doutorado em Clínica Odontológica pela UNICAMP e Pós-Doutorado pelo College of Dentistry da University of Illinois at Chicago, nos Estados Unidos.<br><br>
+
+Na prática clínica, é cirurgião-dentista do corpo clínico do Instituto Paulo Vinícius (Uberlândia-MG), responsável pela área de Reabilitação Oral e Estética, além de fundador do Instituto IPV Odontologia e Centro de Treinamentos, onde coordena cursos e mentorias clínicas. Também é sócio-fundador do IKnow Odonto Cursos e do IK Journal, iniciativas que unem ensino, pesquisa e inovação em Odontologia.<br><br>
+
+Sua contribuição científica é marcada pela fundação do Grupo de Pesquisa LCNC.FOUFU (CNPq-Brasil), além da publicação de dezenas de artigos em periódicos nacionais e internacionais, capítulos de livros e autoria de obras de grande impacto na área, como Non Carious Cervical Lesions and Cervical Dentin Hypersensitivity (Quintessence Publishing, 2017), traduzido para português e mandarim, e Hipersensibilidade Dentinária – Guia Clínico (Santos/IKnow Publishing, 2019), traduzido para espanhol. É ainda autor e editor dos livros ChairSide Guide – Bridges, volumes 1 e 2.<br><br>
+
+Atua também como revisor de revistas científicas de prestígio, entre elas Operative Dentistry, Journal of Prosthetic Dentistry, Australian Dental Journal, Clinical Oral Investigations e Journal of Oral Rehabilitation, além de Editor-Chefe da Journal of Clinical and Dental Research. É membro ativo da Sociedade Brasileira de Odontologia Estética (SBOE) e da Sociedade Brasileira de Pesquisa Odontológica (SBPqO), e atua como consultor clínico e científico de indústrias odontológicas nacionais e internacionais.<br><br>
+
+Com uma trajetória que une docência, pesquisa e prática clínica de excelência, é reconhecido como uma das principais referências em Reabilitação Oral e Estética, sendo também mentor do ecossistema digital Dentista Pro, voltado à atualização e valorização da Odontologia contemporânea.
+."
+                  data-site="https://files.greatpages.com.br/arquivos/paginas_editor/95266-e3459fea36b60afd7090d48bdc98ee70.jpg"
+                  data-ig=""
+                  data-banner="https://files.greatpages.com.br/arquivos/paginas_editor/95266-e3459fea36b60afd7090d48bdc98ee70.jpg">
+            Conheça mais
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- CAPELLI E CROZETA -->
+    <div class="agenda-item">
+      <div class="agenda-time is-pending"><!-- Horário a<br> confirmar --></div>
+      <div class="agenda-info">
+        <div class="agenda-header">
+          <img src="https://files.greatpages.com.br/arquivos/paginas_editor/95266-a691a5a565c4d880d5b17a592e9e25f9.jpeg" alt="Professor Alexandre Capelli" class="agenda-photo">
+          <img src="https://files.greatpages.com.br/arquivos/paginas_editor/95266-3c5abb90eaf6e7281d3e8fe9f806c046.png" alt="Professor Bruno Crozeta" class="agenda-photo">
+          <div>
+            <h3 class="talk-title"><!-- Nome da palestra a confirmar --></h3>
+            <p class="speaker-name">Dr. Alexandre Capelli<br>
+              & Dr. Bruno Crozeta</p>
+          </div>
+        </div>
+
+        <p class="mini-bio">
+          <strong>Professor Alexandre Capelli</strong> — Doutor em Odontologia Restauradora pela USP (2008). CEO da Helse Ultrasonic.<br>
+          Referência em inovação e desenvolvimento de instrumentos para Endodontia.<br><br>
+          <strong>Professor Bruno Crozeta</strong> — Doutor em Endodontia pela USP, com estágio na UTHealth (EUA) e pós-doutorado pela Unigranrio.<br>Atuação destacada em ultrassom, microscopia e retratamento endodôntico, sendo referência internacional na área.
+        </p>
+
+        <div class="actions">
+          <button class="btn primary"
+                  data-open-modal
+                  data-multi="true"
+                  data-speakers='[
+                    {
+                      "name":"Dr. Alexandre Capelli",
+                      "photo":"https://files.greatpages.com.br/arquivos/paginas_editor/95266-a691a5a565c4d880d5b17a592e9e25f9.jpeg",
+                      "title":"Nome da palestra a confirmar",
+                      "bio":"Graduado em Odontologia e especialista em Endodontia pela Faculdade de Odontologia Júlio de Mesquita Filho – UNESP, Araraquara (1992). Concluiu o Mestrado (2004) e o Doutorado (2008) em Odontologia Restauradora pela Faculdade de Odontologia de Ribeirão Preto – USP.nCom ampla experiência na área, possui forte atuação em Endodontia, destacando-se pela contribuição em pesquisa, ensino e prática clínica. É CEO da Helse Ultrasonic, liderando projetos de inovação no desenvolvimento de instrumentos e equipamentos voltados à Odontologia.",
+                      "site":"https://helse.com.br/",
+                      "ig":"https://www.instagram.com/capelli.alexandre/",
+                      "banner":"https://files.greatpages.com.br/arquivos/paginas_editor/95266-a691a5a565c4d880d5b17a592e9e25f9.jpeg"
+                    },
+                    {
+                      "name":"Dr. Bruno Crozeta",
+                      "photo":"https://files.greatpages.com.br/arquivos/paginas_editor/95266-3c5abb90eaf6e7281d3e8fe9f806c046.png",
+                      "title":"Nome da palestra a confirmar",
+                      "bio":"Doutor em Endodontia pela USP, com estágio na University of Texas Health Science Center at Houston (EUA) e pós-doutorado pela Unigranrio.nAtuação destacada em ultrassom, microscopia e retratamento endodôntico, sendo referência internacional na área.",
+                      "ig":"https://www.instagram.com/",
+                      "banner":"https://files.greatpages.com.br/arquivos/paginas_editor/95266-3c5abb90eaf6e7281d3e8fe9f806c046.png"
+                    }
+                  ]'>
+            Conheça mais
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Iussif Mamede -->
+    <div class="agenda-item">
+      <div class="agenda-time is-pending"><!-- Horário a<br> confirmar --></div>
+      <div class="agenda-info">
+        <div class="agenda-header">
+          <img src="https://files.greatpages.com.br/arquivos/paginas_editor/95266-9202c3d8c7ed5464878f12bb6c204369.jpeg" alt="Professor Iussif Mamede Neto" class="agenda-photo">
+          <div>
+            <h3 class="talk-title"><!-- Nome da palestra a confirmar --></h3>
+            <p class="speaker-name">Dr. Iussif Mamede</p>
+          </div>
+        </div>
+
+        <p class="mini-bio">
+          Formação acadêmica sólida em Endodontia – Graduado em Odontologia (UFG), com especialização, mestrado e doutorado (Ciências da Saúde – UFG), além de pós-graduação avançada em Cirurgia Parendodôntica (UNESP).<br>
+          Atuação de destaque como professor e coordenador – Coordenador da equipe EndoConcept e da EndoKids, com experiência em ensino de pós-graduação e prática clínica na Vitae Odontologia, referência em Endodontia em Goiás.
+        </p>
+
+        <div class="actions">
+          <button class="btn primary"
+                  data-open-modal
+                  data-name="Dr. Iussif Mamede Neto"
+                  data-photo="https://files.greatpages.com.br/arquivos/paginas_editor/95266-9202c3d8c7ed5464878f12bb6c204369.jpeg"
+                  data-title="Nome da palestra a confirmar"
+                  data-bio="Graduado em Odontologia pela Universidade Federal de Goiás (UFG) em 1997, Dr. Mamede Neto se especializou em Endodontia pela ABO/GO no ano 2000 e concluiu uma pós-graduação em Cirurgia Parendodôntica Avançada na UNESP (Araraçatuba/SP) em 2003.nnSeguiu sua trajetória acadêmica com um Mestrado em Endodontia pela UFG, concluído em 2005, e, posteriormente, obteve o Doutorado em Ciências da Saúde (área de concentração: Endodontia) pela Faculdade de Medicina da UFG em 2016, atuando no Grupo de Pesquisa em Biologia Oral.nnDr. Mamede Neto atuou como professor substituto na disciplina de Urgência Odontológica na UFG entre 2001–2002 e 2005–2006. Entre 2007 e 2020, coordenou o curso de Especialização em Endodontia da ABO – Regional Imperatriz/MA. Atualmente, é coordenador da equipe EndoConcept (pós-graduação em Endodontia) e da EndoKids (odontopediatria endodôntica), além de liderar o núcleo de Endodontia da clínica privada Vitae Odontologia, em Goiânia/GO, desde 2008.nnEm pesquisa, Dr. Mamede Neto tem contribuições significativas com publicações em periódicos como Open Dentistry Journal e Journal of Clinical and Diagnostic Research."
+                  data-site="https://helse.com.br/"
+                  data-ig="https://www.instagram.com/capelli.alexandre/"
+                  data-banner="https://files.greatpages.com.br/arquivos/paginas_editor/95266-9202c3d8c7ed5464878f12bb6c204369.jpeg">
+            Conheça mais
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Thiago Carneiro -->
+    <div class="agenda-item">
+      <div class="agenda-time is-pending"><!-- Horário a<br> confirmar --></div>
+      <div class="agenda-info">
+        <div class="agenda-header">
+          <img src="https://files.greatpages.com.br/arquivos/paginas_editor/95266-56572d7f69a7ca9ed991de9980871bfe.jpg" alt="Professor Ângelo Menezes Freire" class="agenda-photo">
+          <div>
+            <h3 class="talk-title"><!-- Nome da palestra a confirmar --></h3>
+            <p class="speaker-name">Dr. Thiago Carneiro</p>
+          </div>
+        </div>
+
+        <p class="mini-bio">
+          Referência em Odontologia Digital com sólida formação acadêmica no Brasil e experiência internacional em pesquisa nos EUA.<br>Professor e pesquisador que alia ciência e prática clínica para transformar a odontologia moderna.
+        </p>
+
+        <div class="actions">
+          <button class="btn primary"
+                  data-open-modal
+                  data-name="Dr. Thiago de Almeida Prado Naves Carneiro"
+                  data-photo="https://files.greatpages.com.br/arquivos/paginas_editor/95266-56572d7f69a7ca9ed991de9980871bfe.jpg"
+                  data-title="Nome da palestra a confirmar"
+                  data-bio="Graduado, Mestre e Doutor em Odontologia pela FOUFU, com Pós-Doutorado na área. Realizou programas de Research Fellow na University of North Carolina – Chapel Hill e na University of Michigan – Ann Arbor (EUA), consolidando sua experiência internacional em pesquisa e inovação.
+                  
+                  Membro ativo da Sociedade Brasileira de Pesquisa Odontológica, atua como Professor do Curso de Odontologia do Centro Universitário do Triângulo, contribuindo para a formação de novos profissionais e para o avanço científico da área."
+                  data-site="https://www.ident.com.br/thiagoapncarneiro/perfil-completo/"
+                  data-ig=""
+                  data-banner="https://files.greatpages.com.br/arquivos/paginas_editor/95266-56572d7f69a7ca9ed991de9980871bfe.jpg">
+            Conheça mais
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- ITENS A CONFIRMAR -->
+    <div class="agenda-item">
+      <div class="agenda-time is-pending"><!-- Horário a<br> confirmar --></div>
+      <div class="agenda-info">
+        <div class="agenda-header">
+          <img src="https://files.greatpages.com.br/arquivos/paginas_editor/95266-c9a42b3fee887111cb57a9477b97bb61.png" alt="Professor a confirmar" class="agenda-photo">
+          <div>
+            <h3 class="talk-title"><!-- Nome da palestra a confirmar --></h3>
+            <p class="speaker-name">Professor(a) a confirmar</p>
+          </div>
+        </div>
+
+        <p class="mini-bio">
+          Em breve...
+        </p>
+
+        <div class="actions">
+          <button class="btn primary"
+                  data-open-modal
+                  data-name="Professor a confirmar"
+                  data-photo="https://files.greatpages.com.br/arquivos/paginas_editor/95266-c9a42b3fee887111cb57a9477b97bb61.png"
+                  data-title="Nome da palestra a confirmar"
+                  data-bio="Em breve..."
+                  data-site="https://files.greatpages.com.br/arquivos/paginas_editor/95266-c9a42b3fee887111cb57a9477b97bb61.png"
+                  data-ig=""
+                  data-banner="https://files.greatpages.com.br/arquivos/paginas_editor/95266-c9a42b3fee887111cb57a9477b97bb61.png">
+            Conheça mais
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- ITENS A CONFIRMAR -->
+    <div class="agenda-item">
+      <div class="agenda-time is-pending"><!-- Horário a<br> confirmar --></div>
+      <div class="agenda-info">
+        <div class="agenda-header">
+          <img src="https://files.greatpages.com.br/arquivos/paginas_editor/95266-c9a42b3fee887111cb57a9477b97bb61.png" alt="Professor a confirmar" class="agenda-photo">
+          <div>
+            <h3 class="talk-title"><!-- Nome da palestra a confirmar --></h3>
+            <p class="speaker-name">Professor(a) a confirmar</p>
+          </div>
+        </div>
+
+        <p class="mini-bio">
+          Em breve...
+        </p>
+
+        <div class="actions">
+          <button class="btn primary"
+                  data-open-modal
+                  data-name="Professor a confirmar"
+                  data-photo="https://files.greatpages.com.br/arquivos/paginas_editor/95266-c9a42b3fee887111cb57a9477b97bb61.png"
+                  data-title="Nome da palestra a confirmar"
+                  data-bio="Em breve..."
+                  data-site="https://files.greatpages.com.br/arquivos/paginas_editor/95266-c9a42b3fee887111cb57a9477b97bb61.png"
+                  data-ig=""
+                  data-banner="https://files.greatpages.com.br/arquivos/paginas_editor/95266-c9a42b3fee887111cb57a9477b97bb61.png">
+            Conheça mais
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- aqui termina o que fiz até agora 26/08/2025 no fim do dia -->
+  
+</section>
+
+<!-- ===== Modal reutilizável ===== -->
+<div class="modal" id="speaker-modal" aria-hidden="true">
+  <div class="modal__overlay" data-close-modal></div>
+
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal__close" aria-label="Fechar" data-close-modal>×</button>
+
+    <div id="modal-content"></div>
+
+    <div class="modal__footer">
+      <button class="btn ghost" data-close-modal>Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- =========================
+     SCRIPT — Modal original + Scroll suave (COM CORREÇÃO DA renderBio)
+========================= -->
+<script>
+(function(){
+  const modal = document.getElementById('speaker-modal');
+  if(!modal){
+    console.warn('[modal] Não encontrei #speaker-modal no DOM.');
+    return;
+  }
+
+  const dialog  = modal.querySelector('.modal__dialog');
+  const content = document.getElementById('modal-content');
+  let lastTrigger = null;
+
+  /* ===========================
+     Helpers de texto (SEM substituição de letras/linhas)
+  =========================== */
+
+  function escapeHTML(str){
+    return (str||'')
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;')
+      .replace(/'/g,'&#39;');
+  }
+
+  // 🚫 Sem quebra automática, sem substituição de caracteres
+  // Apenas escapa HTML e retorna como está
+  function renderBio(raw){
+    if(!raw) return '';
+    return `<p>${escapeHTML(String(raw).trim())}</p>`;
+  }
+
+  /* ===========================
+     Montagem do bloco do palestrante
+  =========================== */
+  function buildSpeakerBlock(speaker){
+    const links = [];
+    if (speaker.site)   links.push(`<a href="${speaker.site}" target="_blank" rel="noopener">Site Oficial</a>`);
+    if (speaker.ig)     links.push(`<a href="${speaker.ig}" target="_blank" rel="noopener">Instagram</a>`);
+    if (speaker.lattes) links.push(`<a href="${speaker.lattes}" target="_blank" rel="noopener">Currículo Lattes</a>`);
+
+    const block = document.createElement('div');
+    block.className = 'modal__speaker-block';
+    block.innerHTML = `
+      <div class="modal__header">
+        <img src="${speaker.photo || ''}" alt="${speaker.name || 'Foto'}" class="modal__photo">
+        <div>
+          <h3 class="modal__name">${speaker.name || ''}</h3>
+          <p class="modal__talk">${speaker.title || ''}</p>
+        </div>
+      </div>
+      <div class="modal__body">
+        ${renderBio(speaker.bio || '')}
+        <div class="modal__links" ${!(speaker.site || speaker.ig || speaker.lattes) ? 'hidden' : ''}>
+          ${links.join('')}
+        </div>
+      </div>
+      ${speaker.banner ? `<div class="modal__banner"><img src="${speaker.banner}" alt="Banner de ${speaker.name || ''}"></div>` : ''}
+    `;
+    return block;
+  }
+
+  /* ===========================
+     Abrir / Fechar modal
+  =========================== */
+  function openModal(triggerEl){
+    lastTrigger = triggerEl || null;
+    content.innerHTML = '';
+
+    if(triggerEl && triggerEl.dataset.multi){
+      try{
+        const arr = JSON.parse(triggerEl.dataset.speakers);
+        arr.forEach(sp => content.appendChild(buildSpeakerBlock(sp)));
+      }catch(e){
+        console.error('Erro no JSON dos palestrantes', e);
+      }
+    }else if(triggerEl){
+      const single = {
+        name:   triggerEl.dataset.name,
+        photo:  triggerEl.dataset.photo,
+        title:  triggerEl.dataset.title,
+        bio:    triggerEl.dataset.bio,
+        site:   triggerEl.dataset.site,
+        ig:     triggerEl.dataset.ig,
+        lattes: triggerEl.dataset.lattes,
+        banner: triggerEl.dataset.banner
+      };
+      content.appendChild(buildSpeakerBlock(single));
+    }
+
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+
+    setTimeout(()=>{ try{ dialog.scrollIntoView({ behavior: 'smooth', block: 'center' }); }catch(_){ } }, 80);
+  }
+
+  function closeModal(){
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    if(lastTrigger && typeof lastTrigger.focus === 'function'){
+      lastTrigger.focus();
+    }
+  }
+
+  /* ===========================
+     Listeners
+  =========================== */
+  document.querySelectorAll('[data-open-modal]').forEach(btn=>{
+    btn.addEventListener('click', (e)=>{
+      e.preventDefault();
+      openModal(btn);
+    });
+  });
+
+  modal.addEventListener('click', (e)=>{
+    if(e.target.hasAttribute('data-close-modal') || e.target.classList.contains('modal__overlay')){
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && modal.classList.contains('is-open')){
+      closeModal();
+    }
+  });
+
+  window.__openSpeakerModal = openModal;
+  window.__closeSpeakerModal = closeModal;
+})();
+</script>
