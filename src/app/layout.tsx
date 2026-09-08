@@ -9,6 +9,13 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 export const metadata: Metadata = {
   title: "4º Endomeeting TM 2027",
   description: "O maior evento para endodontistas do Triângulo Mineiro. Venha vivenciar a endodontia com sucesso e excelência em resultados.",
+  icons: {
+    icon: [
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico" }
+    ],
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({

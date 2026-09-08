@@ -9,6 +9,7 @@ import { speakers } from "@/data/speakers";
 import { MapPin, Calendar, CheckCircle2, ChevronRight, User, Stethoscope, Sparkles, AlertCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import SpeakerModal from "@/components/SpeakerModal";
+import HeroIndexBanner from "@/components/HeroIndexBanner";
 import { Speaker } from "@/data/speakers";
 
 export default function Home() {
@@ -50,6 +51,17 @@ export default function Home() {
     if (speaker.isComingSoon) return;
     setSelectedSpeaker(speaker);
     setIsSpeakerModalOpen(true);
+  };
+
+  const handleSelectSpeakerByName = (speakerName: string) => {
+    const found = speakers.find(s => 
+      s.name.toLowerCase().includes(speakerName.toLowerCase()) || 
+      speakerName.toLowerCase().includes(s.name.toLowerCase())
+    );
+    if (found && !found.isComingSoon) {
+      setSelectedSpeaker(found);
+      setIsSpeakerModalOpen(true);
+    }
   };
 
   const lotData = {
@@ -97,53 +109,8 @@ export default function Home() {
         </>
       )}
 
-      {/* INTRO SECTION */}
-      <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-neutral-950">
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/intro-dark.png" 
-            alt="Endomeeting Background" 
-            fill
-            className="object-cover opacity-40 scale-105"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-neutral-950" />
-        </div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="relative z-10 flex flex-col items-center text-center px-6"
-        >
-          <div className="w-20 h-1 bg-brand-600 mb-8 rounded-full" />
-          {/* Logo Section */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="mb-8"
-          >
-            <Image 
-              src="/logo.png.png" 
-              alt="4º Endomeeting" 
-              width={500} 
-              height={150} 
-              className="w-full max-w-[320px] md:max-w-[450px] h-auto brightness-200 invert grayscale transition-all duration-700"
-              priority
-            />
-          </motion.div>
-          
-          <motion.div 
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center gap-2 text-neutral-500"
-          >
-            <span className="text-sm font-bold uppercase tracking-[0.3em]">Role para entrar</span>
-            <div className="w-[1px] h-12 bg-gradient-to-b from-brand-600 to-transparent" />
-          </motion.div>
-        </motion.div>
-      </section>
+      {/* BANNER INDEX / HUB DE ACESSO RÁPIDO (Versão Dark com Glow Vinho e Informações do Rascunho) */}
+      <HeroIndexBanner onSelectSpeaker={handleSelectSpeakerByName} />
 
       {/* HERO & VIDEO SECTION */}
       <section id="hero" className="relative w-full min-h-screen flex items-center justify-center py-24 overflow-hidden bg-white/50 backdrop-blur-sm border-t border-neutral-100">
@@ -212,7 +179,7 @@ export default function Home() {
         <div className="container mx-auto px-6 flex flex-wrap justify-between gap-8 md:gap-12">
           {[
             { icon: <Calendar className="w-5 h-5" />, label: "DATA", val: "30/04 e 01/05, 2027" },
-            { icon: <MapPin className="w-5 h-5" />, label: "LOCAL", val: "Center Convention, Uberlândia" },
+            { icon: <MapPin className="w-5 h-5" />, label: "LOCAL", val: "CDL Uberlândia" },
             { icon: <User className="w-5 h-5" />, label: "PÚBLICO", val: "CDs e Acadêmicos" }
           ].map((item, idx) => (
             <div key={idx} className="flex items-center gap-4">
@@ -531,11 +498,11 @@ export default function Home() {
                   <MapPin className="w-8 h-8" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-neutral-900 mb-2">Center Convention Uberlândia</h3>
+                  <h3 className="text-2xl font-bold text-neutral-900 mb-2">CDL Uberlândia</h3>
                   <p className="text-neutral-500 leading-relaxed text-lg">
-                    Center Shopping - Av. João Naves de Ávila, 1331<br />
-                    Piso L4 - Tibery, Uberlândia/MG<br />
-                    CEP 38408-902
+                    Câmara de Dirigentes Lojistas de Uberlândia<br />
+                    Av. Belo Horizonte, 1261 - Bairro Osvaldo Rezende<br />
+                    Uberlândia/MG - CEP 38400-454
                   </p>
                 </div>
               </div>
@@ -544,15 +511,15 @@ export default function Home() {
               {/* Convention Photos Gallery */}
               <div className="grid grid-cols-3 gap-4 h-[240px]">
                 <div className="relative rounded-2xl overflow-hidden shadow-lg group">
-                  <Image src="/images/centerconvention/img-aerea-predio.webp" alt="Center Convention Aérea" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <Image src="/images/centerconvention/img-aerea-predio.webp" alt="Fachada do Evento" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                 </div>
                 <div className="relative rounded-2xl overflow-hidden shadow-lg group">
-                  <Image src="/images/centerconvention/salao-cadeiras.webp" alt="Center Convention Salão" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <Image src="/images/centerconvention/salao-cadeiras.webp" alt="Salão de Palestras CDL" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                 </div>
                 <div className="relative rounded-2xl overflow-hidden shadow-lg group">
-                  <Image src="/images/centerconvention/img-desfocada-palestra.webp" alt="Evento no Center Convention" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <Image src="/images/centerconvention/img-desfocada-palestra.webp" alt="Auditório e Participantes" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                 </div>
               </div>
@@ -566,7 +533,7 @@ export default function Home() {
               className="bg-neutral-100 rounded-[3rem] overflow-hidden aspect-square relative shadow-2xl border-4 border-white"
             >
               <iframe
-                src="https://maps.google.com/maps?q=Center%20Convention%20Uberl%C3%A2ndia&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=CDL%20Uberl%C3%A2ndia%20Av.%20Belo%20Horizonte&t=&z=17&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
