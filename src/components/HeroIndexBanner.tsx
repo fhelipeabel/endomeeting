@@ -90,9 +90,27 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
   ];
 
   const committeeMembers = [
-    "Cristiane da Cruz Silva",
-    "Rodrigo Antonio de Faria",
-    "Renata Pereira Georjutti",
+    {
+      name: "Cristiane da Cruz Silva",
+      shortName: "Cristiane Silva",
+      role: "Comissão",
+      initials: "CS",
+      image: "" // adicione aqui o caminho ex: "/images/comissao/cristiane.jpg"
+    },
+    {
+      name: "Rodrigo Antonio de Faria",
+      shortName: "Rodrigo Faria",
+      role: "Coordenação",
+      initials: "RF",
+      image: "" // adicione aqui o caminho ex: "/images/comissao/rodrigo.jpg"
+    },
+    {
+      name: "Renata Pereira Georjutti",
+      shortName: "Renata Georjutti",
+      role: "Comissão",
+      initials: "RG",
+      image: "" // adicione aqui o caminho ex: "/images/comissao/renata.jpg"
+    },
   ];
 
   const pastEditions = ["2024", "2025", "2026"];
@@ -137,32 +155,32 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
           <div
             className="lg:col-span-7 flex flex-col gap-4 sm:gap-5"
           >
-            {/* TOP BAR / LOGO ALINHADA À ESQUERDA */}
-            <div className="flex items-center justify-start relative pt-1 pb-1">
-              <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-48 h-20 bg-brand-600/15 rounded-full blur-2xl -z-10" />
-              <div className="relative transition-transform duration-500 hover:scale-105">
-                <Image
-                  src="/logo.png.png"
-                  alt="4º Endomeeting"
-                  width={300}
-                  height={80}
-                  className="w-full max-w-[210px] sm:max-w-[240px] md:max-w-[260px] h-auto object-contain brightness-200 invert grayscale transition-all duration-500 hover:brightness-250 drop-shadow-[0_4px_25px_rgba(220,38,38,0.35)]"
-                  priority
-                />
+            {/* Quick Info Bar: Logo à Esquerda dos Dois Cards (Data e Local) */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 items-center">
+              {/* LOGO À ESQUERDA (Centralizada verticalmente com os 2 cards adjacentes) */}
+              <div className="md:col-span-4 flex items-center justify-center md:justify-start relative py-2">
+                <div className="absolute left-1/2 md:left-24 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-20 bg-brand-600/20 rounded-full blur-2xl -z-10" />
+                <div className="relative transition-transform duration-500 hover:scale-105 flex items-center justify-center">
+                  <Image
+                    src="/logo.png.png"
+                    alt="4º Endomeeting"
+                    width={280}
+                    height={75}
+                    className="w-full max-w-[200px] sm:max-w-[220px] md:max-w-[240px] h-auto object-contain brightness-200 invert grayscale transition-all duration-500 hover:brightness-250 drop-shadow-[0_4px_25px_rgba(220,38,38,0.35)]"
+                    priority
+                  />
+                </div>
               </div>
-            </div>
 
-            {/* Quick Info: Data & Local */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-              {/* Card Data */}
-              <div className="bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-4.5 border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group relative overflow-hidden">
+              {/* Card Data (Centro / Adjacente à Logo) */}
+              <div className="md:col-span-4 h-full bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-4.5 border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group relative overflow-hidden flex flex-col justify-center">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-600 via-brand-500 to-transparent" />
                 <div className="flex items-center gap-3 mb-1.5">
-                  <div className="p-2.5 rounded-xl bg-brand-950/80 text-brand-400 border border-brand-800/50 shadow-inner group-hover:scale-105 transition-transform">
+                  <div className="p-2.5 rounded-xl bg-brand-950/80 text-brand-400 border border-brand-800/50 shadow-inner group-hover:scale-105 transition-transform shrink-0">
                     <Calendar className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-400">Data Oficial</span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-400 block">Data Oficial</span>
                     <h3 className="text-sm sm:text-base font-black text-white leading-tight">30/04 e 01/05/2027</h3>
                   </div>
                 </div>
@@ -172,20 +190,20 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                 </p>
               </div>
 
-              {/* Card Local: CDL */}
+              {/* Card Local: CDL (Direita / Adjacente ao Card Data) */}
               <button
                 type="button"
                 onClick={() => scrollTo("localizacao")}
-                className="bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-4.5 text-left border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group cursor-pointer relative overflow-hidden"
+                className="md:col-span-4 h-full bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-4.5 text-left border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group cursor-pointer relative overflow-hidden flex flex-col justify-center"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-500 via-brand-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="flex items-center justify-between mb-1.5">
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-brand-950/80 text-brand-400 border border-brand-800/50 shadow-inner group-hover:scale-105 transition-transform">
+                    <div className="p-2.5 rounded-xl bg-brand-950/80 text-brand-400 border border-brand-800/50 shadow-inner group-hover:scale-105 transition-transform shrink-0">
                       <MapPin className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                     </div>
                     <div>
-                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-400">Local do Evento</span>
+                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-400 block">Local do Evento</span>
                       <h3 className="text-sm sm:text-base font-black text-white leading-tight group-hover:text-brand-300 transition-colors">
                         CDL Uberlândia
                       </h3>
@@ -299,16 +317,38 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                 <ChevronRight className="w-4 h-4 text-neutral-400 group-hover:text-brand-400 group-hover:translate-x-1 transition-all" />
               </div>
 
-              <div className="space-y-1.5 mb-2.5">
+              {/* Membros na Horizontal (Grid de 3 Colunas) */}
+              <div className="grid grid-cols-3 gap-2 sm:gap-2.5 mb-2.5">
                 {committeeMembers.map((member, i) => (
-                  <div key={i} className="flex items-center gap-2 text-xs text-neutral-300 group-hover:text-white transition-colors">
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0" />
-                    <span className="font-semibold">{member}</span>
+                  <div key={i} className="flex flex-col items-center text-center p-2 rounded-xl bg-white/[0.025] hover:bg-brand-950/40 border border-white/5 hover:border-brand-500/30 transition-all duration-200 group/member">
+                    {/* Foto ou Avatar com Iniciais */}
+                    <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden border border-white/15 group-hover/member:border-brand-500/50 bg-neutral-900 flex items-center justify-center shrink-0 shadow-sm mb-1.5 transition-transform duration-200 group-hover/member:scale-105">
+                      {member.image ? (
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-neutral-900 via-brand-950 to-neutral-900 flex items-center justify-center text-brand-300 font-bold text-xs tracking-wider">
+                          {member.initials}
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Informações do Membro */}
+                    <span className="text-[10px] sm:text-[11px] font-bold text-neutral-200 group-hover:text-white transition-colors leading-tight line-clamp-2">
+                      {member.shortName || member.name}
+                    </span>
+                    <span className="text-[9px] text-brand-400 font-medium tracking-wide mt-0.5">
+                      {member.role}
+                    </span>
                   </div>
                 ))}
               </div>
 
-              <p className="text-[11px] text-brand-400 font-bold flex items-center gap-1">
+              <p className="text-[11px] text-brand-400 font-bold flex items-center justify-center sm:justify-start gap-1">
                 (clique para mais informações)
               </p>
             </button>
