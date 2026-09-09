@@ -98,7 +98,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
   const pastEditions = ["2024", "2025", "2026"];
 
   return (
-    <section className="relative w-full min-h-screen bg-neutral-950 text-white overflow-hidden flex flex-col justify-between py-10 md:py-16 px-4 sm:px-6 lg:px-8 border-b border-white/10">
+    <section className="relative w-full min-h-screen bg-neutral-950 text-white overflow-hidden flex flex-col justify-between py-6 md:py-10 px-4 sm:px-6 lg:px-8 border-b border-white/10">
       {/* BACKGROUND AMBIENCE & LIGHTING (Fundo Escuro Premium) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
         {/* Imagem de Fundo Original com Opacidade e Escala Suave */}
@@ -128,57 +128,47 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col items-center">
+      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col justify-between flex-1">
         
-        {/* TOP BAR: Logo Oficial do Evento (Reduzida ~30%, Sem Badges Redundantes, Alto Contraste) */}
-        <motion.div
-          initial={{ opacity: 0, y: -15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col items-center text-center mb-8 md:mb-10 relative"
-        >
-          {/* Backlight sutil para destacar a marca */}
-          <div className="absolute -inset-6 bg-brand-600/15 rounded-full blur-2xl -z-10" />
-
-          <div className="relative transition-transform duration-500 hover:scale-105">
-            <Image
-              src="/logo.png.png"
-              alt="4º Endomeeting"
-              width={320}
-              height={90}
-              className="w-full max-w-[200px] sm:max-w-[250px] md:max-w-[290px] h-auto object-contain brightness-200 invert grayscale transition-all duration-500 hover:brightness-250 drop-shadow-[0_4px_25px_rgba(220,38,38,0.35)]"
-              priority
-            />
-          </div>
-        </motion.div>
-
-        {/* MAIN INDEX GRID */}
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch mb-10">
+        {/* MAIN TWO-COLUMN GRID: Logo e conteúdo da esquerda alinhados com o conteúdo da direita */}
+        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-start mb-6">
           
-          {/* LEFT COLUMN: Data, Local & Palestrantes */}
-          <motion.div
-            initial={{ opacity: 0, x: -25 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="lg:col-span-7 flex flex-col gap-6"
+          {/* LEFT COLUMN (Logo + Quick Info + Palestrantes Compactados) */}
+          <div
+            className="lg:col-span-7 flex flex-col gap-4 sm:gap-5"
           >
+            {/* TOP BAR / LOGO ALINHADA À ESQUERDA */}
+            <div className="flex items-center justify-start relative pt-1 pb-1">
+              <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-48 h-20 bg-brand-600/15 rounded-full blur-2xl -z-10" />
+              <div className="relative transition-transform duration-500 hover:scale-105">
+                <Image
+                  src="/logo.png.png"
+                  alt="4º Endomeeting"
+                  width={300}
+                  height={80}
+                  className="w-full max-w-[210px] sm:max-w-[240px] md:max-w-[260px] h-auto object-contain brightness-200 invert grayscale transition-all duration-500 hover:brightness-250 drop-shadow-[0_4px_25px_rgba(220,38,38,0.35)]"
+                  priority
+                />
+              </div>
+            </div>
+
             {/* Quick Info: Data & Local */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {/* Card Data */}
-              <div className="bg-white/[0.04] backdrop-blur-xl rounded-3xl p-5 border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group relative overflow-hidden">
+              <div className="bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-4.5 border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-600 via-brand-500 to-transparent" />
-                <div className="flex items-center gap-3.5 mb-2">
-                  <div className="p-3 rounded-2xl bg-brand-950/80 text-brand-400 border border-brand-800/50 shadow-inner group-hover:scale-105 transition-transform">
-                    <Calendar className="w-5 h-5" />
+                <div className="flex items-center gap-3 mb-1.5">
+                  <div className="p-2.5 rounded-xl bg-brand-950/80 text-brand-400 border border-brand-800/50 shadow-inner group-hover:scale-105 transition-transform">
+                    <Calendar className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                   </div>
                   <div>
                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-400">Data Oficial</span>
-                    <h3 className="text-base sm:text-lg font-black text-white leading-tight">30/04 e 01/05/2027</h3>
+                    <h3 className="text-sm sm:text-base font-black text-white leading-tight">30/04 e 01/05/2027</h3>
                   </div>
                 </div>
-                <p className="text-xs text-neutral-400 pl-12 font-medium flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-brand-400" />
-                  Sexta-feira e Sábado de Imersão
+                <p className="text-[11px] text-neutral-400 pl-10 font-medium flex items-center gap-1.5">
+                  <Clock className="w-3 h-3 text-brand-400" />
+                  Sexta e Sábado de Imersão
                 </p>
               </div>
 
@@ -186,54 +176,54 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
               <button
                 type="button"
                 onClick={() => scrollTo("localizacao")}
-                className="bg-white/[0.04] backdrop-blur-xl rounded-3xl p-5 text-left border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group cursor-pointer relative overflow-hidden"
+                className="bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-4.5 text-left border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group cursor-pointer relative overflow-hidden"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-500 via-brand-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-3.5">
-                    <div className="p-3 rounded-2xl bg-brand-950/80 text-brand-400 border border-brand-800/50 shadow-inner group-hover:scale-105 transition-transform">
-                      <MapPin className="w-5 h-5" />
+                <div className="flex items-center justify-between mb-1.5">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2.5 rounded-xl bg-brand-950/80 text-brand-400 border border-brand-800/50 shadow-inner group-hover:scale-105 transition-transform">
+                      <MapPin className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                     </div>
                     <div>
                       <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-400">Local do Evento</span>
-                      <h3 className="text-base sm:text-lg font-black text-white leading-tight group-hover:text-brand-300 transition-colors">
+                      <h3 className="text-sm sm:text-base font-black text-white leading-tight group-hover:text-brand-300 transition-colors">
                         CDL Uberlândia
                       </h3>
                     </div>
                   </div>
                   <ChevronRight className="w-4 h-4 text-neutral-400 group-hover:text-brand-400 group-hover:translate-x-1 transition-all" />
                 </div>
-                <p className="text-xs text-brand-400 font-bold pl-12 flex items-center gap-1">
-                  (clicar e levar p/ informações)
+                <p className="text-[11px] text-brand-400 font-bold pl-10 flex items-center gap-1">
+                  (clique para informações)
                 </p>
               </button>
             </div>
 
-            {/* Card Palestrantes (★ Palestrantes com fotos e nomes pequenos) */}
-            <div className="bg-white/[0.04] backdrop-blur-xl rounded-[2rem] p-6 sm:p-7 flex-1 border border-white/10 shadow-2xl relative overflow-hidden">
-              <div className="flex items-center justify-between mb-5 pb-4 border-b border-white/10">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-brand-950/80 flex items-center justify-center text-brand-400 border border-brand-800/50">
-                    <span className="text-base font-black">★</span>
+            {/* Card Palestrantes (Mais compacto e equilibrado em altura) */}
+            <div className="bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl relative overflow-hidden">
+              <div className="flex items-center justify-between mb-3.5 pb-2.5 border-b border-white/10">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-lg bg-brand-950/80 flex items-center justify-center text-brand-400 border border-brand-800/50">
+                    <span className="text-sm font-black">★</span>
                   </div>
                   <div>
-                    <h2 className="text-lg sm:text-xl font-black tracking-tight text-white uppercase">
+                    <h2 className="text-sm sm:text-base font-black tracking-tight text-white uppercase">
                       Palestrantes
                     </h2>
-                    <span className="text-[11px] text-brand-400 font-semibold">10 grandes nomes confirmados</span>
+                    <span className="text-[10px] text-brand-400 font-semibold">10 grandes nomes confirmados</span>
                   </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => scrollTo("palestrantes")}
-                  className="text-xs text-neutral-300 hover:text-white transition-colors font-bold flex items-center gap-1 cursor-pointer bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-full border border-white/10 shadow-xs"
+                  className="text-[11px] text-neutral-300 hover:text-white transition-colors font-bold flex items-center gap-1 cursor-pointer bg-white/5 hover:bg-white/10 px-2.5 py-1 rounded-full border border-white/10 shadow-xs"
                 >
-                  Ver bios completas <ChevronRight className="w-3.5 h-3.5" />
+                  Ver bios <ChevronRight className="w-3 h-3" />
                 </button>
               </div>
 
-              {/* Grid de Fotos de Cada Palestrante + Nome Pequeno (5 colunas no Desktop) */}
-              <div className="grid grid-cols-2 min-[420px]:grid-cols-3 sm:grid-cols-5 gap-3 sm:gap-3.5">
+              {/* Grid de Fotos Compactas de Cada Palestrante */}
+              <div className="grid grid-cols-2 min-[420px]:grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-2.5">
                 {speakersList.map((speaker, idx) => (
                   <button
                     key={idx}
@@ -244,10 +234,10 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                       }
                       scrollTo("palestrantes");
                     }}
-                    className="flex flex-col items-center p-2.5 sm:p-3 rounded-2xl bg-white/[0.03] hover:bg-brand-950/50 border border-white/5 hover:border-brand-500/50 hover:shadow-lg transition-all duration-300 group cursor-pointer text-center relative"
+                    className="flex flex-col items-center p-2 rounded-xl bg-white/[0.025] hover:bg-brand-950/50 border border-white/5 hover:border-brand-500/50 hover:shadow-md transition-all duration-250 group cursor-pointer text-center relative"
                   >
-                    {/* Fotinha do Palestrante com borda suave e hover zoom */}
-                    <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden border-2 border-white/10 group-hover:border-brand-500 transition-all duration-300 shadow-md group-hover:scale-105 bg-neutral-900 flex items-center justify-center shrink-0">
+                    {/* Fotinha do Palestrante otimizada para ocupar menos altura */}
+                    <div className="relative w-12 h-12 sm:w-13 sm:h-13 rounded-xl overflow-hidden border border-white/15 group-hover:border-brand-500 transition-all duration-300 shadow-sm group-hover:scale-105 bg-neutral-900 flex items-center justify-center shrink-0">
                       {speaker.image ? (
                         <Image
                           src={speaker.image}
@@ -257,27 +247,27 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-neutral-900 via-brand-950 to-neutral-900 flex flex-col items-center justify-center text-brand-300">
-                          <span className="font-black text-xs tracking-wider">{speaker.initials}</span>
-                          <User className="w-3.5 h-3.5 text-brand-400 mt-0.5" />
+                          <span className="font-black text-[10px] tracking-wider">{speaker.initials}</span>
+                          <User className="w-3 h-3 text-brand-400 mt-0.5" />
                         </div>
                       )}
 
                       {speaker.isInternational && (
                         <div 
-                          className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-brand-500 border border-neutral-950 ring-1 ring-brand-400" 
+                          className="absolute top-1 right-1 w-2 h-2 rounded-full bg-brand-500 border border-neutral-950 ring-1 ring-brand-400" 
                           title="Convidado Internacional" 
                         />
                       )}
                     </div>
 
-                    {/* Nome bem pequeno */}
-                    <span className="text-[11px] sm:text-xs font-bold text-neutral-200 group-hover:text-white transition-colors mt-2 leading-tight line-clamp-2">
+                    {/* Nome compacto */}
+                    <span className="text-[10px] sm:text-[11px] font-bold text-neutral-200 group-hover:text-white transition-colors mt-1.5 leading-tight line-clamp-1">
                       {speaker.shortName || speaker.name}
                     </span>
 
-                    {/* Origem sutil */}
+                    {/* Origem */}
                     {speaker.origin && (
-                      <span className="text-[9px] text-neutral-400 group-hover:text-brand-300 transition-colors uppercase tracking-wider font-semibold mt-0.5 truncate max-w-full">
+                      <span className="text-[8.5px] text-neutral-400 group-hover:text-brand-300 transition-colors uppercase tracking-wider font-semibold mt-0.5 truncate max-w-full">
                         {speaker.origin}
                       </span>
                     )}
@@ -285,44 +275,41 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          {/* RIGHT COLUMN: Comissão, Patrocinadores, Outros 3 Eventos */}
-          <motion.div
-            initial={{ opacity: 0, x: 25 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:col-span-5 flex flex-col gap-6"
+          {/* RIGHT COLUMN: Subindo no topo alinhado com a Logo */}
+          <div
+            className="lg:col-span-5 flex flex-col gap-3.5 sm:gap-4"
           >
             {/* Comissão Organizadora */}
             <button
               type="button"
               onClick={() => scrollTo("sobre")}
-              className="bg-white/[0.04] backdrop-blur-xl rounded-[2rem] p-6 text-left border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group cursor-pointer relative overflow-hidden"
+              className="bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-left border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group cursor-pointer relative overflow-hidden"
             >
-              <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+              <div className="flex items-center justify-between mb-3 pb-2 border-b border-white/10">
                 <div className="flex items-center gap-2.5">
-                  <div className="p-2.5 rounded-2xl bg-brand-950/80 text-brand-400 border border-brand-800/50 shadow-inner">
+                  <div className="p-2 rounded-xl bg-brand-950/80 text-brand-400 border border-brand-800/50 shadow-inner">
                     <Users className="w-4 h-4" />
                   </div>
-                  <h3 className="text-base font-black uppercase tracking-tight text-white">
+                  <h3 className="text-sm sm:text-base font-black uppercase tracking-tight text-white">
                     Comissão Organizadora
                   </h3>
                 </div>
                 <ChevronRight className="w-4 h-4 text-neutral-400 group-hover:text-brand-400 group-hover:translate-x-1 transition-all" />
               </div>
 
-              <div className="space-y-2.5 mb-4">
+              <div className="space-y-1.5 mb-2.5">
                 {committeeMembers.map((member, i) => (
-                  <div key={i} className="flex items-center gap-2.5 text-xs sm:text-sm text-neutral-300 group-hover:text-white transition-colors">
+                  <div key={i} className="flex items-center gap-2 text-xs text-neutral-300 group-hover:text-white transition-colors">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0" />
                     <span className="font-semibold">{member}</span>
                   </div>
                 ))}
               </div>
 
-              <p className="text-xs text-brand-400 font-bold flex items-center gap-1 pt-1">
-                (clicar e levar p/ informações)
+              <p className="text-[11px] text-brand-400 font-bold flex items-center gap-1">
+                (clique para mais informações)
               </p>
             </button>
 
@@ -330,15 +317,15 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
             <button
               type="button"
               onClick={() => scrollTo("patrocinadores")}
-              className="bg-white/[0.04] backdrop-blur-xl rounded-[2rem] p-6 text-left border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group cursor-pointer relative overflow-hidden"
+              className="bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-left border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group cursor-pointer relative overflow-hidden"
             >
-              <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2.5">
-                  <div className="p-2.5 rounded-2xl bg-brand-950/80 text-brand-400 border border-brand-800/50 shadow-inner">
+                  <div className="p-2 rounded-xl bg-brand-950/80 text-brand-400 border border-brand-800/50 shadow-inner">
                     <Award className="w-4 h-4" />
                   </div>
                   <div>
-                    <h3 className="text-base font-black uppercase tracking-tight text-white">
+                    <h3 className="text-sm sm:text-base font-black uppercase tracking-tight text-white">
                       Patrocinadores
                     </h3>
                   </div>
@@ -346,31 +333,31 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                 <ChevronRight className="w-4 h-4 text-neutral-400 group-hover:text-brand-400 group-hover:translate-x-1 transition-all" />
               </div>
 
-              <p className="text-xs text-neutral-400 mb-3 leading-relaxed font-medium">
-                Empresas parceiras e marcas que transformam o congresso em uma experiência de alta tecnologia e inovação.
+              <p className="text-xs text-neutral-400 mb-2 leading-relaxed font-medium">
+                Marcas e empresas que impulsionam o congresso com tecnologia e inovação clínica.
               </p>
 
-              <p className="text-xs text-brand-400 font-bold flex items-center gap-1">
-                (clicar e levar p/ informações)
+              <p className="text-[11px] text-brand-400 font-bold flex items-center gap-1">
+                (clique para ver marcas)
               </p>
             </button>
 
             {/* Outros 3 Eventos (2024, 2025, 2026) */}
-            <div className="bg-white/[0.04] backdrop-blur-xl rounded-[2rem] p-6 border border-white/10 shadow-2xl">
-              <div className="flex items-center gap-2 mb-4 pb-3 border-b border-white/10">
-                <div className="w-7 h-7 rounded-xl bg-brand-950/80 flex items-center justify-center text-brand-400 border border-brand-800/50">
-                  <span className="text-sm font-black">★</span>
+            <div className="bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl">
+              <div className="flex items-center gap-2 mb-3 pb-2 border-b border-white/10">
+                <div className="w-6 h-6 rounded-lg bg-brand-950/80 flex items-center justify-center text-brand-400 border border-brand-800/50">
+                  <span className="text-xs font-black">★</span>
                 </div>
-                <h3 className="text-base font-black uppercase tracking-tight text-white">
+                <h3 className="text-sm sm:text-base font-black uppercase tracking-tight text-white">
                   Outros 3 Eventos
                 </h3>
               </div>
 
-              <p className="text-xs text-neutral-400 mb-4 leading-relaxed font-medium">
-                Confira a trajetória e momentos marcantes das edições anteriores do Endomeeting:
+              <p className="text-xs text-neutral-400 mb-3 leading-relaxed font-medium">
+                Trajetória e registros marcantes das edições anteriores:
               </p>
 
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-2.5">
                 {pastEditions.map((year) => (
                   <button
                     key={year}
@@ -382,12 +369,12 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                         scrollTo("sobre");
                       }
                     }}
-                    className="py-3 px-2 rounded-2xl bg-white/[0.05] hover:bg-brand-950/60 border border-white/10 hover:border-brand-500/50 text-center transition-all duration-200 group cursor-pointer hover:scale-105 shadow-inner"
+                    className="py-2.5 px-2 rounded-xl bg-white/[0.05] hover:bg-brand-950/60 border border-white/10 hover:border-brand-500/50 text-center transition-all duration-200 group cursor-pointer hover:scale-105 shadow-inner"
                   >
-                    <span className="text-sm sm:text-base font-black text-white group-hover:text-brand-300 transition-colors block">
+                    <span className="text-sm font-black text-white group-hover:text-brand-300 transition-colors block">
                       {year}
                     </span>
-                    <span className="text-[10px] text-neutral-400 uppercase tracking-widest font-bold block mt-0.5">
+                    <span className="text-[9px] text-neutral-400 uppercase tracking-widest font-bold block mt-0.5">
                       Edição
                     </span>
                   </button>
@@ -395,32 +382,29 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
               </div>
             </div>
 
-          </motion.div>
+          </div>
 
         </div>
 
         {/* BOTTOM CENTER: CTA Inscrições */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="flex flex-col items-center text-center w-full max-w-lg mt-2"
+        <div
+          className="flex flex-col items-center text-center w-full max-w-lg mx-auto mt-1 mb-2"
         >
           <motion.button
             whileHover={{ scale: 1.03, boxShadow: "0 20px 45px rgba(220, 38, 38, 0.4)" }}
             whileTap={{ scale: 0.98 }}
             onClick={() => scrollTo("ingressos")}
-            className="w-full sm:w-auto px-12 sm:px-16 py-5 bg-gradient-to-r from-brand-700 via-brand-600 to-brand-800 hover:from-brand-600 hover:to-brand-700 text-white rounded-2xl text-lg sm:text-xl font-black tracking-wide shadow-2xl shadow-brand-900/60 border border-brand-500/40 flex items-center justify-center gap-3 group cursor-pointer transition-all"
+            className="w-full sm:w-auto px-10 sm:px-14 py-4 sm:py-4.5 bg-gradient-to-r from-brand-700 via-brand-600 to-brand-800 hover:from-brand-600 hover:to-brand-700 text-white rounded-2xl text-base sm:text-lg font-black tracking-wide shadow-2xl shadow-brand-900/60 border border-brand-500/40 flex items-center justify-center gap-3 group cursor-pointer transition-all"
           >
             <span>Inscrições</span>
-            <ChevronRight className="w-6 h-6 group-hover:translate-x-1.5 transition-transform" />
+            <ChevronRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
           </motion.button>
 
-          <p className="text-xs text-neutral-400 mt-3 flex items-center gap-1.5 font-semibold">
+          <p className="text-xs text-neutral-400 mt-2.5 flex items-center gap-1.5 font-semibold">
             <CheckCircle className="w-3.5 h-3.5 text-brand-400" />
             Lotes especiais de lançamento por tempo limitado
           </p>
-        </motion.div>
+        </div>
 
       </div>
     </section>

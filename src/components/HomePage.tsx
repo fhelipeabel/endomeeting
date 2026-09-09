@@ -112,94 +112,13 @@ export default function Home() {
       {/* BANNER INDEX / HUB DE ACESSO RÁPIDO (Versão Dark com Glow Vinho e Informações do Rascunho) */}
       <HeroIndexBanner onSelectSpeaker={handleSelectSpeakerByName} />
 
-      {/* HERO & VIDEO SECTION */}
-      <section id="hero" className="relative w-full min-h-screen flex items-center justify-center py-24 overflow-hidden bg-white/50 backdrop-blur-sm border-t border-neutral-100">
-        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col items-start text-left"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 text-brand-700 font-medium text-sm mb-6 border border-brand-100/50">
-              <span className="w-2 h-2 rounded-full bg-brand-500 animate-pulse" />
-              Inscrições Abertas - Lote de Lançamento
-            </div>
-            <h2 className="text-5xl md:text-8xl font-black text-neutral-900 tracking-tight leading-[0.9] mb-8">
-              A Excelência<br/>
-              <span className="text-brand-900">Redefinida</span>
-            </h2>
-            <p className="text-lg md:text-xl text-neutral-600 mb-10 max-w-xl leading-relaxed">
-              O evento que reúne os maiores especialistas em endodontia do Brasil para dois dias de imersão tecnológica e científica.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <motion.button 
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={scrollToTickets}
-                className="flex items-center justify-center gap-3 px-10 py-5 bg-brand-900 text-white rounded-2xl text-lg font-bold shadow-2xl shadow-brand-900/40"
-              >
-                Garantir Ingresso
-                <ChevronRight className="w-5 h-5" />
-              </motion.button>
-              
-              <button className="flex items-center justify-center gap-3 px-10 py-5 bg-white text-neutral-900 border border-neutral-200 rounded-2xl text-lg font-bold hover:bg-neutral-50 transition-colors">
-                <span className="w-8 h-8 flex items-center justify-center bg-brand-50 rounded-full text-brand-600">
-                  <div className="w-0 h-0 border-t-[5px] border-t-transparent border-l-[8px] border-l-current border-b-[5px] border-b-transparent ml-1" />
-                </span>
-                Ver Teaser
-              </button>
-            </div>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="relative w-full aspect-video rounded-[3rem] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.12)] border-8 border-white group"
-          >
-            <div className="absolute inset-0 bg-neutral-900 flex items-center justify-center">
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500 cursor-pointer">
-                  <div className="w-0 h-0 border-t-[15px] border-t-transparent border-l-[25px] border-l-white border-b-[15px] border-b-transparent ml-2" />
-                </div>
-                <span className="text-white/60 font-bold uppercase tracking-widest text-sm">Assista ao Vídeo de 2026</span>
-              </div>
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* INFO STRIP */}
-      <section className="w-full py-12 bg-neutral-900 text-white overflow-hidden">
-        <div className="container mx-auto px-6 flex flex-wrap justify-between gap-8 md:gap-12">
-          {[
-            { icon: <Calendar className="w-5 h-5" />, label: "DATA", val: "30/04 e 01/05, 2027" },
-            { icon: <MapPin className="w-5 h-5" />, label: "LOCAL", val: "CDL Uberlândia" },
-            { icon: <User className="w-5 h-5" />, label: "PÚBLICO", val: "CDs e Acadêmicos" }
-          ].map((item, idx) => (
-            <div key={idx} className="flex items-center gap-4">
-              <div className="text-brand-500">{item.icon}</div>
-              <div>
-                <p className="text-[10px] font-black tracking-[0.2em] text-neutral-500">{item.label}</p>
-                <p className="text-sm font-bold">{item.val}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ABOUT SECTION */}
       <section id="sobre" className="w-full py-32 bg-white relative">
         <div className="container mx-auto px-6">
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="max-w-3xl mx-auto text-center"
           >
