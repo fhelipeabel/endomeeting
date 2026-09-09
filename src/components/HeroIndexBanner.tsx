@@ -113,7 +113,11 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
     },
   ];
 
-  const pastEditions = ["2024", "2025", "2026"];
+  const pastEditionsData = [
+    { year: "2024", image: "/images/convention-1.png" },
+    { year: "2025", image: "/images/centerconvention/salao-cadeiras.webp" },
+    { year: "2026", image: "/images/centerconvention/img-desfocada-palestra.webp" },
+  ];
 
   return (
     <section className="relative w-full min-h-screen bg-neutral-950 text-white overflow-hidden flex flex-col justify-between py-6 md:py-10 px-4 sm:px-6 lg:px-8 border-b border-white/10">
@@ -173,18 +177,28 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
               </div>
 
               {/* Card Data (Centro / Adjacente à Logo) */}
-              <div className="md:col-span-4 h-full bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-4.5 border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group relative overflow-hidden flex flex-col justify-center">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-600 via-brand-500 to-transparent" />
-                <div className="flex items-center gap-3 mb-1.5">
-                  <div className="p-2.5 rounded-xl bg-brand-950/80 text-brand-400 border border-brand-800/50 shadow-inner group-hover:scale-105 transition-transform shrink-0">
+              <div className="md:col-span-4 h-full bg-neutral-950/80 rounded-2xl sm:rounded-3xl p-4 sm:p-4.5 border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group relative overflow-hidden flex flex-col justify-center">
+                {/* Imagem de Fundo Temática Gerada */}
+                <Image
+                  src="/images/card-date-bg.jpg"
+                  alt="Data e Cronograma"
+                  fill
+                  className="object-cover opacity-35 group-hover:opacity-55 group-hover:scale-110 transition-all duration-700 pointer-events-none"
+                />
+                {/* Overlay Gradiente Escuro para Legibilidade */}
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/95 via-neutral-950/75 to-neutral-950/50 pointer-events-none" />
+
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-600 via-brand-500 to-transparent z-10" />
+                <div className="relative z-10 flex items-center gap-3 mb-1.5">
+                  <div className="p-2.5 rounded-xl bg-brand-950/90 text-brand-400 border border-brand-800/60 shadow-inner group-hover:scale-105 transition-transform shrink-0">
                     <Calendar className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-400 block">Data Oficial</span>
-                    <h3 className="text-sm sm:text-base font-black text-white leading-tight">30/04 e 01/05/2027</h3>
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-300 block">Data Oficial</span>
+                    <h3 className="text-sm sm:text-base font-black text-white leading-tight drop-shadow-sm">30/04 e 01/05/2027</h3>
                   </div>
                 </div>
-                <p className="text-[11px] text-neutral-400 pl-10 font-medium flex items-center gap-1.5">
+                <p className="relative z-10 text-[11px] text-neutral-300 pl-10 font-medium flex items-center gap-1.5">
                   <Clock className="w-3 h-3 text-brand-400" />
                   Sexta e Sábado de Imersão
                 </p>
@@ -194,24 +208,34 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
               <button
                 type="button"
                 onClick={() => scrollTo("localizacao")}
-                className="md:col-span-4 h-full bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-4.5 text-left border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group cursor-pointer relative overflow-hidden flex flex-col justify-center"
+                className="md:col-span-4 h-full bg-neutral-950/80 rounded-2xl sm:rounded-3xl p-4 sm:p-4.5 text-left border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group cursor-pointer relative overflow-hidden flex flex-col justify-center"
               >
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-500 via-brand-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="flex items-center justify-between mb-1.5">
+                {/* Imagem de Fundo Real do Local / CDL & Centro de Convenções */}
+                <Image
+                  src="/images/convention-2.png"
+                  alt="Local do Evento CDL Uberlândia"
+                  fill
+                  className="object-cover opacity-35 group-hover:opacity-55 group-hover:scale-110 transition-all duration-700 pointer-events-none"
+                />
+                {/* Overlay Gradiente Escuro para Legibilidade */}
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/95 via-neutral-950/75 to-neutral-950/50 pointer-events-none" />
+
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-500 via-brand-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10" />
+                <div className="relative z-10 flex items-center justify-between mb-1.5">
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-brand-950/80 text-brand-400 border border-brand-800/50 shadow-inner group-hover:scale-105 transition-transform shrink-0">
+                    <div className="p-2.5 rounded-xl bg-brand-950/90 text-brand-400 border border-brand-800/60 shadow-inner group-hover:scale-105 transition-transform shrink-0">
                       <MapPin className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                     </div>
                     <div>
-                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-400 block">Local do Evento</span>
-                      <h3 className="text-sm sm:text-base font-black text-white leading-tight group-hover:text-brand-300 transition-colors">
+                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-300 block">Local do Evento</span>
+                      <h3 className="text-sm sm:text-base font-black text-white leading-tight group-hover:text-brand-300 transition-colors drop-shadow-sm">
                         CDL Uberlândia
                       </h3>
                     </div>
                   </div>
                   <ChevronRight className="w-4 h-4 text-neutral-400 group-hover:text-brand-400 group-hover:translate-x-1 transition-all" />
                 </div>
-                <p className="text-[11px] text-brand-400 font-bold pl-10 flex items-center gap-1">
+                <p className="relative z-10 text-[11px] text-brand-400 font-bold pl-10 flex items-center gap-1">
                   (clique para informações)
                 </p>
               </button>
@@ -357,15 +381,25 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
             <button
               type="button"
               onClick={() => scrollTo("patrocinadores")}
-              className="bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-left border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group cursor-pointer relative overflow-hidden"
+              className="bg-neutral-950/80 rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-left border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group cursor-pointer relative overflow-hidden"
             >
-              <div className="flex items-center justify-between mb-2">
+              {/* Imagem de Fundo Temática de Feira & Stands */}
+              <Image
+                src="/images/card-sponsors-bg.jpg"
+                alt="Feira Comercial e Patrocinadores"
+                fill
+                className="object-cover opacity-30 group-hover:opacity-50 group-hover:scale-110 transition-all duration-700 pointer-events-none"
+              />
+              {/* Overlay Gradiente Escuro */}
+              <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/95 via-neutral-950/85 to-neutral-950/60 group-hover:via-neutral-950/75 transition-all pointer-events-none" />
+
+              <div className="relative z-10 flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-brand-950/80 text-brand-400 border border-brand-800/50 shadow-inner">
+                  <div className="p-2 rounded-xl bg-brand-950/90 text-brand-400 border border-brand-800/60 shadow-inner">
                     <Award className="w-4 h-4" />
                   </div>
                   <div>
-                    <h3 className="text-sm sm:text-base font-black uppercase tracking-tight text-white">
+                    <h3 className="text-sm sm:text-base font-black uppercase tracking-tight text-white drop-shadow-sm">
                       Patrocinadores
                     </h3>
                   </div>
@@ -373,17 +407,17 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                 <ChevronRight className="w-4 h-4 text-neutral-400 group-hover:text-brand-400 group-hover:translate-x-1 transition-all" />
               </div>
 
-              <p className="text-xs text-neutral-400 mb-2 leading-relaxed font-medium">
+              <p className="relative z-10 text-xs text-neutral-300 mb-2 leading-relaxed font-medium">
                 Marcas e empresas que impulsionam o congresso com tecnologia e inovação clínica.
               </p>
 
-              <p className="text-[11px] text-brand-400 font-bold flex items-center gap-1">
+              <p className="relative z-10 text-[11px] text-brand-400 font-bold flex items-center gap-1">
                 (clique para ver marcas)
               </p>
             </button>
 
             {/* Outros 3 Eventos (2024, 2025, 2026) */}
-            <div className="bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl">
+            <div className="bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl relative overflow-hidden">
               <div className="flex items-center gap-2 mb-3 pb-2 border-b border-white/10">
                 <div className="w-6 h-6 rounded-lg bg-brand-950/80 flex items-center justify-center text-brand-400 border border-brand-800/50">
                   <span className="text-xs font-black">★</span>
@@ -398,23 +432,33 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
               </p>
 
               <div className="grid grid-cols-3 gap-2.5">
-                {pastEditions.map((year) => (
+                {pastEditionsData.map((edition) => (
                   <button
-                    key={year}
+                    key={edition.year}
                     type="button"
                     onClick={() => {
-                      if (year === "2026") {
+                      if (edition.year === "2026") {
                         scrollTo("hero");
                       } else {
                         scrollTo("sobre");
                       }
                     }}
-                    className="py-2.5 px-2 rounded-xl bg-white/[0.05] hover:bg-brand-950/60 border border-white/10 hover:border-brand-500/50 text-center transition-all duration-200 group cursor-pointer hover:scale-105 shadow-inner"
+                    className="relative overflow-hidden py-3 px-2 rounded-xl bg-neutral-900 border border-white/10 hover:border-brand-500/60 text-center transition-all duration-300 group/btn cursor-pointer hover:scale-105 shadow-lg flex flex-col items-center justify-center min-h-[64px]"
                   >
-                    <span className="text-sm font-black text-white group-hover:text-brand-300 transition-colors block">
-                      {year}
+                    {/* Imagem de Fundo da Respectiva Edição */}
+                    <Image
+                      src={edition.image}
+                      alt={`Edição ${edition.year}`}
+                      fill
+                      className="object-cover opacity-35 group-hover/btn:opacity-65 group-hover/btn:scale-115 transition-all duration-500 pointer-events-none"
+                    />
+                    {/* Overlay Escuro com Glow ao passar o mouse */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/75 to-neutral-950/50 group-hover/btn:from-brand-950/80 group-hover/btn:via-neutral-950/60 group-hover/btn:to-neutral-950/30 transition-all pointer-events-none" />
+
+                    <span className="relative z-10 text-sm font-black text-white group-hover/btn:text-brand-300 transition-colors block drop-shadow-md">
+                      {edition.year}
                     </span>
-                    <span className="text-[9px] text-neutral-400 uppercase tracking-widest font-bold block mt-0.5">
+                    <span className="relative z-10 text-[9px] text-neutral-300 group-hover/btn:text-white uppercase tracking-widest font-bold block mt-0.5 drop-shadow-xs">
                       Edição
                     </span>
                   </button>
