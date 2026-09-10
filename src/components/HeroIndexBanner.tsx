@@ -247,8 +247,8 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
               </button>
             </div>
 
-            {/* Card Palestrantes (Mais compacto e equilibrado em altura) */}
-            <div className="bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl relative overflow-hidden">
+            {/* Lista de Palestrantes (Sem container card, deixando-os à deriva) */}
+            <div className="pt-2">
               <div className="flex items-center justify-between mb-3.5 pb-2.5 border-b border-white/10">
                 <div className="flex items-center gap-2">
                   <div className="w-7 h-7 rounded-lg bg-brand-950/80 flex items-center justify-center text-brand-400 border border-brand-800/50">
