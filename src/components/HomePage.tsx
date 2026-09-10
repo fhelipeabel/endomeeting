@@ -508,18 +508,18 @@ export default function Home() {
               </div>
 
 
-              {/* Convention Photos Gallery */}
+              {/* Galeria de Fotos CDL Uberlândia */}
               <div className="grid grid-cols-3 gap-4 h-[240px]">
                 <div className="relative rounded-2xl overflow-hidden shadow-lg group">
-                  <Image src="/images/centerconvention/img-aerea-predio.webp" alt="Fachada do Evento" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <Image src="/images/cdl/cdl-1.jpeg" alt="Espaço CDL Uberlândia" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                 </div>
                 <div className="relative rounded-2xl overflow-hidden shadow-lg group">
-                  <Image src="/images/centerconvention/salao-cadeiras.webp" alt="Salão de Palestras CDL" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <Image src="/images/cdl/cdl-2.jpeg" alt="Instalações CDL Uberlândia" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                 </div>
                 <div className="relative rounded-2xl overflow-hidden shadow-lg group">
-                  <Image src="/images/centerconvention/img-desfocada-palestra.webp" alt="Auditório e Participantes" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <Image src="/images/cdl/cdl-3.jpeg" alt="Auditório e Espaço de Eventos CDL" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                 </div>
               </div>

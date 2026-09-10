@@ -114,9 +114,9 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
   ];
 
   const pastEditionsData = [
-    { year: "2024", image: "/images/convention-1.png" },
-    { year: "2025", image: "/images/centerconvention/salao-cadeiras.webp" },
-    { year: "2026", image: "/images/centerconvention/img-desfocada-palestra.webp" },
+    { year: "2024", image: "/images/cdl/cdl-5.jpeg" },
+    { year: "2025", image: "/images/cdl/cdl-6.jpeg" },
+    { year: "2026", image: "/images/cdl/cdl-7.jpeg" },
   ];
 
   return (
@@ -210,9 +210,9 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                 onClick={() => scrollTo("localizacao")}
                 className="md:col-span-4 h-full bg-neutral-950/80 rounded-2xl sm:rounded-3xl p-4 sm:p-4.5 text-left border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group cursor-pointer relative overflow-hidden flex flex-col justify-center"
               >
-                {/* Imagem de Fundo Real do Local / CDL & Centro de Convenções */}
+                {/* Imagem de Fundo Real do Local / CDL Uberlândia */}
                 <Image
-                  src="/images/convention-2.png"
+                  src="/images/cdl/cdl-4.jpeg"
                   alt="Local do Evento CDL Uberlândia"
                   fill
                   className="object-cover opacity-35 group-hover:opacity-55 group-hover:scale-110 transition-all duration-700 pointer-events-none"
