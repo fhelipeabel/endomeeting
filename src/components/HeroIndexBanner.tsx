@@ -200,7 +200,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                 </div>
                 <p className="relative z-10 text-[11px] text-neutral-300 pl-10 font-medium flex items-center gap-1.5">
                   <Clock className="w-3 h-3 text-brand-400" />
-                  Sexta e Sábado de Imersão
+                  Sexta e Sábado
                 </p>
               </div>
 
@@ -255,13 +255,6 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                     <span className="text-[10px] text-brand-400 font-semibold">10 grandes nomes confirmados</span>
                   </div>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => scrollTo("palestrantes")}
-                  className="text-[11px] text-neutral-300 hover:text-white transition-colors font-bold flex items-center gap-1 cursor-pointer bg-white/5 hover:bg-white/10 px-2.5 py-1 rounded-full border border-white/10 shadow-xs"
-                >
-                  Ver bios <ChevronRight className="w-3 h-3" />
-                </button>
               </div>
 
               {/* Grid de Fotos Compactas de Cada Palestrante */}
@@ -416,14 +409,14 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
               </p>
             </button>
 
-            {/* Outros 3 Eventos (2024, 2025, 2026) */}
+            {/* Eventos Anteriores (2024, 2025, 2026) */}
             <div className="bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl relative overflow-hidden">
               <div className="flex items-center gap-2 mb-3 pb-2 border-b border-white/10">
                 <div className="w-6 h-6 rounded-lg bg-brand-950/80 flex items-center justify-center text-brand-400 border border-brand-800/50">
                   <span className="text-xs font-black">★</span>
                 </div>
                 <h3 className="text-sm sm:text-base font-black uppercase tracking-tight text-white">
-                  Outros 3 Eventos
+                  Eventos Anteriores
                 </h3>
               </div>
 
