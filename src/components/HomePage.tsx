@@ -285,10 +285,10 @@ export default function Home() {
                     <div className="w-full h-full bg-neutral-200 flex items-center justify-center">
                       <Sparkles className="w-10 h-10 text-neutral-400 animate-pulse" />
                     </div>
-                  ) : (
+                  ) : speaker.image ? (
                     <>
                       <Image 
-                        src={speaker.image || "/placeholder-speaker.webp"} 
+                        src={speaker.image} 
                         alt={speaker.name}
                         fill
                         className="object-cover"
@@ -300,6 +300,13 @@ export default function Home() {
                         </div>
                       )}
                     </>
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-neutral-100 to-brand-50 flex flex-col items-center justify-center text-brand-700">
+                      <span className="font-black text-xl tracking-wider">
+                        {speaker.name.replace(/Profª?\.|Drª?\./g, "").trim().slice(0, 2).toUpperCase()}
+                      </span>
+                      <span className="text-[10px] uppercase font-bold text-neutral-400 mt-1">Foto em breve</span>
+                    </div>
                   )}
                 </div>
                 

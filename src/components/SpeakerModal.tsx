@@ -59,13 +59,20 @@ export default function SpeakerModal({ speaker, isOpen, onClose }: SpeakerModalP
                         target.style.display = 'none';
                       }}
                     />
-                  ) : (
+                  ) : speaker.image ? (
                     <Image
-                      src={speaker.image || "/placeholder-speaker.webp"}
+                      src={speaker.image}
                       alt={speaker.name || "Palestrante"}
                       fill
                       className={`object-cover ${objectPositionClass} opacity-80`}
                     />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-neutral-900 via-brand-950 to-neutral-900 flex flex-col items-center justify-center text-brand-300">
+                      <span className="font-black text-4xl tracking-widest">
+                        {speaker.name.replace(/Profª?\.|Drª?\./g, "").trim().slice(0, 2).toUpperCase()}
+                      </span>
+                      <span className="text-xs uppercase font-bold text-neutral-400 mt-2">Foto em breve</span>
+                    </div>
                   );
                 })()}
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent" />

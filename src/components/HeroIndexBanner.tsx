@@ -31,25 +31,37 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
       shortName: "Rui Pereira", 
       origin: "Portugal", 
       isInternational: true,
-      image: "/images/img-rui.jpeg"
+      image: "/images/palestrantes/img-rui.jpeg"
     },
     { 
       name: "Mário Zuolo", 
       shortName: "Mário Zuolo", 
       origin: "São Paulo",
-      image: "/images/img-mario-zuolo.jpeg"
+      image: "/images/palestrantes/img-mario-zuolo.jpeg"
     },
     { 
       name: "Carlos Eduardo Bueno", 
       shortName: "Carlos E. Bueno", 
       origin: "Campinas",
-      image: "/images/img-bueno.jpeg"
+      image: "/images/palestrantes/img-bueno.jpeg"
     },
     { 
       name: "Patrícia Ferrari", 
       shortName: "Patrícia Ferrari", 
       origin: "São Paulo",
-      image: "/images/img-patricia.webp"
+      image: "/images/palestrantes/img-patricia.webp"
+    },
+    { 
+      name: "Marco Antonio Hungaro Duarte", 
+      shortName: "Hungaro Duarte", 
+      origin: "Bauru - SP",
+      image: "/images/palestrantes/perfil-hungaro.jpeg"
+    },
+    { 
+      name: "Murilo Priori Alcalde", 
+      shortName: "Murilo Alcalde", 
+      origin: "Bauru - SP",
+      initials: "MA"
     },
     { 
       name: "Paulo Vinícius", 
@@ -64,22 +76,16 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
       initials: "AC"
     },
     { 
-      name: "Amanda Leal", 
-      shortName: "Amanda Leal", 
-      origin: "Belo Horizonte",
-      initials: "AL"
+      name: "Amanda Lavor", 
+      shortName: "Amanda Lavor", 
+      origin: "Brasil",
+      image: "/images/palestrantes/amanda-lavor.jpg"
     },
     { 
-      name: "Maria Ilma", 
-      shortName: "Maria Ilma", 
-      origin: "Minas Gerais",
-      initials: "MI"
-    },
-    { 
-      name: "Juliana Vilela", 
-      shortName: "Juliana Vilela", 
-      origin: "Goiás",
-      initials: "JV"
+      name: "Maria Ilma & Juliana Vilela", 
+      shortName: "M. Ilma & Juliana", 
+      origin: "MG / GO",
+      image: "/images/palestrantes/maria-ilma_e_juliana.jpeg"
     },
     { 
       name: "Samuel Nogueira", 
@@ -252,7 +258,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                     <h2 className="text-sm sm:text-base font-black tracking-tight text-white uppercase">
                       Palestrantes
                     </h2>
-                    <span className="text-[10px] text-brand-400 font-semibold">10 grandes nomes confirmados</span>
+                    <span className="text-[10px] text-brand-400 font-semibold">11 palestras • 12 nomes confirmados</span>
                   </div>
                 </div>
               </div>
