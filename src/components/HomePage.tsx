@@ -39,7 +39,7 @@ export default function Home() {
   const handleOpenPopup = (title: string, audience: string | null, url: string) => {
     setPopupContent({
       title: `Ingresso: ${title}`,
-      message: audience 
+      message: audience
         ? `Atenção: Este ingresso é destinado exclusivamente para ${audience}. Será necessário comprovar sua categoria no credenciamento do evento. Caso não haja comprovação, será cobrada a diferença para o valor do ingresso integral no local. Deseja prosseguir?`
         : "Você está sendo redirecionado para a plataforma de pagamentos (Kiwify). Os ingressos são limitados e os lotes podem esgotar rapidamente. Tem certeza que deseja continuar?",
       url: url
@@ -54,8 +54,8 @@ export default function Home() {
   };
 
   const handleSelectSpeakerByName = (speakerName: string) => {
-    const found = speakers.find(s => 
-      s.name.toLowerCase().includes(speakerName.toLowerCase()) || 
+    const found = speakers.find(s =>
+      s.name.toLowerCase().includes(speakerName.toLowerCase()) ||
       speakerName.toLowerCase().includes(s.name.toLowerCase())
     );
     if (found && !found.isComingSoon) {
@@ -101,7 +101,7 @@ export default function Home() {
             message={popupContent?.message}
           />
 
-          <SpeakerModal 
+          <SpeakerModal
             speaker={selectedSpeaker}
             isOpen={isSpeakerModalOpen}
             onClose={() => setIsSpeakerModalOpen(false)}
@@ -109,13 +109,67 @@ export default function Home() {
         </>
       )}
 
-      {/* BANNER INDEX / HUB DE ACESSO RÁPIDO (Versão Dark com Glow Vinho e Informações do Rascunho) */}
+      {/* INTRO SECTION ORIGINAL (1ª TELA ESCURA) */}
+      <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-neutral-950">
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <Image
+            src="/images/fundo-endomeeting.jpeg"
+            alt="Endomeeting Background"
+            fill
+            className="object-cover opacity-35 scale-105"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-neutral-950" />
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="relative z-10 flex flex-col items-center text-center px-6"
+        >
+          <div className="w-20 h-1 bg-brand-600 mb-8 rounded-full shadow-lg shadow-brand-500/50" />
+
+          {/* Logo Section */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="mb-10"
+          >
+            <Image
+              src="/logo.png.png"
+              alt="4º Endomeeting"
+              width={520}
+              height={160}
+              className="w-full max-w-[320px] md:max-w-[480px] h-auto brightness-200 invert grayscale drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)]"
+              priority
+            />
+          </motion.div>
+
+          <motion.button
+            type="button"
+            onClick={() => {
+              const el = document.getElementById("painel-info");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }}
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="flex flex-col items-center gap-2 text-neutral-400 hover:text-white transition-colors cursor-pointer group"
+          >
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.3em] group-hover:tracking-[0.35em] transition-all">Role para entrar</span>
+            <div className="w-[1px] h-12 bg-gradient-to-b from-brand-500 via-brand-600 to-transparent group-hover:h-14 transition-all" />
+          </motion.button>
+        </motion.div>
+      </section>
+
+      {/* BANNER INDEX / HUB DE ACESSO RÁPIDO (Versão Dark com Glow Vinho e Informações Desenhadas) */}
       <HeroIndexBanner onSelectSpeaker={handleSelectSpeakerByName} />
 
       {/* HERO & VIDEO SECTION */}
       <section id="hero" className="relative w-full min-h-screen flex items-center justify-center py-24 overflow-hidden bg-white/50 backdrop-blur-sm border-t border-neutral-100">
         <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 1, x: 0 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -126,16 +180,16 @@ export default function Home() {
               <span className="w-2 h-2 rounded-full bg-brand-500 animate-pulse" />
               Inscrições Abertas - Lote de Lançamento
             </div>
-            <h2 className="text-5xl md:text-8xl font-black text-neutral-900 tracking-tight leading-[0.9] mb-8">
-              A Excelência<br/>
-              <span className="text-brand-900">Redefinida</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-neutral-800 tracking-tight leading-[1.05] mb-6">
+              Venha aprimorar sua<br />
+              <span className="text-brand-700">Endodontia com excelência</span>
             </h2>
             <p className="text-lg md:text-xl text-neutral-600 mb-10 max-w-xl leading-relaxed">
               O evento que reúne os maiores especialistas em endodontia do Brasil para dois dias de imersão tecnológica e científica.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <motion.button 
+              <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={scrollToTickets}
@@ -144,7 +198,7 @@ export default function Home() {
                 Garantir Ingresso
                 <ChevronRight className="w-5 h-5" />
               </motion.button>
-              
+
               <button className="flex items-center justify-center gap-3 px-10 py-5 bg-white text-neutral-900 border border-neutral-200 rounded-2xl text-lg font-bold hover:bg-neutral-50 transition-colors">
                 <span className="w-8 h-8 flex items-center justify-center bg-brand-50 rounded-full text-brand-600">
                   <div className="w-0 h-0 border-t-[5px] border-t-transparent border-l-[8px] border-l-current border-b-[5px] border-b-transparent ml-1" />
@@ -154,7 +208,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 1, scale: 1 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -196,7 +250,7 @@ export default function Home() {
       {/* ABOUT SECTION */}
       <section id="sobre" className="w-full py-32 bg-white relative">
         <div className="container mx-auto px-6">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -208,14 +262,14 @@ export default function Home() {
               Organizado pela Equipe Rodrigo Faria de Endodontia, o Endomeeting é o epicentro da inovação endodôntica no Brasil.
             </p>
           </motion.div>
-          
+
           <div className="grid md:grid-cols-3 gap-8 mt-20">
             {[
               { title: "Alta Tecnologia", desc: "Acesso às mais recentes inovações e microscopia de ponta.", icon: <CheckCircle2 className="w-6 h-6" /> },
               { title: "Networking Elite", desc: "Conexões valiosas com os maiores nomes da endodontia nacional.", icon: <User className="w-6 h-6" /> },
               { title: "Imersão Prática", desc: "Vivencie protocolos clínicos reais com hands-on especializados.", icon: <Stethoscope className="w-6 h-6" /> }
             ].map((item, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 1, y: 0 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -250,7 +304,7 @@ export default function Home() {
 
         <div className="container mx-auto px-6 mt-12">
           <div className="flex flex-col items-center mb-20 text-center">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -260,10 +314,10 @@ export default function Home() {
             </motion.h2>
             <p className="text-neutral-500 max-w-2xl text-xl font-medium">Aprenda com professores experientes que aliam alta tecnologia e resultados de excelência.</p>
           </div>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {speakers.map((speaker, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 initial={{ opacity: 1, scale: 1 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -285,10 +339,10 @@ export default function Home() {
                     <div className="w-full h-full bg-neutral-200 flex items-center justify-center">
                       <Sparkles className="w-10 h-10 text-neutral-400 animate-pulse" />
                     </div>
-                  ) : speaker.image ? (
+                  ) : (
                     <>
-                      <Image 
-                        src={speaker.image} 
+                      <Image
+                        src={speaker.image || "/placeholder-speaker.webp"}
                         alt={speaker.name}
                         fill
                         className="object-cover"
@@ -300,20 +354,13 @@ export default function Home() {
                         </div>
                       )}
                     </>
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-neutral-100 to-brand-50 flex flex-col items-center justify-center text-brand-700">
-                      <span className="font-black text-xl tracking-wider">
-                        {speaker.name.replace(/Profª?\.|Drª?\./g, "").trim().slice(0, 2).toUpperCase()}
-                      </span>
-                      <span className="text-[10px] uppercase font-bold text-neutral-400 mt-1">Foto em breve</span>
-                    </div>
                   )}
                 </div>
-                
+
                 <h3 className="text-xl font-bold text-neutral-900 mb-2">{speaker.name}</h3>
                 <h4 className="text-sm font-bold text-brand-700 mb-4 tracking-wider uppercase">{speaker.title}</h4>
                 <p className="text-sm text-neutral-500 leading-relaxed font-medium line-clamp-3">{speaker.description}</p>
-                
+
                 {!speaker.isComingSoon && (
                   <div className="mt-6 pt-6 border-t border-neutral-50 w-full flex justify-center opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
                     <span className="text-xs font-black uppercase tracking-widest text-brand-600 flex items-center gap-2">
@@ -515,18 +562,18 @@ export default function Home() {
               </div>
 
 
-              {/* Galeria de Fotos CDL Uberlândia */}
+              {/* Convention Photos Gallery */}
               <div className="grid grid-cols-3 gap-4 h-[240px]">
                 <div className="relative rounded-2xl overflow-hidden shadow-lg group">
-                  <Image src="/images/cdl/cdl-1.jpeg" alt="Espaço CDL Uberlândia" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <Image src="/images/centerconvention/img-aerea-predio.webp" alt="Fachada do Evento" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                 </div>
                 <div className="relative rounded-2xl overflow-hidden shadow-lg group">
-                  <Image src="/images/cdl/cdl-2.jpeg" alt="Instalações CDL Uberlândia" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <Image src="/images/centerconvention/salao-cadeiras.webp" alt="Salão de Palestras CDL" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                 </div>
                 <div className="relative rounded-2xl overflow-hidden shadow-lg group">
-                  <Image src="/images/cdl/cdl-3.jpeg" alt="Auditório e Espaço de Eventos CDL" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <Image src="/images/centerconvention/img-desfocada-palestra.webp" alt="Auditório e Participantes" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                 </div>
               </div>
@@ -558,7 +605,7 @@ export default function Home() {
       <section id="hospedagem" className="w-full py-32 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="flex flex-col items-center text-center mb-20">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -572,7 +619,7 @@ export default function Home() {
           </div>
 
           {/* Featured Hotel: Mercure */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -580,17 +627,17 @@ export default function Home() {
           >
             <div className="flex flex-col lg:flex-row">
               <div className="lg:w-1/2 relative aspect-[4/3] lg:aspect-auto min-h-[300px]">
-                <Image 
-                  src="/images/hoteis/mercure-hotel-principal.jpg" 
-                  alt="Mercure Uberlândia Plaza Shopping" 
-                  fill 
+                <Image
+                  src="/images/hoteis/mercure-hotel-principal.jpg"
+                  alt="Mercure Uberlândia Plaza Shopping"
+                  fill
                   className="object-cover"
                 />
                 <div className="absolute top-6 left-6 bg-brand-600 text-white px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
                   Hotel do Evento
                 </div>
               </div>
-              
+
               <div className="lg:w-1/2 p-8 md:p-12 flex flex-col justify-center">
                 <span className="text-brand-700 font-black uppercase tracking-[0.3em] text-xs mb-4">Hospedagem Oficial</span>
                 <h3 className="text-3xl md:text-4xl font-black text-neutral-900 mb-6 leading-tight">Mercure Uberlândia Plaza Shopping</h3>
@@ -616,16 +663,16 @@ export default function Home() {
                 </div>
 
                 <div className="flex flex-wrap gap-4">
-                  <a 
-                    href="https://www.google.com/maps/search/?api=1&query=Mercure+Uberlândia+Plaza+Shopping" 
-                    target="_blank" 
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Mercure+Uberlândia+Plaza+Shopping"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="px-8 py-4 bg-brand-900 hover:bg-brand-950 text-white font-bold rounded-xl transition-all hover:scale-105 shadow-lg shadow-brand-900/20"
                   >
                     Ver localização
                   </a>
-                  <a 
-                    href="https://api.whatsapp.com/send/?phone=553432398000" 
+                  <a
+                    href="https://api.whatsapp.com/send/?phone=553432398000"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-8 py-4 bg-white hover:bg-neutral-50 text-neutral-900 font-bold rounded-xl border border-neutral-200 transition-all hover:scale-105"
@@ -646,7 +693,7 @@ export default function Home() {
                 { name: "Ibis Budget Uberlândia", img: "/images/hoteis/ibis-budget.jpg" },
                 { name: "Villalba Hotel", img: "/images/hoteis/image-uberlandia-villalba-hotel-16.jpg" }
               ].map((hotel, idx) => (
-                <motion.div 
+                <motion.div
                   key={idx}
                   initial={{ opacity: 1, y: 0 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -654,10 +701,10 @@ export default function Home() {
                   transition={{ delay: idx * 0.1 }}
                   className="group relative aspect-[4/3] rounded-3xl overflow-hidden cursor-pointer shadow-lg"
                 >
-                  <Image 
-                    src={hotel.img} 
-                    alt={hotel.name} 
-                    fill 
+                  <Image
+                    src={hotel.img}
+                    alt={hotel.name}
+                    fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />

@@ -12,10 +12,10 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show header only after scrolling past 80% of the first fold
-      const threshold = window.innerHeight * 0.8;
+      // Exibe a navbar apenas a partir da 3ª dobra (após passar a Intro e o Painel de Informações)
+      const threshold = window.innerHeight * 1.8;
       setIsVisible(window.scrollY > threshold);
-      setIsScrolled(window.scrollY > window.innerHeight + 100);
+      setIsScrolled(window.scrollY > window.innerHeight * 2 + 100);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);

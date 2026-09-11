@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { 
-  Calendar, 
-  MapPin, 
-  Users, 
-  Award, 
-  ChevronRight, 
+import {
+  Calendar,
+  MapPin,
+  Users,
+  Award,
+  ChevronRight,
   CheckCircle,
   Clock,
   User
@@ -26,70 +26,70 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
   };
 
   const speakersList = [
-    { 
-      name: "Rui Pereira Costa", 
-      shortName: "Rui Pereira", 
-      origin: "Portugal", 
+    {
+      name: "Rui Pereira Costa",
+      shortName: "Rui Pereira",
+      origin: "Portugal",
       isInternational: true,
-      image: "/images/palestrantes/img-rui.jpeg"
+      image: "/images/palestrantes/rui-pereira.jpeg"
     },
-    { 
-      name: "Mário Zuolo", 
-      shortName: "Mário Zuolo", 
+    {
+      name: "Mário Zuolo",
+      shortName: "Mário Zuolo",
       origin: "São Paulo",
       image: "/images/palestrantes/img-mario-zuolo.jpeg"
     },
-    { 
-      name: "Carlos Eduardo Bueno", 
-      shortName: "Carlos E. Bueno", 
+    {
+      name: "Carlos Eduardo Bueno",
+      shortName: "Carlos E. Bueno",
       origin: "Campinas",
       image: "/images/palestrantes/img-bueno.jpeg"
     },
-    { 
-      name: "Patrícia Ferrari", 
-      shortName: "Patrícia Ferrari", 
+    {
+      name: "Patrícia Ferrari",
+      shortName: "Patrícia Ferrari",
       origin: "São Paulo",
       image: "/images/palestrantes/img-patricia.webp"
     },
-    { 
-      name: "Marco Antonio Hungaro Duarte", 
-      shortName: "Hungaro Duarte", 
+    {
+      name: "Marco Antonio Hungaro Duarte",
+      shortName: "Marco Hungaro",
       origin: "Bauru - SP",
       image: "/images/palestrantes/perfil-hungaro.jpeg"
     },
-    { 
-      name: "Murilo Priori Alcalde", 
-      shortName: "Murilo Alcalde", 
+    {
+      name: "Murilo Priori Alcalde",
+      shortName: "Murilo Alcalde",
       origin: "Bauru - SP",
       initials: "MA"
     },
-    { 
-      name: "Paulo Vinícius", 
-      shortName: "Paulo Vinícius", 
+    {
+      name: "Paulo Vinícius",
+      shortName: "Paulo Vinícius",
       origin: "Uberlândia",
       initials: "PV"
     },
-    { 
-      name: "Alexandre Capelli", 
-      shortName: "Alexandre Capelli", 
+    {
+      name: "Alexandre Capelli",
+      shortName: "Alexandre Capelli",
       origin: "Ribeirão Preto",
       initials: "AC"
     },
-    { 
-      name: "Amanda Lavor", 
-      shortName: "Amanda Lavor", 
+    {
+      name: "Amanda Lavor",
+      shortName: "Amanda Lavor",
       origin: "Brasil",
       image: "/images/palestrantes/amanda-lavor.jpg"
     },
-    { 
-      name: "Maria Ilma & Juliana Vilela", 
-      shortName: "M. Ilma & Juliana", 
+    {
+      name: "Maria Ilma & Juliana Vilela",
+      shortName: "M. Ilma & Juliana",
       origin: "MG / GO",
       image: "/images/palestrantes/maria-ilma_e_juliana.jpeg"
     },
-    { 
-      name: "Samuel Nogueira", 
-      shortName: "Samuel Nogueira", 
+    {
+      name: "Samuel Nogueira",
+      shortName: "Samuel Nogueira",
       origin: "São Paulo",
       initials: "SN"
     },
@@ -126,15 +126,15 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
   ];
 
   return (
-    <section className="relative w-full min-h-screen bg-neutral-950 text-white overflow-hidden flex flex-col justify-between py-6 md:py-10 px-4 sm:px-6 lg:px-8 border-b border-white/10">
+    <section id="painel-info" className="relative w-full min-h-screen bg-neutral-950 text-white overflow-hidden flex flex-col justify-between py-6 md:py-10 px-4 sm:px-6 lg:px-8 border-b border-white/10">
       {/* BACKGROUND AMBIENCE & LIGHTING (Fundo Escuro Premium) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
-        {/* Imagem de Fundo Original com Opacidade e Escala Suave */}
+        {/* Imagem de Fundo Oficial */}
         <Image
-          src="/intro-dark.png"
+          src="/images/fundo-endomeeting.jpeg"
           alt="Endomeeting Background"
           fill
-          className="object-cover opacity-25 scale-105"
+          className="object-cover opacity-35 scale-105"
           priority
         />
 
@@ -147,7 +147,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
         <div className="absolute -bottom-20 -left-20 w-[550px] h-[500px] bg-brand-600/15 rounded-full blur-[150px]" />
 
         {/* Microgrid de Precisão Tecnológica */}
-        <div 
+        <div
           className="absolute inset-0 opacity-15"
           style={{
             backgroundImage: "radial-gradient(rgba(220,38,38,0.25) 1px, transparent 1px)",
@@ -157,10 +157,10 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col justify-between flex-1">
-        
+
         {/* MAIN TWO-COLUMN GRID: Logo e conteúdo da esquerda alinhados com o conteúdo da direita */}
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-start mb-6">
-          
+
           {/* LEFT COLUMN (Logo + Quick Info + Palestrantes Compactados) */}
           <div
             className="lg:col-span-7 flex flex-col gap-4 sm:gap-5"
@@ -263,8 +263,8 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                 </div>
               </div>
 
-              {/* Grid de Fotos Compactas de Cada Palestrante */}
-              <div className="grid grid-cols-2 min-[420px]:grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-2.5">
+              {/* Grid de Fotos Otimizadas dos Palestrantes */}
+              <div className="grid grid-cols-2 min-[420px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-1.5 sm:gap-2">
                 {speakersList.map((speaker, idx) => (
                   <button
                     key={idx}
@@ -275,10 +275,10 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                       }
                       scrollTo("palestrantes");
                     }}
-                    className="flex flex-col items-center p-2 rounded-xl bg-white/[0.025] hover:bg-brand-950/50 border border-white/5 hover:border-brand-500/50 hover:shadow-md transition-all duration-250 group cursor-pointer text-center relative"
+                    className="flex flex-col items-center p-1 sm:p-1.5 rounded-xl hover:bg-brand-950/40 border border-transparent hover:border-brand-500/40 transition-all duration-200 group cursor-pointer text-center relative"
                   >
-                    {/* Fotinha do Palestrante otimizada para ocupar menos altura */}
-                    <div className="relative w-12 h-12 sm:w-13 sm:h-13 rounded-xl overflow-hidden border border-white/15 group-hover:border-brand-500 transition-all duration-300 shadow-sm group-hover:scale-105 bg-neutral-900 flex items-center justify-center shrink-0">
+                    {/* Foto do Palestrante Ampliada e com destaque */}
+                    <div className="relative w-15 h-15 sm:w-16 sm:h-16 md:w-[68px] md:h-[68px] rounded-2xl overflow-hidden border border-white/20 group-hover:border-brand-400 transition-all duration-300 shadow-md group-hover:scale-105 bg-neutral-900 flex items-center justify-center shrink-0">
                       {speaker.image ? (
                         <Image
                           src={speaker.image}
@@ -288,27 +288,27 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-neutral-900 via-brand-950 to-neutral-900 flex flex-col items-center justify-center text-brand-300">
-                          <span className="font-black text-[10px] tracking-wider">{speaker.initials}</span>
-                          <User className="w-3 h-3 text-brand-400 mt-0.5" />
+                          <span className="font-black text-xs tracking-wider">{speaker.initials}</span>
+                          <User className="w-3.5 h-3.5 text-brand-400 mt-0.5" />
                         </div>
                       )}
 
                       {speaker.isInternational && (
-                        <div 
-                          className="absolute top-1 right-1 w-2 h-2 rounded-full bg-brand-500 border border-neutral-950 ring-1 ring-brand-400" 
-                          title="Convidado Internacional" 
+                        <div
+                          className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-brand-500 border border-neutral-950 ring-1 ring-brand-400"
+                          title="Convidado Internacional"
                         />
                       )}
                     </div>
 
                     {/* Nome compacto */}
-                    <span className="text-[10px] sm:text-[11px] font-bold text-neutral-200 group-hover:text-white transition-colors mt-1.5 leading-tight line-clamp-1">
+                    <span className="text-[10px] sm:text-[11px] font-bold text-neutral-200 group-hover:text-white transition-colors mt-1 leading-tight line-clamp-1 max-w-full">
                       {speaker.shortName || speaker.name}
                     </span>
 
                     {/* Origem */}
                     {speaker.origin && (
-                      <span className="text-[8.5px] text-neutral-400 group-hover:text-brand-300 transition-colors uppercase tracking-wider font-semibold mt-0.5 truncate max-w-full">
+                      <span className="text-[8px] sm:text-[8.5px] text-neutral-400 group-hover:text-brand-300 transition-colors uppercase tracking-wider font-semibold truncate max-w-full">
                         {speaker.origin}
                       </span>
                     )}
@@ -334,7 +334,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                     <Users className="w-4 h-4" />
                   </div>
                   <h3 className="text-sm sm:text-base font-black uppercase tracking-tight text-white">
-                    Comissão Organizadora
+                    Coordenação
                   </h3>
                 </div>
                 <ChevronRight className="w-4 h-4 text-neutral-400 group-hover:text-brand-400 group-hover:translate-x-1 transition-all" />
@@ -359,7 +359,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                         </div>
                       )}
                     </div>
-                    
+
                     {/* Informações do Membro */}
                     <span className="text-[10px] sm:text-[11px] font-bold text-neutral-200 group-hover:text-white transition-colors leading-tight line-clamp-2">
                       {member.shortName || member.name}
