@@ -1,12 +1,12 @@
 "use client";
 // Force refresh 1
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { PaymentPopup } from "@/components/PaymentPopup";
 import { Sponsors } from "@/components/Sponsors";
 import { speakers } from "@/data/speakers";
-import { MapPin, Calendar, CheckCircle2, ChevronRight, User, Stethoscope, Sparkles, AlertCircle, Lock } from "lucide-react";
+import { MapPin, Calendar, CheckCircle2, ChevronRight, User, Stethoscope, Sparkles, AlertCircle, Lock, Play } from "lucide-react";
 import { motion } from "framer-motion";
 import SpeakerModal from "@/components/SpeakerModal";
 import HeroIndexBanner from "@/components/HeroIndexBanner";
@@ -71,6 +71,8 @@ export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [selectedSpeaker, setSelectedSpeaker] = useState<Speaker | null>(null);
   const [isSpeakerModalOpen, setIsSpeakerModalOpen] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -202,7 +204,7 @@ export default function Home() {
       <HeroIndexBanner onSelectSpeaker={handleSelectSpeakerByName} />
 
       {/* HERO & VIDEO SECTION */}
-      <section id="hero" className="relative w-full min-h-screen flex items-center justify-center py-24 overflow-hidden bg-white/50 backdrop-blur-sm border-t border-neutral-100">
+      <section id="hero" className="relative w-full min-h-screen flex items-center justify-center py-28 md:py-36 overflow-hidden bg-white/50 backdrop-blur-sm border-t border-neutral-100 scroll-mt-24">
         <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 1, x: 0 }}
@@ -213,7 +215,7 @@ export default function Home() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 text-brand-700 font-medium text-sm mb-6 border border-brand-100/50">
               <span className="w-2 h-2 rounded-full bg-brand-500 animate-pulse" />
-              Inscrições Abertas - Lote de Lançamento
+              Inscrições Abertas - Lote Promocional
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-neutral-800 tracking-tight leading-[1.05] mb-6">
               Venha aprimorar sua<br />
@@ -234,11 +236,23 @@ export default function Home() {
                 <ChevronRight className="w-5 h-5" />
               </motion.button>
 
-              <button className="flex items-center justify-center gap-3 px-10 py-5 bg-white text-neutral-900 border border-neutral-200 rounded-2xl text-lg font-bold hover:bg-neutral-50 transition-colors">
-                <span className="w-8 h-8 flex items-center justify-center bg-brand-50 rounded-full text-brand-600">
-                  <div className="w-0 h-0 border-t-[5px] border-t-transparent border-l-[8px] border-l-current border-b-[5px] border-b-transparent ml-1" />
+              <button
+                type="button"
+                onClick={() => {
+                  if (videoRef.current) {
+                    videoRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+                    if (videoRef.current.paused) {
+                      videoRef.current.play();
+                      setIsVideoPlaying(true);
+                    }
+                  }
+                }}
+                className="flex items-center justify-center gap-3 px-8 py-5 bg-white text-neutral-900 border border-neutral-200 rounded-2xl text-lg font-bold hover:bg-neutral-50 hover:border-brand-300 shadow-sm hover:shadow transition-all group cursor-pointer"
+              >
+                <span className="w-8 h-8 flex items-center justify-center bg-brand-50 rounded-full text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                  <Play className="w-4 h-4 ml-0.5 fill-current" />
                 </span>
-                Ver Teaser
+                Assistir Vídeo
               </button>
             </div>
           </motion.div>
@@ -248,17 +262,58 @@ export default function Home() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="relative w-full aspect-video rounded-[3rem] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.12)] border-8 border-white group"
+            className="flex justify-center items-center w-full"
           >
-            <div className="absolute inset-0 bg-neutral-900 flex items-center justify-center">
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500 cursor-pointer">
-                  <div className="w-0 h-0 border-t-[15px] border-t-transparent border-l-[25px] border-l-white border-b-[15px] border-b-transparent ml-2" />
-                </div>
-                <span className="text-white/60 font-bold uppercase tracking-widest text-sm">Assista ao Vídeo de 2026</span>
+            {/* Container Vertical Estilo Smartphone / Reels / VSL */}
+            <div className="relative w-full max-w-[320px] sm:max-w-[360px] aspect-[9/16] rounded-[2.5rem] sm:rounded-[3rem] overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.25)] border-4 sm:border-8 border-neutral-900 bg-black group ring-1 ring-white/20">
+              {/* Notch superior estético */}
+              <div className="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-4 bg-neutral-900/90 rounded-full z-20 pointer-events-none flex items-center justify-center">
+                <div className="w-2 h-2 rounded-full bg-neutral-950 mr-2 border border-white/10" />
+                <div className="w-8 h-1 rounded-full bg-neutral-800" />
               </div>
+
+              <video
+                ref={videoRef}
+                src="/videos/vsl-endomeeting.mp4"
+                controls={isVideoPlaying}
+                playsInline
+                preload="metadata"
+                onPlay={() => setIsVideoPlaying(true)}
+                onPause={() => setIsVideoPlaying(false)}
+                onEnded={() => setIsVideoPlaying(false)}
+                className="w-full h-full object-cover"
+              />
+
+              {!isVideoPlaying && (
+                <div
+                  onClick={() => {
+                    if (videoRef.current) {
+                      videoRef.current.play();
+                      setIsVideoPlaying(true);
+                    }
+                  }}
+                  className="absolute inset-0 bg-neutral-950/50 backdrop-blur-[2px] flex flex-col items-center justify-center cursor-pointer transition-all hover:bg-neutral-950/35 z-10 p-6"
+                >
+                  <div className="relative flex flex-col items-center gap-5 text-center">
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-20 h-20 bg-brand-600 hover:bg-brand-500 text-white rounded-full flex items-center justify-center shadow-2xl shadow-brand-900/80 transition-all cursor-pointer ring-4 ring-white/20 hover:ring-white/40"
+                    >
+                      <Play className="w-8 h-8 ml-1 fill-current" />
+                    </motion.div>
+                    <div>
+                      <span className="text-white font-black uppercase tracking-widest text-xs sm:text-sm block drop-shadow-md">
+                        Vídeo Oficial • 4º Endomeeting
+                      </span>
+                      <span className="text-neutral-300 text-xs font-medium mt-1.5 block">
+                        Aperte o play para assistir com áudio
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
           </motion.div>
         </div>
       </section>
