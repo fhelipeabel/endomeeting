@@ -94,11 +94,12 @@ export const speakers: Speaker[] = [
     isComingSoon: false
   },
   {
-    name: "Prof. Dr. Alexandre Capelli & Prof. Dr. Murilo Priori Alcalde",
-    title: "Dupla Palestrante • Novas Tecnologias & Cinemáticas NiTi",
-    location: "Ribeirão Preto / Bauru - SP",
-    description: "Abordagem integrada de novas tecnologias, odontologia restauradora, cinemáticas avançadas e tratamentos térmicos em Endodontia.",
-    fullBio: "Apresentação em conjunto unindo tecnologia, preparos anatômicos e cinemáticas mecanizadas.\n\nProf. Dr. Alexandre Capelli: Mestre e Doutor em Endodontia, especialista em novas tecnologias, preparos anatômicos e técnicas restauradoras.\n\nProf. Dr. Murilo Priori Alcalde: Professor e Pesquisador na FOB-USP, Mestre, Doutor e Pós-Doutor pela FOB-USP, referência internacional em cinemáticas e tecnologia de NiTi.",
+    name: "Prof. Dr. Murilo Priori Alcalde",
+    title: "Professor da FOB-USP • Pesquisador & Autor",
+    location: "Bauru - SP",
+    description: "Mestre, Doutor e Pós-Doutor pela FOB/USP, coautor de livro e Coordenador de Pesquisa da Bondent América Latina.",
+    fullBio: "Graduado, Especialista, Mestre, Doutor e Pós-Doutor em Endodontia pela Faculdade de Odontologia de Bauru da Universidade de São Paulo (FOB/USP). Professor dos cursos de Graduação e Pós-Graduação em Endodontia da FOB/USP. Autor e coautor de dezenas de artigos científicos publicados em periódicos de alto impacto nacionais e internacionais. Coautor do livro 'Cirurgia Parendodôntica: princípios básicos e técnicas'. Coordenador de Pesquisa da Bondent da América Latina, sendo autoridade no ensino e inovação tecnológica de ligas de NiTi e cinemáticas em Endodontia.",
+    image: "/images/palestrantes/murilo-alcalde.jpeg",
     isComingSoon: false
   },
   {

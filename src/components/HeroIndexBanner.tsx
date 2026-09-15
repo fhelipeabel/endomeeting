@@ -75,10 +75,10 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
       initials: "PV"
     },
     {
-      name: "Alexandre Capelli & Murilo Priori Alcalde",
-      shortName: "Capeli & Murilo",
-      origin: "SP",
-      initials: "C&M"
+      name: "Murilo Priori Alcalde",
+      shortName: "Murilo Alcalde",
+      origin: "Bauru - SP",
+      image: "/images/palestrantes/murilo-alcalde.jpeg"
     },
     {
       name: "Samuel Nogueira",
