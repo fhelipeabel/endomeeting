@@ -22,7 +22,6 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { name: "Sobre", href: "#sobre" },
     { name: "Palestrantes", href: "#palestrantes" },
     { name: "Ingressos", href: "#ingressos" },
     { name: "Localização", href: "#localizacao" },

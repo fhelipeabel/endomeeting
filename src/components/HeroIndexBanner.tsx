@@ -364,11 +364,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                     key={edition.year}
                     type="button"
                     onClick={() => {
-                      if (edition.year === "2026") {
-                        scrollTo("hero");
-                      } else {
-                        scrollTo("sobre");
-                      }
+                      scrollTo("hero");
                     }}
                     className="relative overflow-hidden py-3.5 px-2 rounded-xl bg-neutral-900 border border-white/10 hover:border-brand-500/60 text-center transition-all duration-300 group/btn cursor-pointer hover:scale-105 shadow-lg flex flex-col items-center justify-center min-h-[76px]"
                   >

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { PaymentPopup } from "@/components/PaymentPopup";
 import { Sponsors } from "@/components/Sponsors";
 import { speakers } from "@/data/speakers";
-import { MapPin, Calendar, CheckCircle2, ChevronRight, User, Stethoscope, Sparkles, AlertCircle, Lock, Play, Building2 } from "lucide-react";
+import { MapPin, ChevronRight, User, Sparkles, AlertCircle, Lock, Play, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
 import SpeakerModal from "@/components/SpeakerModal";
 import HeroIndexBanner from "@/components/HeroIndexBanner";
@@ -340,66 +340,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* INFO STRIP */}
-      <section className="w-full py-12 bg-neutral-900 text-white overflow-hidden">
-        <div className="container mx-auto px-6 flex flex-wrap justify-between gap-8 md:gap-12">
-          {[
-            { icon: <Calendar className="w-5 h-5" />, label: "DATA", val: "30/04 e 01/05, 2027" },
-            { icon: <MapPin className="w-5 h-5" />, label: "LOCAL", val: "CDL Uberlândia" },
-            { icon: <User className="w-5 h-5" />, label: "PÚBLICO", val: "CDs e Acadêmicos" }
-          ].map((item, idx) => (
-            <div key={idx} className="flex items-center gap-4">
-              <div className="text-brand-500">{item.icon}</div>
-              <div>
-                <p className="text-[10px] font-black tracking-[0.2em] text-neutral-500">{item.label}</p>
-                <p className="text-sm font-bold">{item.val}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ABOUT SECTION */}
-      <section id="sobre" className="w-full py-32 bg-white relative">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 1, y: 0 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <h2 className="text-4xl md:text-6xl font-black text-neutral-900 mb-8 tracking-tight leading-tight">Excelência em <span className="text-brand-900">Foco</span></h2>
-            <p className="text-xl text-neutral-500 mb-10 leading-relaxed font-medium">
-              Reconhecido pela excelência em ensino e prática clínica, o Endomeeting é o epicentro da inovação endodôntica no Brasil.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8 mt-20">
-            {[
-              { title: "Alta Tecnologia", desc: "Acesso às mais recentes inovações e microscopia de ponta.", icon: <CheckCircle2 className="w-6 h-6" /> },
-              { title: "Networking Elite", desc: "Conexões valiosas com os maiores nomes da endodontia nacional.", icon: <User className="w-6 h-6" /> },
-              { title: "Imersão Prática", desc: "Vivencie protocolos clínicos reais com hands-on especializados.", icon: <Stethoscope className="w-6 h-6" /> }
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 1, y: 0 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="bg-neutral-50 p-10 rounded-[2.5rem] border border-neutral-100 hover:border-brand-200/50 hover:bg-white hover:shadow-2xl hover:shadow-brand-900/5 transition-all duration-500 group"
-              >
-                <div className="w-14 h-14 bg-white shadow-sm border border-neutral-100 rounded-2xl flex items-center justify-center text-brand-600 mb-8 group-hover:bg-brand-900 group-hover:text-white transition-colors duration-500">
-                  {item.icon}
-                </div>
-                <h3 className="text-2xl font-bold text-neutral-900 mb-4">{item.title}</h3>
-                <p className="text-neutral-500 leading-relaxed font-medium">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* SPEAKERS SECTION */}
       <section id="palestrantes" className="w-full py-32 bg-neutral-50/50 relative overflow-hidden">
