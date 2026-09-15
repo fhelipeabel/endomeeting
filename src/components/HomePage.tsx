@@ -6,7 +6,7 @@ import Image from "next/image";
 import { PaymentPopup } from "@/components/PaymentPopup";
 import { Sponsors } from "@/components/Sponsors";
 import { speakers } from "@/data/speakers";
-import { MapPin, Calendar, CheckCircle2, ChevronRight, User, Stethoscope, Sparkles, AlertCircle, Lock, Play } from "lucide-react";
+import { MapPin, Calendar, CheckCircle2, ChevronRight, User, Stethoscope, Sparkles, AlertCircle, Lock, Play, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
 import SpeakerModal from "@/components/SpeakerModal";
 import HeroIndexBanner from "@/components/HeroIndexBanner";
@@ -813,15 +813,15 @@ export default function Home() {
               {/* Convention Photos Gallery */}
               <div className="grid grid-cols-3 gap-4 h-[240px]">
                 <div className="relative rounded-2xl overflow-hidden shadow-lg group">
-                  <Image src="/images/centerconvention/img-aerea-predio.webp" alt="Fachada do Evento" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <Image src="/images/cdl/cdl-5.jpeg" alt="CDL Uberlândia - Fachada e Estrutura" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                 </div>
                 <div className="relative rounded-2xl overflow-hidden shadow-lg group">
-                  <Image src="/images/centerconvention/salao-cadeiras.webp" alt="Salão de Palestras CDL" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <Image src="/images/cdl/cdl-6.jpeg" alt="CDL Uberlândia - Auditório Principal" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                 </div>
                 <div className="relative rounded-2xl overflow-hidden shadow-lg group">
-                  <Image src="/images/centerconvention/img-desfocada-palestra.webp" alt="Auditório e Participantes" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <Image src="/images/cdl/cdl-7.jpeg" alt="CDL Uberlândia - Espaço e Recepção" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                 </div>
               </div>
@@ -852,7 +852,7 @@ export default function Home() {
       {/* ACCOMMODATION SECTION */}
       <section id="hospedagem" className="w-full py-32 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="flex flex-col items-center text-center mb-20">
+          <div className="flex flex-col items-center text-center mb-16">
             <motion.h2
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -866,80 +866,84 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Featured Hotel: Mercure */}
+          {/* Featured Hotel: Mercure (Sem foto, foco em informações e contato) */}
           <motion.div
             initial={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-6xl mx-auto bg-neutral-50 border border-neutral-100 rounded-[3rem] overflow-hidden shadow-2xl"
+            className="max-w-5xl mx-auto bg-neutral-50 border border-neutral-100 rounded-[2.5rem] sm:rounded-[3rem] p-8 sm:p-12 shadow-xl relative overflow-hidden"
           >
-            <div className="flex flex-col lg:flex-row">
-              <div className="lg:w-1/2 relative aspect-[4/3] lg:aspect-auto min-h-[300px]">
-                <Image
-                  src="/images/hoteis/mercure-hotel-principal.jpg"
-                  alt="Mercure Uberlândia Plaza Shopping"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute top-6 left-6 bg-brand-600 text-white px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
-                  Hotel do Evento
-                </div>
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pb-8 border-b border-neutral-200/60">
+              <div>
+                <span className="inline-block text-brand-700 font-black uppercase tracking-[0.25em] text-xs px-3.5 py-1.5 rounded-full bg-brand-50 border border-brand-200/60 mb-3">
+                  ★ Hotel Oficial do Evento
+                </span>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-neutral-900 leading-tight">
+                  Mercure Uberlândia Plaza Shopping
+                </h3>
               </div>
+              <div className="flex flex-wrap gap-3 shrink-0">
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Mercure+Uberlândia+Plaza+Shopping"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3.5 bg-brand-900 hover:bg-brand-950 text-white text-sm font-bold rounded-xl transition-all hover:scale-105 shadow-md shadow-brand-900/20"
+                >
+                  Ver no Google Maps
+                </a>
+                <a
+                  href="https://api.whatsapp.com/send/?phone=553432398000"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3.5 bg-white hover:bg-neutral-50 text-neutral-900 text-sm font-bold rounded-xl border border-neutral-200 transition-all hover:scale-105 shadow-sm"
+                >
+                  Entrar em Contato
+                </a>
+              </div>
+            </div>
 
-              <div className="lg:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                <span className="text-brand-700 font-black uppercase tracking-[0.3em] text-xs mb-4">Hospedagem Oficial</span>
-                <h3 className="text-3xl md:text-4xl font-black text-neutral-900 mb-6 leading-tight">Mercure Uberlândia Plaza Shopping</h3>
-                <p className="text-neutral-500 mb-10 leading-relaxed font-medium">
-                  Opção oficial do evento, com localização estratégica e estrutura ideal para quem busca praticidade, conforto e fácil acesso.
-                </p>
+            <p className="text-neutral-600 text-base sm:text-lg mb-8 leading-relaxed max-w-3xl">
+              Opção oficial do evento, com localização estratégica e estrutura ideal para quem busca praticidade, conforto e fácil acesso durante os dias do 4º Endomeeting.
+            </p>
 
-                <div className="space-y-6 mb-12">
-                  <div className="p-5 bg-white rounded-2xl border border-neutral-100 group hover:border-brand-500/30 transition-colors shadow-sm">
-                    <span className="text-[10px] font-black uppercase tracking-widest text-brand-600 block mb-1">Endereço</span>
-                    <p className="text-neutral-900 font-medium">Rua da Bandeira, 400, Uberlândia - MG, 38405-174</p>
-                  </div>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="p-5 bg-white rounded-2xl border border-neutral-100 group hover:border-brand-500/30 transition-colors shadow-sm">
-                      <span className="text-[10px] font-black uppercase tracking-widest text-brand-600 block mb-1">E-mail</span>
-                      <p className="text-neutral-900 font-medium text-sm truncate">h9602-re@accor.com</p>
-                    </div>
-                    <div className="p-5 bg-white rounded-2xl border border-neutral-100 group hover:border-brand-500/30 transition-colors shadow-sm">
-                      <span className="text-[10px] font-black uppercase tracking-widest text-brand-600 block mb-1">Telefone</span>
-                      <p className="text-neutral-900 font-medium">(34) 3239-8000</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-4">
-                  <a
-                    href="https://www.google.com/maps/search/?api=1&query=Mercure+Uberlândia+Plaza+Shopping"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-8 py-4 bg-brand-900 hover:bg-brand-950 text-white font-bold rounded-xl transition-all hover:scale-105 shadow-lg shadow-brand-900/20"
-                  >
-                    Ver localização
-                  </a>
-                  <a
-                    href="https://api.whatsapp.com/send/?phone=553432398000"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-8 py-4 bg-white hover:bg-neutral-50 text-neutral-900 font-bold rounded-xl border border-neutral-200 transition-all hover:scale-105"
-                  >
-                    Entrar em contato
-                  </a>
-                </div>
+            <div className="grid md:grid-cols-3 gap-4">
+              <div className="p-5 bg-white rounded-2xl border border-neutral-100 shadow-sm">
+                <span className="text-[10px] font-black uppercase tracking-widest text-brand-600 block mb-1">Endereço</span>
+                <p className="text-neutral-900 font-medium text-sm">Rua da Bandeira, 400, Uberlândia - MG, 38405-174</p>
+              </div>
+              <div className="p-5 bg-white rounded-2xl border border-neutral-100 shadow-sm">
+                <span className="text-[10px] font-black uppercase tracking-widest text-brand-600 block mb-1">E-mail</span>
+                <p className="text-neutral-900 font-medium text-sm truncate">h9602-re@accor.com</p>
+              </div>
+              <div className="p-5 bg-white rounded-2xl border border-neutral-100 shadow-sm">
+                <span className="text-[10px] font-black uppercase tracking-widest text-brand-600 block mb-1">Telefone</span>
+                <p className="text-neutral-900 font-medium text-sm">(34) 3239-8000</p>
               </div>
             </div>
           </motion.div>
 
-          {/* Other Hotels Grid */}
-          <div className="mt-24 text-center">
-            <h4 className="text-2xl font-bold text-neutral-400 mb-12 uppercase tracking-widest text-sm">Hotéis próximos ao evento</h4>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {/* Other Hotels Grid (Sem fotos, cartões modernos) */}
+          <div className="mt-16 text-center max-w-5xl mx-auto">
+            <h4 className="text-xl sm:text-2xl font-black text-neutral-900 mb-8 tracking-tight">
+              Outras Opções Próximas ao Evento
+            </h4>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { name: "Ibis Uberlândia", img: "/images/hoteis/ibis.jpg" },
-                { name: "Ibis Budget Uberlândia", img: "/images/hoteis/ibis-budget.jpg" },
-                { name: "Villalba Hotel", img: "/images/hoteis/image-uberlandia-villalba-hotel-16.jpg" }
+                {
+                  name: "Ibis Uberlândia",
+                  desc: "Excelente custo-benefício e localização central com rápido deslocamento.",
+                  link: "https://www.google.com/maps/search/?api=1&query=Ibis+Uberlandia"
+                },
+                {
+                  name: "Ibis Budget Uberlândia",
+                  desc: "Prático, moderno e com estrutura ideal para estadias funcionais.",
+                  link: "https://www.google.com/maps/search/?api=1&query=Ibis+Budget+Uberlandia"
+                },
+                {
+                  name: "Villalba Hotel",
+                  desc: "Conforto e comodidade próximo ao centro de Uberlândia e ao evento.",
+                  link: "https://www.google.com/maps/search/?api=1&query=Villalba+Hotel+Uberlandia"
+                }
               ].map((hotel, idx) => (
                 <motion.div
                   key={idx}
@@ -947,19 +951,24 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="group relative aspect-[4/3] rounded-3xl overflow-hidden cursor-pointer shadow-lg"
+                  className="bg-neutral-50 rounded-2xl p-6 border border-neutral-100 text-left hover:border-brand-500/30 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between"
                 >
-                  <Image
-                    src={hotel.img}
-                    alt={hotel.name}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                  <div className="absolute bottom-6 left-6 right-6 text-left">
-                    <h5 className="text-xl font-bold text-white group-hover:text-brand-400 transition-colors">{hotel.name}</h5>
-                    <p className="text-xs text-neutral-300 uppercase tracking-widest mt-2">Próximo ao evento</p>
+                  <div>
+                    <div className="w-10 h-10 rounded-xl bg-brand-50 text-brand-700 flex items-center justify-center font-bold mb-4">
+                      <Building2 className="w-5 h-5" />
+                    </div>
+                    <h5 className="text-lg font-bold text-neutral-900 mb-2">{hotel.name}</h5>
+                    <p className="text-xs text-neutral-500 leading-relaxed mb-4">{hotel.desc}</p>
                   </div>
+                  <a
+                    href={hotel.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-brand-700 font-bold hover:text-brand-900 flex items-center gap-1 mt-auto pt-3 border-t border-neutral-100"
+                  >
+                    <span>Ver localização</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </a>
                 </motion.div>
               ))}
             </div>
