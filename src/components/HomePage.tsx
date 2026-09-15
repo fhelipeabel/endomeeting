@@ -371,7 +371,7 @@ export default function Home() {
           >
             <h2 className="text-4xl md:text-6xl font-black text-neutral-900 mb-8 tracking-tight leading-tight">Excelência em <span className="text-brand-900">Foco</span></h2>
             <p className="text-xl text-neutral-500 mb-10 leading-relaxed font-medium">
-              Organizado pela Equipe Rodrigo Faria de Endodontia, o Endomeeting é o epicentro da inovação endodôntica no Brasil.
+              Reconhecido pela excelência em ensino e prática clínica, o Endomeeting é o epicentro da inovação endodôntica no Brasil.
             </p>
           </motion.div>
 
@@ -446,10 +446,10 @@ export default function Home() {
                   </div>
                 )}
 
-                <div className={`w-32 h-32 rounded-3xl bg-neutral-100 mb-6 overflow-hidden flex items-center justify-center relative transition-transform duration-500 ${!speaker.isComingSoon && 'group-hover:scale-105'}`}>
+                <div className={`w-48 h-48 rounded-[2rem] bg-neutral-100 mb-6 overflow-hidden flex items-center justify-center relative transition-transform duration-500 shadow-md ${!speaker.isComingSoon && 'group-hover:scale-105'}`}>
                   {speaker.isComingSoon ? (
                     <div className="w-full h-full bg-neutral-200 flex items-center justify-center">
-                      <Sparkles className="w-10 h-10 text-neutral-400 animate-pulse" />
+                      <Sparkles className="w-12 h-12 text-neutral-400 animate-pulse" />
                     </div>
                   ) : (
                     <>
@@ -461,7 +461,7 @@ export default function Home() {
                       />
                       <div className="absolute inset-0 bg-brand-900/0 group-hover:bg-brand-900/10 transition-colors duration-500" />
                       {speaker.isInternational && (
-                        <div className="absolute top-2 left-2 bg-brand-600 text-white p-1 rounded-lg z-10">
+                        <div className="absolute top-3 left-3 bg-brand-600 text-white p-1.5 rounded-xl z-10 shadow-md">
                           <MapPin className="w-4 h-4" />
                         </div>
                       )}
@@ -469,13 +469,12 @@ export default function Home() {
                   )}
                 </div>
 
-                <h3 className="text-xl font-bold text-neutral-900 mb-2">{speaker.name}</h3>
-                <h4 className="text-sm font-bold text-brand-700 mb-4 tracking-wider uppercase">{speaker.title}</h4>
+                <h3 className="text-2xl font-black text-neutral-900 mb-3 leading-tight">{speaker.name}</h3>
                 <p className="text-sm text-neutral-500 leading-relaxed font-medium line-clamp-3">{speaker.description}</p>
 
                 {!speaker.isComingSoon && (
                   <div className="mt-6 pt-6 border-t border-neutral-50 w-full flex justify-center opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="text-xs font-black uppercase tracking-widest text-brand-600 flex items-center gap-2">
+                    <span className="text-xs font-black uppercase tracking-widest text-brand-600 group-hover:text-brand-700 flex items-center gap-2">
                       Ver Bio Completa <ChevronRight className="w-3 h-3 md:hidden" />
                     </span>
                   </div>
@@ -532,12 +531,9 @@ export default function Home() {
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-black text-white mb-2 leading-tight">
+                <h3 className="text-2xl font-black text-white mb-6 leading-tight">
                   Lote Promocional de Lançamento
                 </h3>
-                <p className="text-xs text-neutral-300 mb-6 leading-relaxed">
-                  Início em 15/09. Selecione sua categoria abaixo para visualizar o valor correspondente:
-                </p>
 
                 {/* Seletor Suspenso / Menu Suspenso de Categoria */}
                 <div className="mb-6 space-y-2">
@@ -702,46 +698,48 @@ export default function Home() {
 
 
       {/* LOCATION SECTION */}
-      <section id="localizacao" className="relative w-full py-32 bg-white overflow-hidden">
+      <section id="localizacao" className="relative w-full py-28 md:py-36 bg-neutral-50/60 overflow-hidden border-t border-neutral-100">
         <div className="absolute right-0 bottom-0 w-[600px] h-[600px] bg-brand-50 rounded-full blur-[150px] translate-x-1/3 translate-y-1/3 opacity-60 pointer-events-none" />
 
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="container mx-auto px-6 relative z-10 max-w-6xl">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16">
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeIn}
+              className="lg:col-span-7 flex flex-col justify-center"
             >
-              <h2 className="text-3xl md:text-5xl font-black text-neutral-900 mb-8">Local do Evento</h2>
-              <div className="flex items-start gap-5 mb-10 p-6 bg-white rounded-3xl shadow-lg shadow-neutral-200/40 border border-neutral-100">
-                <div className="p-4 bg-brand-50 rounded-2xl text-brand-600">
+              <span className="text-brand-700 font-black uppercase tracking-[0.25em] text-xs px-4 py-1.5 rounded-full bg-brand-50 border border-brand-200/60 mb-4 inline-block w-fit">
+                Estrutura & Acesso
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-neutral-900 mb-6 tracking-tight">
+                Local do Evento
+              </h2>
+              <p className="text-neutral-600 text-base sm:text-lg leading-relaxed mb-8 max-w-xl font-medium">
+                O 4º Endomeeting será sediado no moderno complexo de convenções da CDL Uberlândia, com auditório climatizado de alta capacidade, infraestrutura tecnológica e localização privilegiada.
+              </p>
+
+              <div className="flex items-start gap-5 p-6 bg-white rounded-3xl shadow-lg shadow-neutral-200/50 border border-neutral-200/80">
+                <div className="p-4 bg-brand-50 rounded-2xl text-brand-700 shrink-0">
                   <MapPin className="w-8 h-8" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-neutral-900 mb-2">CDL Uberlândia</h3>
-                  <p className="text-neutral-500 leading-relaxed text-lg">
+                  <p className="text-neutral-600 leading-relaxed text-base">
                     Câmara de Dirigentes Lojistas de Uberlândia<br />
                     Av. Belo Horizonte, 1261 - Bairro Osvaldo Rezende<br />
                     Uberlândia/MG - CEP 38400-454
                   </p>
-                </div>
-              </div>
-
-
-              {/* Convention Photos Gallery */}
-              <div className="grid grid-cols-3 gap-4 h-[240px]">
-                <div className="relative rounded-2xl overflow-hidden shadow-lg group">
-                  <Image src="/images/cdl/cdl-5.jpeg" alt="CDL Uberlândia - Fachada e Estrutura" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
-                </div>
-                <div className="relative rounded-2xl overflow-hidden shadow-lg group">
-                  <Image src="/images/cdl/cdl-6.jpeg" alt="CDL Uberlândia - Auditório Principal" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
-                </div>
-                <div className="relative rounded-2xl overflow-hidden shadow-lg group">
-                  <Image src="/images/cdl/cdl-7.jpeg" alt="CDL Uberlândia - Espaço e Recepção" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
+                  <a
+                    href="https://maps.google.com/maps?q=CDL+Uberlândia+Av.+Belo+Horizonte"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 hover:text-brand-900 mt-3 pt-3 border-t border-neutral-100"
+                  >
+                    <span>Abrir rota no Google Maps</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -751,7 +749,7 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-neutral-100 rounded-[3rem] overflow-hidden aspect-square relative shadow-2xl border-4 border-white"
+              className="lg:col-span-5 bg-neutral-100 rounded-[2.5rem] overflow-hidden aspect-video lg:aspect-[4/3] relative shadow-2xl border-4 border-white"
             >
               <iframe
                 src="https://maps.google.com/maps?q=CDL%20Uberl%C3%A2ndia%20Av.%20Belo%20Horizonte&t=&z=17&ie=UTF8&iwloc=&output=embed"
@@ -765,102 +763,222 @@ export default function Home() {
               />
             </motion.div>
           </div>
+
+          {/* Convention Photos Gallery: Fotos Maiores em Quadrado (Aspect Square) */}
+          <div>
+            <div className="flex items-center justify-between mb-8 pb-4 border-b border-neutral-200/80">
+              <div>
+                <h3 className="text-2xl font-black text-neutral-900 tracking-tight">
+                  Conheça o Espaço do CDL Uberlândia
+                </h3>
+                <p className="text-sm text-neutral-500 font-medium mt-1">
+                  Ambiente planejado para proporcionar máximo conforto, imersão acústica e integração aos participantes.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid sm:grid-cols-3 gap-6 sm:gap-8">
+              <div className="relative aspect-square rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-xl border-4 border-white group">
+                <Image
+                  src="/images/cdl/cdl-6.jpeg"
+                  alt="CDL Uberlândia - Auditório Principal"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/85 via-neutral-950/30 to-transparent pointer-events-none" />
+                <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none">
+                  <h4 className="text-lg sm:text-xl font-bold leading-tight">
+                    Palco & Auditório Climatizado
+                  </h4>
+                  <p className="text-xs text-neutral-300 mt-1 opacity-90">
+                    Capacidade ampla, acústica de ponta e visibilidade total das apresentações.
+                  </p>
+                </div>
+              </div>
+
+              <div className="relative aspect-square rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-xl border-4 border-white group">
+                <Image
+                  src="/images/cdl/cdl-7.jpeg"
+                  alt="CDL Uberlândia - Espaço e Recepção"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/85 via-neutral-950/30 to-transparent pointer-events-none" />
+                <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none">
+                  <h4 className="text-lg sm:text-xl font-bold leading-tight">
+                    Estandes & Networking
+                  </h4>
+                  <p className="text-xs text-neutral-300 mt-1 opacity-90">
+                    Área integrada para circulação, estandes de patrocinadores e coffee breaks.
+                  </p>
+                </div>
+              </div>
+
+              <div className="relative aspect-square rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-xl border-4 border-white group">
+                <Image
+                  src="/images/cdl/cdl-5.jpeg"
+                  alt="CDL Uberlândia - Fachada e Estrutura"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/85 via-neutral-950/30 to-transparent pointer-events-none" />
+                <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none">
+                  <h4 className="text-lg sm:text-xl font-bold leading-tight">
+                    Estrutura & Recepção
+                  </h4>
+                  <p className="text-xs text-neutral-300 mt-1 opacity-90">
+                    Acessibilidade completa, recepção moderna e fácil estacionamento.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ACCOMMODATION SECTION */}
-      <section id="hospedagem" className="w-full py-32 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="flex flex-col items-center text-center mb-16">
+      <section id="hospedagem" className="w-full py-24 md:py-32 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10 max-w-6xl">
+          <div className="flex flex-col items-center text-center mb-14">
+            <span className="text-brand-700 font-black uppercase tracking-[0.25em] text-xs px-4 py-1.5 rounded-full bg-brand-50 border border-brand-200/60 mb-3">
+              Hospedagem & Conforto
+            </span>
             <motion.h2
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-black text-neutral-900 mb-6 tracking-tight"
+              className="text-3xl md:text-5xl font-black text-neutral-900 mb-4 tracking-tight"
             >
               Onde se hospedar para o <span className="text-brand-900">Endomeeting</span>
             </motion.h2>
-            <p className="text-neutral-500 max-w-2xl text-xl font-medium leading-relaxed">
-              Para facilitar sua experiência no evento, reunimos o hotel oficial e algumas opções próximas ao local do Endomeeting em Uberlândia.
+            <p className="text-neutral-500 max-w-2xl text-base sm:text-lg font-medium leading-relaxed">
+              Selecionamos as melhores opções de hotéis em Uberlândia, garantindo alto padrão, praticidade e fácil acesso ao evento.
             </p>
           </div>
 
-          {/* Featured Hotel: Mercure (Sem foto, foco em informações e contato) */}
-          <motion.div
-            initial={{ opacity: 1, y: 0 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-5xl mx-auto bg-neutral-50 border border-neutral-100 rounded-[2.5rem] sm:rounded-[3rem] p-8 sm:p-12 shadow-xl relative overflow-hidden"
-          >
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pb-8 border-b border-neutral-200/60">
+          {/* Destaque: Hotel Oficial & Novotel em Grid de Destaque */}
+          <div className="grid lg:grid-cols-2 gap-6 mb-10">
+            {/* Mercure - Hotel Oficial */}
+            <motion.div
+              initial={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-neutral-50 border border-neutral-200/80 rounded-3xl p-6 sm:p-8 shadow-lg flex flex-col justify-between relative overflow-hidden hover:border-brand-500/30 transition-all"
+            >
               <div>
-                <span className="inline-block text-brand-700 font-black uppercase tracking-[0.25em] text-xs px-3.5 py-1.5 rounded-full bg-brand-50 border border-brand-200/60 mb-3">
-                  ★ Hotel Oficial do Evento
-                </span>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-neutral-900 leading-tight">
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-brand-700 font-black uppercase tracking-wider text-[11px] px-3 py-1 rounded-full bg-brand-100/60 border border-brand-200">
+                    ★ Hotel Oficial do Evento
+                  </span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-black text-neutral-900 mb-2">
                   Mercure Uberlândia Plaza Shopping
                 </h3>
+                <p className="text-xs sm:text-sm text-neutral-600 mb-6 leading-relaxed">
+                  Conectado ao Plaza Shopping, oferece localização estratégica, alto conforto e facilidade de acesso ao evento.
+                </p>
               </div>
-              <div className="flex flex-wrap gap-3 shrink-0">
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Mercure+Uberlândia+Plaza+Shopping"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3.5 bg-brand-900 hover:bg-brand-950 text-white text-sm font-bold rounded-xl transition-all hover:scale-105 shadow-md shadow-brand-900/20"
-                >
-                  Ver no Google Maps
-                </a>
-                <a
-                  href="https://api.whatsapp.com/send/?phone=553432398000"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3.5 bg-white hover:bg-neutral-50 text-neutral-900 text-sm font-bold rounded-xl border border-neutral-200 transition-all hover:scale-105 shadow-sm"
-                >
-                  Entrar em Contato
-                </a>
-              </div>
-            </div>
 
-            <p className="text-neutral-600 text-base sm:text-lg mb-8 leading-relaxed max-w-3xl">
-              Opção oficial do evento, com localização estratégica e estrutura ideal para quem busca praticidade, conforto e fácil acesso durante os dias do 4º Endomeeting.
-            </p>
+              <div>
+                <div className="p-4 bg-white rounded-2xl border border-neutral-100 text-xs text-neutral-700 mb-6 space-y-1">
+                  <p><strong className="text-neutral-900">Endereço:</strong> Rua da Bandeira, 400 - Tibery</p>
+                  <p><strong className="text-neutral-900">Telefone:</strong> (34) 3239-8000</p>
+                </div>
 
-            <div className="grid md:grid-cols-3 gap-4">
-              <div className="p-5 bg-white rounded-2xl border border-neutral-100 shadow-sm">
-                <span className="text-[10px] font-black uppercase tracking-widest text-brand-600 block mb-1">Endereço</span>
-                <p className="text-neutral-900 font-medium text-sm">Rua da Bandeira, 400, Uberlândia - MG, 38405-174</p>
+                <div className="flex flex-wrap gap-2.5">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Mercure+Uberlândia+Plaza+Shopping"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-3 px-4 bg-brand-900 hover:bg-brand-950 text-white text-xs font-bold rounded-xl text-center transition-all shadow-sm"
+                  >
+                    Ver no Maps
+                  </a>
+                  <a
+                    href="https://api.whatsapp.com/send/?phone=553432398000"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-3 px-4 bg-white hover:bg-neutral-100 text-neutral-900 text-xs font-bold rounded-xl border border-neutral-300 text-center transition-all"
+                  >
+                    Contato WhatsApp
+                  </a>
+                </div>
               </div>
-              <div className="p-5 bg-white rounded-2xl border border-neutral-100 shadow-sm">
-                <span className="text-[10px] font-black uppercase tracking-widest text-brand-600 block mb-1">E-mail</span>
-                <p className="text-neutral-900 font-medium text-sm truncate">h9602-re@accor.com</p>
-              </div>
-              <div className="p-5 bg-white rounded-2xl border border-neutral-100 shadow-sm">
-                <span className="text-[10px] font-black uppercase tracking-widest text-brand-600 block mb-1">Telefone</span>
-                <p className="text-neutral-900 font-medium text-sm">(34) 3239-8000</p>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
 
-          {/* Other Hotels Grid (Sem fotos, cartões modernos) */}
-          <div className="mt-16 text-center max-w-5xl mx-auto">
-            <h4 className="text-xl sm:text-2xl font-black text-neutral-900 mb-8 tracking-tight">
-              Outras Opções Próximas ao Evento
+            {/* Novotel Uberlândia */}
+            <motion.div
+              initial={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-neutral-50 border border-neutral-200/80 rounded-3xl p-6 sm:p-8 shadow-lg flex flex-col justify-between relative overflow-hidden hover:border-brand-500/30 transition-all"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-neutral-800 font-black uppercase tracking-wider text-[11px] px-3 py-1 rounded-full bg-neutral-200/70 border border-neutral-300">
+                    ◆ Executivo & Internacional
+                  </span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-black text-neutral-900 mb-2">
+                  Novotel Uberlândia
+                </h3>
+                <p className="text-xs sm:text-sm text-neutral-600 mb-6 leading-relaxed">
+                  Infraestrutura moderna e sofisticada de padrão internacional, excelente para quem busca conforto e alta gastronomia.
+                </p>
+              </div>
+
+              <div>
+                <div className="p-4 bg-white rounded-2xl border border-neutral-100 text-xs text-neutral-700 mb-6 space-y-1">
+                  <p><strong className="text-neutral-900">Endereço:</strong> Av. Rondon Pacheco, 2465 - Saraiva</p>
+                  <p><strong className="text-neutral-900">Telefone:</strong> (34) 3230-9000</p>
+                </div>
+
+                <div className="flex flex-wrap gap-2.5">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Novotel+Uberlandia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-3 px-4 bg-neutral-900 hover:bg-neutral-950 text-white text-xs font-bold rounded-xl text-center transition-all shadow-sm"
+                  >
+                    Ver no Maps
+                  </a>
+                  <a
+                    href="https://api.whatsapp.com/send/?phone=553432309000"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-3 px-4 bg-white hover:bg-neutral-100 text-neutral-900 text-xs font-bold rounded-xl border border-neutral-300 text-center transition-all"
+                  >
+                    Contato WhatsApp
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Outras Opções em Grid Limpo e Compacto */}
+          <div className="mt-8">
+            <h4 className="text-center text-lg font-black text-neutral-900 mb-6 tracking-tight uppercase">
+              Outras Excelentes Opções Próximas
             </h4>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-3 gap-5">
               {[
                 {
                   name: "Ibis Uberlândia",
-                  desc: "Excelente custo-benefício e localização central com rápido deslocamento.",
+                  badge: "Custo-Benefício",
+                  address: "Av. João Naves de Ávila, 1590",
                   link: "https://www.google.com/maps/search/?api=1&query=Ibis+Uberlandia"
                 },
                 {
                   name: "Ibis Budget Uberlândia",
-                  desc: "Prático, moderno e com estrutura ideal para estadias funcionais.",
+                  badge: "Econômico",
+                  address: "Av. João Naves de Ávila, 1460",
                   link: "https://www.google.com/maps/search/?api=1&query=Ibis+Budget+Uberlandia"
                 },
                 {
                   name: "Villalba Hotel",
-                  desc: "Conforto e comodidade próximo ao centro de Uberlândia e ao evento.",
+                  badge: "Conforto Executivo",
+                  address: "Av. Rondon Pacheco, 4651",
                   link: "https://www.google.com/maps/search/?api=1&query=Villalba+Hotel+Uberlandia"
                 }
               ].map((hotel, idx) => (
@@ -870,22 +988,27 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="bg-neutral-50 rounded-2xl p-6 border border-neutral-100 text-left hover:border-brand-500/30 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between"
+                  className="bg-neutral-50 rounded-2xl p-5 border border-neutral-200/60 text-left hover:bg-white hover:border-brand-500/30 hover:shadow-md transition-all flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-10 h-10 rounded-xl bg-brand-50 text-brand-700 flex items-center justify-center font-bold mb-4">
-                      <Building2 className="w-5 h-5" />
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-8 h-8 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center font-bold shrink-0">
+                        <Building2 className="w-4 h-4" />
+                      </div>
+                      <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-wider">
+                        {hotel.badge}
+                      </span>
                     </div>
-                    <h5 className="text-lg font-bold text-neutral-900 mb-2">{hotel.name}</h5>
-                    <p className="text-xs text-neutral-500 leading-relaxed mb-4">{hotel.desc}</p>
+                    <h5 className="text-base font-bold text-neutral-900 mb-1">{hotel.name}</h5>
+                    <p className="text-xs text-neutral-500 mb-3 truncate">{hotel.address}</p>
                   </div>
                   <a
                     href={hotel.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-brand-700 font-bold hover:text-brand-900 flex items-center gap-1 mt-auto pt-3 border-t border-neutral-100"
+                    className="text-xs text-brand-700 font-bold hover:text-brand-900 flex items-center gap-1 pt-2 border-t border-neutral-200/50"
                   >
-                    <span>Ver localização</span>
+                    <span>Ver localização no Maps</span>
                     <ChevronRight className="w-3.5 h-3.5" />
                   </a>
                 </motion.div>
@@ -926,17 +1049,18 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="bg-neutral-900/90 backdrop-blur-xl border border-white/10 rounded-[2.5rem] overflow-hidden shadow-2xl"
           >
-            <div className="flex flex-col lg:flex-row items-stretch">
-              {/* Foto Oficial da Equipe */}
-              <div className="lg:w-1/2 relative min-h-[380px] lg:min-h-[480px] bg-neutral-950">
-                <Image
-                  src="/images/coordenadores.jpeg"
-                  alt="Comissão Organizadora: Dra. Cristiane Silva, Dr. Rodrigo Faria e Dra. Renata Georjutti"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover object-top"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-transparent to-transparent lg:hidden" />
+            <div className="flex flex-col lg:flex-row items-center">
+              {/* Foto Oficial da Equipe sem alteração de proporção */}
+              <div className="lg:w-1/2 w-full p-4 sm:p-6 lg:p-8 flex items-center justify-center bg-neutral-950">
+                <div className="relative w-full max-w-[540px] aspect-[627/481] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                  <Image
+                    src="/images/coordenadores.jpeg"
+                    alt="Equipe de coordenadores Endomeeting TM"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-contain"
+                  />
+                </div>
               </div>
 
               {/* Informações da Equipe */}
@@ -944,7 +1068,7 @@ export default function Home() {
                 <div className="inline-flex items-center gap-2 mb-4">
                   <span className="w-2.5 h-2.5 rounded-full bg-brand-500 animate-pulse" />
                   <span className="text-xs font-bold uppercase tracking-widest text-brand-400">
-                    Equipe Rodrigo Faria de Endodontia
+                    Equipe de coordenadores Endomeeting TM
                   </span>
                 </div>
 
@@ -956,47 +1080,32 @@ export default function Home() {
                   Com vasta trajetória na endodontia e no ensino odontológico de alto nível, a comissão coordenadora atua em cada detalhe do congresso: da curadoria científica e recepção de palestrantes de renome à infraestrutura de excelência para todos os congressistas.
                 </p>
 
-                <div className="space-y-4 pt-6 border-t border-white/10">
-                  <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-brand-500/30 transition-colors">
-                    <div className="w-10 h-10 rounded-xl bg-brand-950 text-brand-400 flex items-center justify-center font-black text-sm border border-brand-800/60 shrink-0">
-                      CS
-                    </div>
-                    <div>
-                      <p className="text-sm sm:text-base font-bold text-white leading-tight">
-                        Dra. Cristiane da Cruz Silva
-                      </p>
-                      <span className="text-[11px] text-neutral-400 font-medium">
-                        Coordenação Geral & Organizadora
-                      </span>
-                    </div>
+                <div className="space-y-3 pt-6 border-t border-white/10">
+                  <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-brand-500/30 transition-colors">
+                    <p className="text-base font-bold text-white leading-tight">
+                      Dra. Cristiane da Cruz Silva
+                    </p>
+                    <span className="text-xs text-neutral-400 font-medium mt-1 block">
+                      Coordenação Geral
+                    </span>
                   </div>
 
-                  <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-brand-500/30 transition-colors">
-                    <div className="w-10 h-10 rounded-xl bg-brand-950 text-brand-400 flex items-center justify-center font-black text-sm border border-brand-800/60 shrink-0">
-                      RF
-                    </div>
-                    <div>
-                      <p className="text-sm sm:text-base font-bold text-white leading-tight">
-                        Dr. Rodrigo Antonio de Faria
-                      </p>
-                      <span className="text-[11px] text-brand-400 font-bold uppercase tracking-wider">
-                        Coordenação Científica & Geral
-                      </span>
-                    </div>
+                  <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-brand-500/30 transition-colors">
+                    <p className="text-base font-bold text-white leading-tight">
+                      Dr. Rodrigo Antonio de Faria
+                    </p>
+                    <span className="text-xs text-neutral-400 font-medium mt-1 block">
+                      Coordenação Geral
+                    </span>
                   </div>
 
-                  <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-brand-500/30 transition-colors">
-                    <div className="w-10 h-10 rounded-xl bg-brand-950 text-brand-400 flex items-center justify-center font-black text-sm border border-brand-800/60 shrink-0">
-                      RG
-                    </div>
-                    <div>
-                      <p className="text-sm sm:text-base font-bold text-white leading-tight">
-                        Dra. Renata Pereira Georjutti
-                      </p>
-                      <span className="text-[11px] text-neutral-400 font-medium">
-                        Coordenação Geral & Organizadora
-                      </span>
-                    </div>
+                  <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-brand-500/30 transition-colors">
+                    <p className="text-base font-bold text-white leading-tight">
+                      Dra. Renata Pereira Georjutti
+                    </p>
+                    <span className="text-xs text-neutral-400 font-medium mt-1 block">
+                      Coordenação Geral
+                    </span>
                   </div>
                 </div>
               </div>

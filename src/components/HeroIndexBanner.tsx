@@ -232,8 +232,8 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                 </div>
               </div>
 
-              {/* Grid de Fotos Otimizadas dos Palestrantes */}
-              <div className="grid grid-cols-2 min-[420px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-1.5 sm:gap-2">
+              {/* Grid de Fotos Otimizadas dos Palestrantes (+50% de tamanho) */}
+              <div className="grid grid-cols-2 min-[400px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2.5 sm:gap-3">
                 {speakersList.map((speaker, idx) => (
                   <button
                     key={idx}
@@ -244,10 +244,10 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                       }
                       scrollTo("palestrantes");
                     }}
-                    className="flex flex-col items-center p-1 sm:p-1.5 rounded-xl hover:bg-brand-950/40 border border-transparent hover:border-brand-500/40 transition-all duration-200 group cursor-pointer text-center relative"
+                    className="flex flex-col items-center p-1.5 sm:p-2 rounded-2xl hover:bg-brand-950/40 border border-transparent hover:border-brand-500/40 transition-all duration-200 group cursor-pointer text-center relative"
                   >
-                    {/* Foto do Palestrante Ampliada e com destaque */}
-                    <div className="relative w-15 h-15 sm:w-16 sm:h-16 md:w-[68px] md:h-[68px] rounded-2xl overflow-hidden border border-white/20 group-hover:border-brand-400 transition-all duration-300 shadow-md group-hover:scale-105 bg-neutral-900 flex items-center justify-center shrink-0">
+                    {/* Foto do Palestrante Ampliada (+50%) */}
+                    <div className="relative w-22 h-22 sm:w-24 sm:h-24 md:w-[102px] md:h-[102px] rounded-2xl overflow-hidden border border-white/20 group-hover:border-brand-400 transition-all duration-300 shadow-lg group-hover:scale-105 bg-neutral-900 flex items-center justify-center shrink-0">
                       {speaker.image ? (
                         <Image
                           src={speaker.image}
@@ -257,27 +257,27 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-neutral-900 via-brand-950 to-neutral-900 flex flex-col items-center justify-center text-brand-300">
-                          <span className="font-black text-xs tracking-wider">{speaker.initials}</span>
-                          <User className="w-3.5 h-3.5 text-brand-400 mt-0.5" />
+                          <span className="font-black text-sm tracking-wider">{speaker.initials}</span>
+                          <User className="w-4 h-4 text-brand-400 mt-1" />
                         </div>
                       )}
 
                       {speaker.isInternational && (
                         <div
-                          className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-brand-500 border border-neutral-950 ring-1 ring-brand-400"
+                          className="absolute top-1.5 right-1.5 w-3 h-3 rounded-full bg-brand-500 border-2 border-neutral-950 ring-1 ring-brand-400"
                           title="Convidado Internacional"
                         />
                       )}
                     </div>
 
-                    {/* Nome compacto */}
-                    <span className="text-[10px] sm:text-[11px] font-bold text-neutral-200 group-hover:text-white transition-colors mt-1 leading-tight line-clamp-1 max-w-full">
+                    {/* Nome aumentado */}
+                    <span className="text-xs sm:text-sm font-bold text-white transition-colors mt-2 leading-tight line-clamp-1 max-w-full">
                       {speaker.shortName || speaker.name}
                     </span>
 
                     {/* Origem */}
                     {speaker.origin && (
-                      <span className="text-[8px] sm:text-[8.5px] text-neutral-400 group-hover:text-brand-300 transition-colors uppercase tracking-wider font-semibold truncate max-w-full">
+                      <span className="text-[9px] sm:text-[10px] text-neutral-400 group-hover:text-neutral-200 transition-colors uppercase tracking-wider font-semibold truncate max-w-full mt-0.5">
                         {speaker.origin}
                       </span>
                     )}

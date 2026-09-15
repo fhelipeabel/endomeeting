@@ -39,8 +39,8 @@ export default function SpeakerModal({ speaker, isOpen, onClose }: SpeakerModalP
                 <X className="h-6 w-6" />
               </button>
 
-              {/* Speaker Visual Side (Image or Video) */}
-              <div className="relative w-full md:w-2/5 aspect-[3/4] md:aspect-auto min-h-[380px] md:min-h-0 bg-neutral-900 overflow-hidden">
+              {/* Speaker Visual Side (Image or Video) - 50% width */}
+              <div className="relative w-full md:w-1/2 aspect-[3/4] md:aspect-auto min-h-[440px] md:min-h-0 bg-neutral-900 overflow-hidden">
                 {(() => {
                   const name = speaker.name.toLowerCase();
                   const isTopFocus = name.includes("patrícia") || name.includes("zuolo");
@@ -83,7 +83,7 @@ export default function SpeakerModal({ speaker, isOpen, onClose }: SpeakerModalP
                     </div>
                   )}
                   <h3 className="text-3xl font-black text-white leading-tight">{speaker.name}</h3>
-                  <p className="text-brand-400 font-bold uppercase tracking-widest text-xs mt-2">{speaker.title}</p>
+                  <p className="text-neutral-300 font-bold uppercase tracking-widest text-xs mt-2">{speaker.title}</p>
                 </div>
               </div>
 
