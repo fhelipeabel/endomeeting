@@ -57,34 +57,21 @@ export const speakers: Speaker[] = [
     video: "/videos/video-patricia.mp4"
   },
   {
+    name: "Profª. Maria Ilma & Profª. Juliana Vilela",
+    title: "Dupla Palestrante • Prática Clínica & Excelência",
+    location: "Minas Gerais / Goiás",
+    description: "Abordagem integrada combinando experiência acadêmica consagrada e protocolos contemporâneos de alta previsibilidade.",
+    fullBio: "Palestra em conjunto unindo o conhecimento acadêmico de gerações e os protocolos contemporâneos de tratamento endodôntico.\n\nProfª. Dra. Maria Ilma: Doutora e docente com trajetória exemplar, formadora de inúmeros especialistas e referência no ensino odontológico.\n\nProfª. Dra. Juliana Vilela: Especialista e pesquisadora com atuação focada em técnicas de desinfecção tridimensional, condutas conservadoras e resoluções clínicas de alta performance.",
+    image: "/images/palestrantes/maria-ilma_e_juliana.jpeg",
+    isComingSoon: false
+  },
+  {
     name: "Prof. Dr. Marco Antonio Hungaro Duarte",
     title: "Professor Titular da FOB-USP",
     location: "Bauru - SP",
     description: "Bolsista Produtividade CNPq nível 1B, autor de mais de 500 artigos e livros de referência.",
     fullBio: "Professor Titular da Disciplina de Endodontia da Faculdade de Odontologia de Bauru da Universidade de São Paulo (FOB-USP). Bolsista de Produtividade em Pesquisa do CNPq (nível 1B). Autor de mais de 540 artigos científicos publicados em periódicos de alto impacto nacional e internacional, além de livros e capítulos de livros que são pilares no ensino da especialidade, como a obra 'Endodontia: Fundamentos Científicos para a Prática Clínica'. Referência mundial em pesquisas sobre biomecânica, materiais obturadores, instrumentação mecanizada e tratamentos endodônticos avançados.",
     image: "/images/palestrantes/perfil-hungaro.jpeg",
-    isComingSoon: false
-  },
-  {
-    name: "Prof. Dr. Murilo Priori Alcalde",
-    title: "Professor e Pesquisador na FOB-USP",
-    location: "Bauru - SP",
-    description: "Mestre, Doutor e Pós-Doutor pela FOB-USP com destaque em cinemáticas e tecnologia de NiTi.",
-    fullBio: "Graduado, Especialista, Mestre, Doutor e Pós-Doutor em Ciências Odontológicas Aplicadas (Endodontia) pela Faculdade de Odontologia de Bauru da Universidade de São Paulo (FOB-USP). Atualmente é Professor no Departamento de Dentística, Endodontia e Materiais Odontológicos da FOB-USP e docente do programa de pós-graduação. Pesquisador de destaque internacional com foco nas propriedades mecânicas e tratamentos térmicos de ligas de Níquel-Titânio (NiTi), agitação ultrassônica de cimentos obturadores e desinfecção de canais radiculares.",
-    isComingSoon: false
-  },
-  {
-    name: "Prof. Dr. Paulo Vinícius",
-    title: "Professor e Pesquisador em Endodontia",
-    location: "Uberlândia",
-    description: "Referência em protocolos clínicos avançados, instrumentação mecanizada e biomecânica.",
-    isComingSoon: false
-  },
-  {
-    name: "Prof. Dr. Alexandre Capelli",
-    title: "Mestre e Doutor em Endodontia",
-    location: "Ribeirão Preto",
-    description: "Especialista em novas tecnologias, odontologia restauradora e preparos anatômicos.",
     isComingSoon: false
   },
   {
@@ -100,12 +87,18 @@ export const speakers: Speaker[] = [
     isComingSoon: false
   },
   {
-    name: "Profª. Maria Ilma & Profª. Juliana Vilela",
-    title: "Dupla Palestrante • Prática Clínica & Excelência",
-    location: "Minas Gerais / Goiás",
-    description: "Abordagem integrada combinando experiência acadêmica consagrada e protocolos contemporâneos de alta previsibilidade.",
-    fullBio: "Palestra em conjunto unindo o conhecimento acadêmico de gerações e os protocolos contemporâneos de tratamento endodôntico.\n\nProfª. Dra. Maria Ilma: Doutora e docente com trajetória exemplar, formadora de inúmeros especialistas e referência no ensino odontológico.\n\nProfª. Dra. Juliana Vilela: Especialista e pesquisadora com atuação focada em técnicas de desinfecção tridimensional, condutas conservadoras e resoluções clínicas de alta performance.",
-    image: "/images/palestrantes/maria-ilma_e_juliana.jpeg",
+    name: "Prof. Dr. Paulo Vinícius",
+    title: "Professor e Pesquisador em Endodontia",
+    location: "Uberlândia",
+    description: "Referência em protocolos clínicos avançados, instrumentação mecanizada e biomecânica.",
+    isComingSoon: false
+  },
+  {
+    name: "Prof. Dr. Alexandre Capelli & Prof. Dr. Murilo Priori Alcalde",
+    title: "Dupla Palestrante • Novas Tecnologias & Cinemáticas NiTi",
+    location: "Ribeirão Preto / Bauru - SP",
+    description: "Abordagem integrada de novas tecnologias, odontologia restauradora, cinemáticas avançadas e tratamentos térmicos em Endodontia.",
+    fullBio: "Apresentação em conjunto unindo tecnologia, preparos anatômicos e cinemáticas mecanizadas.\n\nProf. Dr. Alexandre Capelli: Mestre e Doutor em Endodontia, especialista em novas tecnologias, preparos anatômicos e técnicas restauradoras.\n\nProf. Dr. Murilo Priori Alcalde: Professor e Pesquisador na FOB-USP, Mestre, Doutor e Pós-Doutor pela FOB-USP, referência internacional em cinemáticas e tecnologia de NiTi.",
     isComingSoon: false
   },
   {

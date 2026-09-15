@@ -6,15 +6,67 @@ import Image from "next/image";
 import { PaymentPopup } from "@/components/PaymentPopup";
 import { Sponsors } from "@/components/Sponsors";
 import { speakers } from "@/data/speakers";
-import { MapPin, Calendar, CheckCircle2, ChevronRight, User, Stethoscope, Sparkles, AlertCircle } from "lucide-react";
+import { MapPin, Calendar, CheckCircle2, ChevronRight, User, Stethoscope, Sparkles, AlertCircle, Lock } from "lucide-react";
 import { motion } from "framer-motion";
 import SpeakerModal from "@/components/SpeakerModal";
 import HeroIndexBanner from "@/components/HeroIndexBanner";
 import { Speaker } from "@/data/speakers";
 
+type PromoCategoryKey = "academicos" | "pos" | "dentistas";
+
+interface CategoryInfo {
+  id: PromoCategoryKey;
+  label: string;
+  badge: string;
+  price: string;
+  installments: string;
+  description: string;
+  requirement: string;
+  url: string;
+  audience: string | null;
+}
+
+const promoCategories: Record<PromoCategoryKey, CategoryInfo> = {
+  academicos: {
+    id: "academicos",
+    label: "Acadêmicos (Graduação)",
+    badge: "Graduação",
+    price: "250,00",
+    installments: "Em até 10x no cartão",
+    description: "Destinado exclusivamente para estudantes de graduação em Odontologia.",
+    requirement: "Necessário comprovação de matrícula ativa no credenciamento.",
+    url: "https://pay.kiwify.com.br/rrtPxfL",
+    audience: "estudantes de graduação em Odontologia"
+  },
+  pos: {
+    id: "pos",
+    label: "Alunos de Pós-graduação",
+    badge: "Pós-graduação",
+    price: "350,00",
+    installments: "Em até 10x no cartão",
+    description: "Destinado para alunos matriculados em cursos de pós-graduação e especialização.",
+    requirement: "Necessário comprovante de matrícula na pós-graduação.",
+    url: "https://pay.kiwify.com.br/sQSX4he",
+    audience: "alunos de pós-graduação em Odontologia"
+  },
+  dentistas: {
+    id: "dentistas",
+    label: "Cirurgiões-dentistas",
+    badge: "Profissional",
+    price: "550,00",
+    installments: "Em até 10x no cartão",
+    description: "Destinado a Cirurgiões-dentistas formados que buscam atualização e excelência clínica.",
+    requirement: "Acesso completo a todas as palestras e feira comercial.",
+    url: "https://pay.kiwify.com.br/7HjGskz",
+    audience: null
+  }
+};
+
 export default function Home() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupContent, setPopupContent] = useState<{ title: string, message: string, url: string } | undefined>(undefined);
+  const [selectedPromoCategory, setSelectedPromoCategory] = useState<PromoCategoryKey | "">("");
+  const currentPromo = selectedPromoCategory ? promoCategories[selectedPromoCategory] : null;
   const [currentLot, setCurrentLot] = useState<1 | 2>(1);
   const [mounted, setMounted] = useState(false);
   const [selectedSpeaker, setSelectedSpeaker] = useState<Speaker | null>(null);
@@ -63,23 +115,6 @@ export default function Home() {
       setIsSpeakerModalOpen(true);
     }
   };
-
-  const lotData = {
-    1: {
-      label: "Lançamento",
-      students: "250,00",
-      partners: "350,00",
-      dentists: "550,00"
-    },
-    2: {
-      label: "1º Lote",
-      students: "300,00",
-      partners: "400,00",
-      dentists: "600,00"
-    }
-  };
-
-  const prices = mounted ? lotData[currentLot] : lotData[1];
 
   // O link do Kiwify atualizado (pode ser ajustado conforme a necessidade)
   const kiwifyCheckoutUrl = "https://pay.kiwify.com.br/xxxxx";
@@ -389,123 +424,281 @@ export default function Home() {
             className="text-center mb-12"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/20 text-brand-400 text-xs font-bold uppercase tracking-wider mb-4 border border-brand-500/30">
-              Oferta Especial
+              Lotes Oficiais
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-6">Garanta sua Vaga</h2>
-            <p className="text-brand-200/80 max-w-2xl mx-auto text-lg mb-2">Lotes limitados para o 4º Endomeeting.</p>
-            <p className="text-yellow-500 font-bold">Valores de lançamento: Apenas para dias 01/05 e 02/05/26 durante o evento.</p>
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-4">Garanta sua Vaga</h2>
+            <p className="text-amber-400 font-bold text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+              Lote promocional de lançamento durante 30 dias a partir do dia 15/09 (em até 10x no cartão)
+            </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-            {/* Categoria 1: Estudantes */}
-            <motion.div
-              initial={{ opacity: 1, x: 0 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white/5 backdrop-blur-xl rounded-[2rem] p-8 border border-white/10 flex flex-col hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
-            >
-              <div className="mb-4 text-xs font-bold text-brand-400 tracking-wider uppercase">{prices.label}</div>
-              <h3 className="text-xl font-bold text-white mb-4">Graduação e Pós</h3>
-              <div className="space-y-3 mb-8 pb-6 border-b border-white/10 flex-grow">
-                <p className="text-neutral-300 text-sm leading-relaxed">
-                  Destinado exclusivamente para <strong className="text-white">estudantes de graduação ou pós-graduação</strong> em Odontologia.
-                </p>
-                <div className="flex items-start gap-2 text-xs text-neutral-400">
-                  <CheckCircle2 className="w-4 h-4 text-brand-500 shrink-0 mt-0.5" />
-                  <span>Necessário comprovação de matrícula ativa.</span>
-                </div>
-              </div>
-
-              <div className="mb-8">
-                <span className="text-sm text-neutral-400 block mb-1">Investimento</span>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-xl font-bold text-white">R$</span>
-                  <span className="text-5xl font-black text-white">{prices.students}</span>
-                </div>
-                <span className="text-sm text-brand-400/80 font-medium block mt-2">Em até 4x no cartão</span>
-              </div>
-
-              <button
-                onClick={() => handleOpenPopup("Graduação e Pós", "estudantes de graduação e pós-graduação", "https://pay.kiwify.com.br/rrtPxfL")}
-                className="w-full py-4 rounded-xl font-bold text-brand-900 bg-white hover:bg-brand-50 hover:scale-[1.02] transition-all duration-300"
-              >
-                Comprar Agora
-              </button>
-            </motion.div>
-
-            {/* Categoria 2: Parceiros */}
+            {/* Card 1: Lote Promocional de Lançamento (ATIVO / ABERTO) */}
             <motion.div
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-gradient-to-b from-brand-900/40 to-brand-950/80 backdrop-blur-xl rounded-[2rem] p-8 border border-brand-500/30 flex flex-col relative overflow-hidden group shadow-2xl"
+              className="bg-gradient-to-b from-brand-900/40 via-brand-950/80 to-neutral-950/90 backdrop-blur-xl rounded-[2rem] p-8 border-2 border-brand-500/50 flex flex-col justify-between relative overflow-hidden group shadow-[0_0_50px_rgba(220,38,38,0.25)] ring-1 ring-brand-500/30"
             >
-              <div className="mb-4 text-xs font-bold text-brand-300 tracking-wider uppercase">{prices.label}</div>
-              <h3 className="text-xl font-bold text-white mb-4">Ex-alunos & Parceiros</h3>
-              <div className="space-y-3 mb-8 pb-6 border-b border-brand-700/50 flex-grow">
-                <p className="text-brand-100 text-sm leading-relaxed">
-                  Para <strong className="text-white">Ex-alunos Equipe Rodrigo Faria, UNIODONTO, Grupo Patrícia Ferrari e Associados SBEndo.</strong>
+              {/* Glow & Badge de Destaque */}
+              <div className="absolute top-0 right-0 w-48 h-48 bg-brand-500/15 rounded-full blur-3xl pointer-events-none" />
+
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-500 text-white text-[11px] font-black uppercase tracking-wider shadow-md">
+                    <Sparkles className="w-3 h-3" />
+                    Lote Ativo
+                  </span>
+                  <span className="text-[11px] font-bold text-brand-300/90">
+                    Válido por 30 dias
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-black text-white mb-2 leading-tight">
+                  Lote Promocional de Lançamento
+                </h3>
+                <p className="text-xs text-neutral-300 mb-6 leading-relaxed">
+                  Início em 15/09. Selecione sua categoria abaixo para visualizar o valor correspondente:
                 </p>
-                <div className="flex items-start gap-2 text-xs text-brand-300/70">
-                  <CheckCircle2 className="w-4 h-4 text-brand-500 shrink-0 mt-0.5" />
-                  <span>Válido para membros ativos das instituições citadas.</span>
+
+                {/* Seletor Suspenso / Menu Suspenso de Categoria */}
+                <div className="mb-6 space-y-2">
+                  <label htmlFor="promo-category-select" className="text-xs font-bold uppercase tracking-wider text-brand-300 flex items-center gap-1.5">
+                    <User className="w-3.5 h-3.5 text-brand-400" />
+                    Selecione sua Categoria:
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="promo-category-select"
+                      value={selectedPromoCategory}
+                      onChange={(e) => setSelectedPromoCategory(e.target.value as PromoCategoryKey)}
+                      className={`w-full bg-neutral-900/95 font-bold text-sm px-4 py-3.5 rounded-xl border outline-none transition-all cursor-pointer appearance-none shadow-inner ${
+                        !selectedPromoCategory
+                          ? "text-neutral-400 border-brand-500/60 ring-2 ring-brand-500/20"
+                          : "text-white border-brand-500/40 focus:border-brand-400 focus:ring-2 focus:ring-brand-500/30"
+                      }`}
+                    >
+                      <option value="" disabled className="text-neutral-500 bg-neutral-900">
+                        Selecione sua categoria...
+                      </option>
+                      <option value="academicos" className="text-white bg-neutral-900">Acadêmicos (Graduação) — R$ 250,00</option>
+                      <option value="pos" className="text-white bg-neutral-900">Alunos de Pós-graduação — R$ 350,00</option>
+                      <option value="dentistas" className="text-white bg-neutral-900">Cirurgiões-dentistas — R$ 550,00</option>
+                    </select>
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-brand-400 text-xs font-bold">
+                      ▼
+                    </div>
+                  </div>
+
+                  {/* Tabs / Pills para seleção rápida */}
+                  <div className="grid grid-cols-3 gap-1.5 pt-2">
+                    {(["academicos", "pos", "dentistas"] as PromoCategoryKey[]).map((key) => {
+                      const isSelected = selectedPromoCategory === key;
+                      const cat = promoCategories[key];
+                      return (
+                        <button
+                          key={key}
+                          type="button"
+                          onClick={() => setSelectedPromoCategory(key)}
+                          className={`py-2 px-2 rounded-lg text-[11px] font-bold transition-all truncate text-center cursor-pointer ${
+                            isSelected
+                              ? "bg-brand-600 text-white shadow-sm border border-brand-400/50 scale-[1.02]"
+                              : "bg-white/5 text-neutral-400 hover:text-white hover:bg-white/10 border border-white/5"
+                          }`}
+                        >
+                          {cat.badge}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Detalhes da Categoria Selecionada */}
+                <div className="space-y-3 mb-6 pb-6 border-b border-white/10 min-h-[90px] flex flex-col justify-center">
+                  {currentPromo ? (
+                    <>
+                      <p className="text-neutral-200 text-sm leading-relaxed">
+                        {currentPromo.description}
+                      </p>
+                      <div className="flex items-start gap-2 text-xs text-brand-300">
+                        <CheckCircle2 className="w-4 h-4 text-brand-400 shrink-0 mt-0.5" />
+                        <span>{currentPromo.requirement}</span>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed font-medium">
+                        👆 Selecione sua categoria no menu acima para conferir os requisitos e o valor do lote promocional.
+                      </p>
+                      <div className="flex items-center gap-2 text-xs text-neutral-400">
+                        <AlertCircle className="w-4 h-4 text-brand-400/80 shrink-0" />
+                        <span>Condições exclusivas para cada categoria.</span>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
 
-              <div className="mb-8">
-                <span className="text-sm text-brand-200/80 block mb-1">Investimento</span>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-xl font-bold text-white">R$</span>
-                  <span className="text-5xl font-black text-white">{prices.partners}</span>
+              <div>
+                <div className="mb-6">
+                  <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 block mb-1">
+                    Valor de Lançamento
+                  </span>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-xl font-bold text-neutral-400">R$</span>
+                    <span className={`font-black tracking-tight transition-all ${
+                      currentPromo ? "text-5xl text-white" : "text-4xl text-neutral-400"
+                    }`}>
+                      {currentPromo ? currentPromo.price : "---,--"}
+                    </span>
+                  </div>
+                  <span className="text-xs font-bold block mt-2 transition-colors">
+                    {currentPromo ? (
+                      <span className="text-amber-400">À vista ou em até 10x no cartão</span>
+                    ) : (
+                      <span className="text-neutral-400">Selecione uma categoria para visualizar</span>
+                    )}
+                  </span>
                 </div>
-                <span className="text-sm text-brand-300 font-medium block mt-2">Em até 4x no cartão</span>
-              </div>
 
-              <button
-                onClick={() => handleOpenPopup("Ex-alunos & Parceiros", "ex-alunos Equipe Rodrigo Faria, cooperados UNIODONTO, membros do Grupo de Estudos Patrícia Ferrari e associados SBEndo", "https://pay.kiwify.com.br/sQSX4he")}
-                className="w-full py-4 rounded-xl font-bold text-white bg-brand-600 hover:bg-brand-500 hover:scale-[1.02] transition-all duration-300 shadow-lg shadow-brand-900/50"
-              >
-                Comprar Agora
-              </button>
+                {currentPromo ? (
+                  <button
+                    type="button"
+                    onClick={() => handleOpenPopup(currentPromo.label, currentPromo.audience, currentPromo.url)}
+                    className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-brand-600 to-brand-700 hover:from-brand-500 hover:to-brand-600 hover:scale-[1.02] transition-all duration-300 shadow-xl shadow-brand-950 flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <span>Garantir Ingresso de Lançamento</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const el = document.getElementById("promo-category-select");
+                      if (el) el.focus();
+                    }}
+                    className="w-full py-4 rounded-xl font-bold text-neutral-300 bg-white/10 hover:bg-white/15 border border-white/10 hover:border-brand-500/40 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <span>Selecione sua Categoria</span>
+                    <ChevronRight className="w-4 h-4 text-neutral-400" />
+                  </button>
+                )}
+              </div>
             </motion.div>
 
-            {/* Categoria 3: Dentistas */}
+            {/* Card 2: 1º Lote (BLOQUEADO / FECHADO COM CADEADO) */}
             <motion.div
-              initial={{ opacity: 1, x: 0 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white/5 backdrop-blur-xl rounded-[2rem] p-8 border border-white/10 flex flex-col hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
+              className="bg-white/[0.03] backdrop-blur-xl rounded-[2rem] p-8 border border-white/10 flex flex-col justify-between relative overflow-hidden group opacity-85"
             >
-              <div className="mb-4 text-xs font-bold text-brand-400 tracking-wider uppercase">{prices.label}</div>
-              <h3 className="text-xl font-bold text-white mb-4">Cirurgiões-dentistas</h3>
-              <div className="space-y-3 mb-8 pb-6 border-b border-white/10 flex-grow">
-                <p className="text-neutral-300 text-sm leading-relaxed">
-                  Destinado a <strong className="text-white">Cirurgiões-dentistas formados</strong> que buscam atualização e excelência clínica.
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-800 text-neutral-400 text-[11px] font-black uppercase tracking-wider border border-white/10">
+                    <Lock className="w-3 h-3" />
+                    Fechado
+                  </span>
+                  <span className="text-[11px] font-bold text-neutral-500">
+                    Próximo Lote
+                  </span>
+                </div>
+
+                <div className="w-12 h-12 rounded-2xl bg-neutral-900 border border-white/10 flex items-center justify-center text-neutral-400 mb-4">
+                  <Lock className="w-5 h-5 text-neutral-400" />
+                </div>
+
+                <h3 className="text-2xl font-black text-white/90 mb-2 leading-tight">
+                  1º Lote
+                </h3>
+                <p className="text-xs text-neutral-400 mb-6 leading-relaxed">
+                  Abre automaticamente após o encerramento do Lote Promocional de Lançamento.
                 </p>
-                <div className="flex items-start gap-2 text-xs text-neutral-400">
-                  <CheckCircle2 className="w-4 h-4 text-brand-500 shrink-0 mt-0.5" />
-                  <span>Acesso completo a todas as palestras e feira comercial.</span>
+
+                <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 text-xs text-neutral-400 leading-relaxed mb-6">
+                  <p className="font-bold text-neutral-300 mb-1">Abertura Programada</p>
+                  <p>As inscrições deste lote serão liberadas assim que o período do lote promocional for concluído.</p>
                 </div>
               </div>
 
-              <div className="mb-8">
-                <span className="text-sm text-neutral-400 block mb-1">Investimento</span>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-xl font-bold text-white">R$</span>
-                  <span className="text-5xl font-black text-white">{prices.dentists}</span>
+              <div>
+                <div className="mb-6">
+                  <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 block mb-1">
+                    Condições
+                  </span>
+                  <span className="text-sm text-neutral-400 font-medium block">
+                    Parcelamento em até 10x no cartão
+                  </span>
                 </div>
-                <span className="text-sm text-brand-400/80 font-medium block mt-2">Em até 4x no cartão</span>
+
+                <button
+                  type="button"
+                  disabled
+                  className="w-full py-4 rounded-xl font-bold text-neutral-400 bg-neutral-800/60 border border-white/5 flex items-center justify-center gap-2 cursor-not-allowed opacity-75"
+                >
+                  <Lock className="w-4 h-4" />
+                  <span>Lote Fechado</span>
+                </button>
+              </div>
+            </motion.div>
+
+            {/* Card 3: 2º Lote (BLOQUEADO / FECHADO COM CADEADO) */}
+            <motion.div
+              initial={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="bg-white/[0.03] backdrop-blur-xl rounded-[2rem] p-8 border border-white/10 flex flex-col justify-between relative overflow-hidden group opacity-85"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-800 text-neutral-400 text-[11px] font-black uppercase tracking-wider border border-white/10">
+                    <Lock className="w-3 h-3" />
+                    Fechado
+                  </span>
+                  <span className="text-[11px] font-bold text-neutral-500">
+                    Lote Final
+                  </span>
+                </div>
+
+                <div className="w-12 h-12 rounded-2xl bg-neutral-900 border border-white/10 flex items-center justify-center text-neutral-400 mb-4">
+                  <Lock className="w-5 h-5 text-neutral-400" />
+                </div>
+
+                <h3 className="text-2xl font-black text-white/90 mb-2 leading-tight">
+                  2º Lote
+                </h3>
+                <p className="text-xs text-neutral-400 mb-6 leading-relaxed">
+                  Lote final condicionado à capacidade máxima de lotação no CDL Uberlândia.
+                </p>
+
+                <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 text-xs text-neutral-400 leading-relaxed mb-6">
+                  <p className="font-bold text-neutral-300 mb-1">Últimas Vagas</p>
+                  <p>Inscrições sujeitas ao limite de vagas presenciais no auditório do evento.</p>
+                </div>
               </div>
 
-              <button
-                onClick={() => handleOpenPopup("Cirurgiões-dentistas", null, "https://pay.kiwify.com.br/7HjGskz")}
-                className="w-full py-4 rounded-xl font-bold text-brand-900 bg-white hover:bg-brand-50 hover:scale-[1.02] transition-all duration-300"
-              >
-                Comprar Agora
-              </button>
+              <div>
+                <div className="mb-6">
+                  <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 block mb-1">
+                    Condições
+                  </span>
+                  <span className="text-sm text-neutral-400 font-medium block">
+                    Parcelamento em até 10x no cartão
+                  </span>
+                </div>
+
+                <button
+                  type="button"
+                  disabled
+                  className="w-full py-4 rounded-xl font-bold text-neutral-400 bg-neutral-800/60 border border-white/5 flex items-center justify-center gap-2 cursor-not-allowed opacity-75"
+                >
+                  <Lock className="w-4 h-4" />
+                  <span>Lote Fechado</span>
+                </button>
+              </div>
             </motion.div>
           </div>
 
@@ -716,6 +909,116 @@ export default function Home() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* COMISSÃO ORGANIZADORA SECTION */}
+      <section id="comissao" className="w-full py-28 md:py-36 bg-neutral-950 text-white relative overflow-hidden border-t border-b border-white/10">
+        {/* Background Ambient Glows */}
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-brand-900/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-brand-800/15 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="container mx-auto px-6 relative z-10 max-w-6xl">
+          <div className="flex flex-col items-center text-center mb-16">
+            <span className="text-brand-400 font-black uppercase tracking-[0.3em] text-xs sm:text-sm mb-4 px-4 py-1.5 rounded-full bg-brand-950/80 border border-brand-800/50">
+              Coordenação Geral & Realização
+            </span>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight"
+            >
+              Comissão Organizadora
+            </motion.h2>
+            <p className="text-neutral-400 max-w-2xl text-lg sm:text-xl font-medium leading-relaxed">
+              Conheça os profissionais dedicados a realizar uma experiência científica, clínica e humana inesquecível no Endomeeting.
+            </p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="bg-neutral-900/90 backdrop-blur-xl border border-white/10 rounded-[2.5rem] overflow-hidden shadow-2xl"
+          >
+            <div className="flex flex-col lg:flex-row items-stretch">
+              {/* Foto Oficial da Equipe */}
+              <div className="lg:w-1/2 relative min-h-[380px] lg:min-h-[480px] bg-neutral-950">
+                <Image
+                  src="/images/coordenadores.jpeg"
+                  alt="Comissão Organizadora: Dra. Cristiane Silva, Dr. Rodrigo Faria e Dra. Renata Georjutti"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-top"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-transparent to-transparent lg:hidden" />
+              </div>
+
+              {/* Informações da Equipe */}
+              <div className="lg:w-1/2 p-8 sm:p-12 lg:p-14 flex flex-col justify-center">
+                <div className="inline-flex items-center gap-2 mb-4">
+                  <span className="w-2.5 h-2.5 rounded-full bg-brand-500 animate-pulse" />
+                  <span className="text-xs font-bold uppercase tracking-widest text-brand-400">
+                    Equipe Rodrigo Faria de Endodontia
+                  </span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl font-black text-white mb-4 leading-tight">
+                  Excelência Clínica e Compromisso Científico
+                </h3>
+
+                <p className="text-neutral-300 text-sm sm:text-base leading-relaxed mb-8">
+                  Com vasta trajetória na endodontia e no ensino odontológico de alto nível, a comissão coordenadora atua em cada detalhe do congresso: da curadoria científica e recepção de palestrantes de renome à infraestrutura de excelência para todos os congressistas.
+                </p>
+
+                <div className="space-y-4 pt-6 border-t border-white/10">
+                  <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-brand-500/30 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-brand-950 text-brand-400 flex items-center justify-center font-black text-sm border border-brand-800/60 shrink-0">
+                      CS
+                    </div>
+                    <div>
+                      <p className="text-sm sm:text-base font-bold text-white leading-tight">
+                        Dra. Cristiane da Cruz Silva
+                      </p>
+                      <span className="text-[11px] text-neutral-400 font-medium">
+                        Coordenação Geral & Organizadora
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-brand-500/30 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-brand-950 text-brand-400 flex items-center justify-center font-black text-sm border border-brand-800/60 shrink-0">
+                      RF
+                    </div>
+                    <div>
+                      <p className="text-sm sm:text-base font-bold text-white leading-tight">
+                        Dr. Rodrigo Antonio de Faria
+                      </p>
+                      <span className="text-[11px] text-brand-400 font-bold uppercase tracking-wider">
+                        Coordenação Científica & Geral
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-brand-500/30 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-brand-950 text-brand-400 flex items-center justify-center font-black text-sm border border-brand-800/60 shrink-0">
+                      RG
+                    </div>
+                    <div>
+                      <p className="text-sm sm:text-base font-bold text-white leading-tight">
+                        Dra. Renata Pereira Georjutti
+                      </p>
+                      <span className="text-[11px] text-neutral-400 font-medium">
+                        Coordenação Geral & Organizadora
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 

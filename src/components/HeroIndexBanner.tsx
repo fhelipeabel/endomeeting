@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import {
   Calendar,
   MapPin,
-  Users,
   Award,
   ChevronRight,
   CheckCircle,
@@ -52,28 +51,16 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
       image: "/images/palestrantes/img-patricia.webp"
     },
     {
+      name: "Maria Ilma & Juliana Vilela",
+      shortName: "Maria Ilma & Juliana",
+      origin: "MG / GO",
+      image: "/images/palestrantes/maria-ilma_e_juliana.jpeg"
+    },
+    {
       name: "Marco Antonio Hungaro Duarte",
       shortName: "Marco Hungaro",
       origin: "Bauru - SP",
       image: "/images/palestrantes/perfil-hungaro.jpeg"
-    },
-    {
-      name: "Murilo Priori Alcalde",
-      shortName: "Murilo Alcalde",
-      origin: "Bauru - SP",
-      initials: "MA"
-    },
-    {
-      name: "Paulo Vinícius",
-      shortName: "Paulo Vinícius",
-      origin: "Uberlândia",
-      initials: "PV"
-    },
-    {
-      name: "Alexandre Capelli",
-      shortName: "Alexandre Capelli",
-      origin: "Ribeirão Preto",
-      initials: "AC"
     },
     {
       name: "Amanda Lavor",
@@ -82,40 +69,22 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
       image: "/images/palestrantes/amanda-lavor.jpg"
     },
     {
-      name: "Maria Ilma & Juliana Vilela",
-      shortName: "M. Ilma & Juliana",
-      origin: "MG / GO",
-      image: "/images/palestrantes/maria-ilma_e_juliana.jpeg"
+      name: "Paulo Vinícius",
+      shortName: "Paulo Vinícius",
+      origin: "Uberlândia",
+      initials: "PV"
+    },
+    {
+      name: "Alexandre Capelli & Murilo Priori Alcalde",
+      shortName: "Capeli & Murilo",
+      origin: "SP",
+      initials: "C&M"
     },
     {
       name: "Samuel Nogueira",
       shortName: "Samuel Nogueira",
       origin: "São Paulo",
       initials: "SN"
-    },
-  ];
-
-  const committeeMembers = [
-    {
-      name: "Cristiane da Cruz Silva",
-      shortName: "Cristiane Silva",
-      role: "Comissão",
-      initials: "CS",
-      image: "" // adicione aqui o caminho ex: "/images/comissao/cristiane.jpg"
-    },
-    {
-      name: "Rodrigo Antonio de Faria",
-      shortName: "Rodrigo Faria",
-      role: "Coordenação",
-      initials: "RF",
-      image: "" // adicione aqui o caminho ex: "/images/comissao/rodrigo.jpg"
-    },
-    {
-      name: "Renata Pereira Georjutti",
-      shortName: "Renata Georjutti",
-      role: "Comissão",
-      initials: "RG",
-      image: "" // adicione aqui o caminho ex: "/images/comissao/renata.jpg"
     },
   ];
 
@@ -318,69 +287,15 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Subindo no topo alinhado com a Logo */}
+          {/* RIGHT COLUMN: Patrocinadores e Eventos Anteriores */}
           <div
-            className="lg:col-span-5 flex flex-col gap-3.5 sm:gap-4"
+            className="lg:col-span-5 flex flex-col justify-between gap-4"
           >
-            {/* Comissão Organizadora */}
-            <button
-              type="button"
-              onClick={() => scrollTo("sobre")}
-              className="bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-left border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group cursor-pointer relative overflow-hidden"
-            >
-              <div className="flex items-center justify-between mb-3 pb-2 border-b border-white/10">
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-brand-950/80 text-brand-400 border border-brand-800/50 shadow-inner">
-                    <Users className="w-4 h-4" />
-                  </div>
-                  <h3 className="text-sm sm:text-base font-black uppercase tracking-tight text-white">
-                    Coordenação
-                  </h3>
-                </div>
-                <ChevronRight className="w-4 h-4 text-neutral-400 group-hover:text-brand-400 group-hover:translate-x-1 transition-all" />
-              </div>
-
-              {/* Membros na Horizontal (Grid de 3 Colunas) */}
-              <div className="grid grid-cols-3 gap-2 sm:gap-2.5 mb-2.5">
-                {committeeMembers.map((member, i) => (
-                  <div key={i} className="flex flex-col items-center text-center p-2 rounded-xl bg-white/[0.025] hover:bg-brand-950/40 border border-white/5 hover:border-brand-500/30 transition-all duration-200 group/member">
-                    {/* Foto ou Avatar com Iniciais */}
-                    <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden border border-white/15 group-hover/member:border-brand-500/50 bg-neutral-900 flex items-center justify-center shrink-0 shadow-sm mb-1.5 transition-transform duration-200 group-hover/member:scale-105">
-                      {member.image ? (
-                        <Image
-                          src={member.image}
-                          alt={member.name}
-                          fill
-                          className="object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-neutral-900 via-brand-950 to-neutral-900 flex items-center justify-center text-brand-300 font-bold text-xs tracking-wider">
-                          {member.initials}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Informações do Membro */}
-                    <span className="text-[10px] sm:text-[11px] font-bold text-neutral-200 group-hover:text-white transition-colors leading-tight line-clamp-2">
-                      {member.shortName || member.name}
-                    </span>
-                    <span className="text-[9px] text-brand-400 font-medium tracking-wide mt-0.5">
-                      {member.role}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <p className="text-[11px] text-brand-400 font-bold flex items-center justify-center sm:justify-start gap-1">
-                (clique para mais informações)
-              </p>
-            </button>
-
             {/* Patrocinadores */}
             <button
               type="button"
               onClick={() => scrollTo("patrocinadores")}
-              className="bg-neutral-950/80 rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-left border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group cursor-pointer relative overflow-hidden"
+              className="bg-neutral-950/80 rounded-2xl sm:rounded-3xl p-5 sm:p-6 text-left border border-white/10 shadow-2xl hover:border-brand-500/40 transition-all duration-300 group cursor-pointer relative overflow-hidden flex-1 flex flex-col justify-between"
             >
               {/* Imagem de Fundo Temática de Feira & Stands */}
               <Image
@@ -392,45 +307,58 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
               {/* Overlay Gradiente Escuro */}
               <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/95 via-neutral-950/85 to-neutral-950/60 group-hover:via-neutral-950/75 transition-all pointer-events-none" />
 
-              <div className="relative z-10 flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-brand-950/90 text-brand-400 border border-brand-800/60 shadow-inner">
-                    <Award className="w-4 h-4" />
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="p-2.5 rounded-xl bg-brand-950/90 text-brand-400 border border-brand-800/60 shadow-inner">
+                      <Award className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-base sm:text-lg font-black uppercase tracking-tight text-white drop-shadow-sm">
+                        Patrocinadores
+                      </h3>
+                      <span className="text-[11px] text-brand-400 font-bold uppercase tracking-wider">
+                        Feira Comercial & Apoio
+                      </span>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-sm sm:text-base font-black uppercase tracking-tight text-white drop-shadow-sm">
-                      Patrocinadores
-                    </h3>
-                  </div>
+                  <ChevronRight className="w-5 h-5 text-neutral-400 group-hover:text-brand-400 group-hover:translate-x-1 transition-all" />
                 </div>
-                <ChevronRight className="w-4 h-4 text-neutral-400 group-hover:text-brand-400 group-hover:translate-x-1 transition-all" />
+
+                <p className="text-xs sm:text-sm text-neutral-300 mb-3 leading-relaxed font-medium">
+                  Marcas e empresas que impulsionam o congresso com tecnologia, inovação clínica e estandes exclusivos.
+                </p>
               </div>
 
-              <p className="relative z-10 text-xs text-neutral-300 mb-2 leading-relaxed font-medium">
-                Marcas e empresas que impulsionam o congresso com tecnologia e inovação clínica.
-              </p>
-
-              <p className="relative z-10 text-[11px] text-brand-400 font-bold flex items-center gap-1">
-                (clique para ver marcas)
+              <p className="relative z-10 text-xs text-brand-400 font-bold flex items-center gap-1.5 pt-2 border-t border-white/10">
+                <span>Conheça as marcas confirmadas</span>
+                <ChevronRight className="w-3.5 h-3.5" />
               </p>
             </button>
 
             {/* Eventos Anteriores (2024, 2025, 2026) */}
-            <div className="bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl relative overflow-hidden">
-              <div className="flex items-center gap-2 mb-3 pb-2 border-b border-white/10">
-                <div className="w-6 h-6 rounded-lg bg-brand-950/80 flex items-center justify-center text-brand-400 border border-brand-800/50">
-                  <span className="text-xs font-black">★</span>
+            <div className="bg-white/[0.04] backdrop-blur-xl rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-white/10 shadow-2xl relative overflow-hidden flex-1 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2.5 mb-3 pb-3 border-b border-white/10">
+                  <div className="w-7 h-7 rounded-xl bg-brand-950/80 flex items-center justify-center text-brand-400 border border-brand-800/50">
+                    <span className="text-xs font-black">★</span>
+                  </div>
+                  <div>
+                    <h3 className="text-base sm:text-lg font-black uppercase tracking-tight text-white">
+                      Eventos Anteriores
+                    </h3>
+                    <span className="text-[11px] text-neutral-400 font-medium">
+                      Galeria de edições de sucesso
+                    </span>
+                  </div>
                 </div>
-                <h3 className="text-sm sm:text-base font-black uppercase tracking-tight text-white">
-                  Eventos Anteriores
-                </h3>
+
+                <p className="text-xs sm:text-sm text-neutral-300 mb-4 leading-relaxed font-medium">
+                  Trajetória e registros marcantes que consolidaram o Endomeeting como referência em Minas Gerais:
+                </p>
               </div>
 
-              <p className="text-xs text-neutral-400 mb-3 leading-relaxed font-medium">
-                Trajetória e registros marcantes das edições anteriores:
-              </p>
-
-              <div className="grid grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-3 gap-3">
                 {pastEditionsData.map((edition) => (
                   <button
                     key={edition.year}
@@ -442,7 +370,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                         scrollTo("sobre");
                       }
                     }}
-                    className="relative overflow-hidden py-3 px-2 rounded-xl bg-neutral-900 border border-white/10 hover:border-brand-500/60 text-center transition-all duration-300 group/btn cursor-pointer hover:scale-105 shadow-lg flex flex-col items-center justify-center min-h-[64px]"
+                    className="relative overflow-hidden py-3.5 px-2 rounded-xl bg-neutral-900 border border-white/10 hover:border-brand-500/60 text-center transition-all duration-300 group/btn cursor-pointer hover:scale-105 shadow-lg flex flex-col items-center justify-center min-h-[76px]"
                   >
                     {/* Imagem de Fundo da Respectiva Edição */}
                     <Image
@@ -454,7 +382,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                     {/* Overlay Escuro com Glow ao passar o mouse */}
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/75 to-neutral-950/50 group-hover/btn:from-brand-950/80 group-hover/btn:via-neutral-950/60 group-hover/btn:to-neutral-950/30 transition-all pointer-events-none" />
 
-                    <span className="relative z-10 text-sm font-black text-white group-hover/btn:text-brand-300 transition-colors block drop-shadow-md">
+                    <span className="relative z-10 text-base font-black text-white group-hover/btn:text-brand-300 transition-colors block drop-shadow-md">
                       {edition.year}
                     </span>
                     <span className="relative z-10 text-[9px] text-neutral-300 group-hover/btn:text-white uppercase tracking-widest font-bold block mt-0.5 drop-shadow-xs">
