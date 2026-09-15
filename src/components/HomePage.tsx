@@ -275,6 +275,7 @@ export default function Home() {
               <video
                 ref={videoRef}
                 src="/videos/vsl-endomeeting.mp4"
+                poster="/images/vsl-cover.jpg"
                 controls={isVideoPlaying}
                 playsInline
                 preload="metadata"
@@ -292,21 +293,42 @@ export default function Home() {
                       setIsVideoPlaying(true);
                     }
                   }}
-                  className="absolute inset-0 bg-neutral-950/50 backdrop-blur-[2px] flex flex-col items-center justify-center cursor-pointer transition-all hover:bg-neutral-950/35 z-10 p-6"
+                  className="absolute inset-0 bg-neutral-950/40 backdrop-blur-[1px] flex flex-col items-center justify-center cursor-pointer transition-all hover:bg-neutral-950/25 z-10 p-6"
                 >
+                  <Image
+                    src="/images/vsl-cover.jpg"
+                    alt="Endomeeting VSL Cover"
+                    fill
+                    className="object-cover opacity-80 pointer-events-none -z-10"
+                    priority
+                  />
+
                   <div className="relative flex flex-col items-center gap-5 text-center">
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-20 h-20 bg-brand-600 hover:bg-brand-500 text-white rounded-full flex items-center justify-center shadow-2xl shadow-brand-900/80 transition-all cursor-pointer ring-4 ring-white/20 hover:ring-white/40"
-                    >
-                      <Play className="w-8 h-8 ml-1 fill-current" />
-                    </motion.div>
+                    <div className="relative flex items-center justify-center">
+                      <motion.div
+                        animate={{ scale: [1, 1.35, 1], opacity: [0.6, 0, 0.6] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute inset-0 rounded-full bg-brand-500/60 pointer-events-none"
+                      />
+                      <motion.div
+                        animate={{ scale: [1, 1.2, 1], opacity: [0.8, 0.2, 0.8] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+                        className="absolute inset-0 rounded-full bg-brand-600/40 pointer-events-none"
+                      />
+                      <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="relative w-20 h-20 bg-gradient-to-tr from-brand-700 via-brand-600 to-brand-500 hover:from-brand-600 hover:to-brand-400 text-white rounded-full flex items-center justify-center shadow-[0_0_35px_rgba(220,38,38,0.7)] transition-all cursor-pointer ring-4 ring-white/30 hover:ring-white/60 z-10"
+                      >
+                        <Play className="w-8 h-8 ml-1 fill-current text-white drop-shadow" />
+                      </motion.div>
+                    </div>
+
                     <div>
                       <span className="text-white font-black uppercase tracking-widest text-xs sm:text-sm block drop-shadow-md">
                         Vídeo Oficial • 4º Endomeeting
                       </span>
-                      <span className="text-neutral-300 text-xs font-medium mt-1.5 block">
+                      <span className="text-neutral-200 text-xs font-semibold mt-1.5 block drop-shadow-sm">
                         Aperte o play para assistir com áudio
                       </span>
                     </div>
@@ -568,34 +590,9 @@ export default function Home() {
                     })}
                   </div>
                 </div>
-
-                {/* Detalhes da Categoria Selecionada */}
-                <div className="space-y-3 mb-6 pb-6 border-b border-white/10 min-h-[90px] flex flex-col justify-center">
-                  {currentPromo ? (
-                    <>
-                      <p className="text-neutral-200 text-sm leading-relaxed">
-                        {currentPromo.description}
-                      </p>
-                      <div className="flex items-start gap-2 text-xs text-brand-300">
-                        <CheckCircle2 className="w-4 h-4 text-brand-400 shrink-0 mt-0.5" />
-                        <span>{currentPromo.requirement}</span>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed font-medium">
-                        👆 Selecione sua categoria no menu acima para conferir os requisitos e o valor do lote promocional.
-                      </p>
-                      <div className="flex items-center gap-2 text-xs text-neutral-400">
-                        <AlertCircle className="w-4 h-4 text-brand-400/80 shrink-0" />
-                        <span>Condições exclusivas para cada categoria.</span>
-                      </div>
-                    </>
-                  )}
-                </div>
               </div>
 
-              <div>
+              <div className="mt-6">
                 <div className="mb-6">
                   <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 block mb-1">
                     Valor de Lançamento
@@ -642,117 +639,39 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Card 2: 1º Lote (BLOQUEADO / FECHADO COM CADEADO) */}
+            {/* Card 2: 1º Lote (BLOQUEADO / APENAS CADEADO NO MEIO) */}
             <motion.div
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white/[0.03] backdrop-blur-xl rounded-[2rem] p-8 border border-white/10 flex flex-col justify-between relative overflow-hidden group opacity-85"
+              className="bg-white/[0.02] backdrop-blur-xl rounded-[2rem] p-8 border border-white/10 flex flex-col items-center justify-center min-h-[380px] relative overflow-hidden group opacity-60 hover:opacity-80 transition-opacity"
             >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-800 text-neutral-400 text-[11px] font-black uppercase tracking-wider border border-white/10">
-                    <Lock className="w-3 h-3" />
-                    Fechado
-                  </span>
-                  <span className="text-[11px] font-bold text-neutral-500">
-                    Próximo Lote
-                  </span>
+              <div className="flex flex-col items-center justify-center gap-4 text-center">
+                <div className="w-20 h-20 rounded-3xl bg-neutral-900/90 border border-white/10 flex items-center justify-center text-neutral-400 shadow-2xl group-hover:border-white/20 transition-all">
+                  <Lock className="w-9 h-9 text-neutral-400" />
                 </div>
-
-                <div className="w-12 h-12 rounded-2xl bg-neutral-900 border border-white/10 flex items-center justify-center text-neutral-400 mb-4">
-                  <Lock className="w-5 h-5 text-neutral-400" />
-                </div>
-
-                <h3 className="text-2xl font-black text-white/90 mb-2 leading-tight">
+                <span className="text-sm font-bold uppercase tracking-widest text-neutral-400">
                   1º Lote
-                </h3>
-                <p className="text-xs text-neutral-400 mb-6 leading-relaxed">
-                  Abre automaticamente após o encerramento do Lote Promocional de Lançamento.
-                </p>
-
-                <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 text-xs text-neutral-400 leading-relaxed mb-6">
-                  <p className="font-bold text-neutral-300 mb-1">Abertura Programada</p>
-                  <p>As inscrições deste lote serão liberadas assim que o período do lote promocional for concluído.</p>
-                </div>
-              </div>
-
-              <div>
-                <div className="mb-6">
-                  <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 block mb-1">
-                    Condições
-                  </span>
-                  <span className="text-sm text-neutral-400 font-medium block">
-                    Parcelamento em até 10x no cartão
-                  </span>
-                </div>
-
-                <button
-                  type="button"
-                  disabled
-                  className="w-full py-4 rounded-xl font-bold text-neutral-400 bg-neutral-800/60 border border-white/5 flex items-center justify-center gap-2 cursor-not-allowed opacity-75"
-                >
-                  <Lock className="w-4 h-4" />
-                  <span>Lote Fechado</span>
-                </button>
+                </span>
               </div>
             </motion.div>
 
-            {/* Card 3: 2º Lote (BLOQUEADO / FECHADO COM CADEADO) */}
+            {/* Card 3: 2º Lote (BLOQUEADO / APENAS CADEADO NO MEIO) */}
             <motion.div
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white/[0.03] backdrop-blur-xl rounded-[2rem] p-8 border border-white/10 flex flex-col justify-between relative overflow-hidden group opacity-85"
+              className="bg-white/[0.02] backdrop-blur-xl rounded-[2rem] p-8 border border-white/10 flex flex-col items-center justify-center min-h-[380px] relative overflow-hidden group opacity-60 hover:opacity-80 transition-opacity"
             >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-800 text-neutral-400 text-[11px] font-black uppercase tracking-wider border border-white/10">
-                    <Lock className="w-3 h-3" />
-                    Fechado
-                  </span>
-                  <span className="text-[11px] font-bold text-neutral-500">
-                    Lote Final
-                  </span>
+              <div className="flex flex-col items-center justify-center gap-4 text-center">
+                <div className="w-20 h-20 rounded-3xl bg-neutral-900/90 border border-white/10 flex items-center justify-center text-neutral-400 shadow-2xl group-hover:border-white/20 transition-all">
+                  <Lock className="w-9 h-9 text-neutral-400" />
                 </div>
-
-                <div className="w-12 h-12 rounded-2xl bg-neutral-900 border border-white/10 flex items-center justify-center text-neutral-400 mb-4">
-                  <Lock className="w-5 h-5 text-neutral-400" />
-                </div>
-
-                <h3 className="text-2xl font-black text-white/90 mb-2 leading-tight">
+                <span className="text-sm font-bold uppercase tracking-widest text-neutral-400">
                   2º Lote
-                </h3>
-                <p className="text-xs text-neutral-400 mb-6 leading-relaxed">
-                  Lote final condicionado à capacidade máxima de lotação no CDL Uberlândia.
-                </p>
-
-                <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 text-xs text-neutral-400 leading-relaxed mb-6">
-                  <p className="font-bold text-neutral-300 mb-1">Últimas Vagas</p>
-                  <p>Inscrições sujeitas ao limite de vagas presenciais no auditório do evento.</p>
-                </div>
-              </div>
-
-              <div>
-                <div className="mb-6">
-                  <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 block mb-1">
-                    Condições
-                  </span>
-                  <span className="text-sm text-neutral-400 font-medium block">
-                    Parcelamento em até 10x no cartão
-                  </span>
-                </div>
-
-                <button
-                  type="button"
-                  disabled
-                  className="w-full py-4 rounded-xl font-bold text-neutral-400 bg-neutral-800/60 border border-white/5 flex items-center justify-center gap-2 cursor-not-allowed opacity-75"
-                >
-                  <Lock className="w-4 h-4" />
-                  <span>Lote Fechado</span>
-                </button>
+                </span>
               </div>
             </motion.div>
           </div>
