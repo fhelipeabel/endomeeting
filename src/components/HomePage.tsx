@@ -113,7 +113,7 @@ export default function Home() {
       <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-neutral-950">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <Image
-            src="/images/fundo-endomeeting.jpeg"
+            src="/intro-dark.png"
             alt="Endomeeting Background"
             fill
             className="object-cover opacity-35 scale-105"
