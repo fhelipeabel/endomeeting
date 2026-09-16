@@ -37,32 +37,32 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
     {
       name: "Rui Pereira Costa",
       shortName: "Rui Pereira",
-      origin: "Portugal",
+      origin: "Lisboa - Portugal",
       isInternational: true,
       image: "/images/palestrantes/rui-pereira.jpeg"
     },
     {
       name: "Mário Zuolo",
       shortName: "Mário Zuolo",
-      origin: "São Paulo",
+      origin: "São Paulo - SP",
       image: "/images/palestrantes/img-mario-zuolo.jpeg"
     },
     {
       name: "Carlos Bueno",
       shortName: "Carlos Bueno",
-      origin: "Campinas",
+      origin: "Campinas - SP",
       image: "/images/palestrantes/img-bueno.jpeg"
     },
     {
       name: "Patrícia Ferrari",
       shortName: "Patrícia Ferrari",
-      origin: "São Paulo",
+      origin: "Santo André - SP",
       image: "/images/palestrantes/img-patricia.webp"
     },
     {
       name: "Profª. Dra. Maria Ilma & Profª. Dra. Juliana Vilela",
       shortName: "Dras. Maria Ilma & Juliana",
-      origin: "MG / GO",
+      origin: "B. Horizonte - MG",
       image: "/images/palestrantes/maria-ilma_e_juliana.jpeg"
     },
     {
@@ -74,7 +74,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
     {
       name: "Profª. Mª. Amanda Lavor",
       shortName: "Amanda Lavor",
-      origin: "Brasil",
+      origin: "Juazeiro do Norte - CE",
       image: "/images/palestrantes/amanda-lavor.jpg"
     },
     {
@@ -92,8 +92,14 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
     {
       name: "Samuel Nogueira",
       shortName: "Samuel Nogueira",
-      origin: "Fortaleza - CE",
+      origin: "Maceió - AL",
       image: "/images/palestrantes/samuel_nogueira.jpeg"
+    },
+    {
+      name: "Alexandre Capelli",
+      shortName: "Alexandre Capelli",
+      origin: "Ribeirão Preto - SP",
+      image: "/images/palestrantes/alexandre_capelli.jpeg"
     },
   ];
 
@@ -151,7 +157,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                 <div className="relative transition-transform duration-500 hover:scale-105 flex items-center justify-center">
                   <Image
                     src="/logo.png.png"
-                    alt="4º Endomeeting"
+                    alt="4º Endomeeting TM"
                     width={280}
                     height={75}
                     className="w-full max-w-[200px] sm:max-w-[220px] md:max-w-[240px] h-auto object-contain brightness-200 invert grayscale transition-all duration-500 hover:brightness-250 drop-shadow-[0_4px_25px_rgba(220,38,38,0.35)]"
@@ -370,7 +376,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                 </div>
 
                 <p className="text-xs sm:text-sm text-neutral-300 mb-4 leading-relaxed font-medium">
-                  Trajetória e registros marcantes que consolidaram o Endomeeting como referência em Minas Gerais:
+                  Trajetória e registros marcantes que consolidaram o Endomeeting TM como referência em Minas Gerais:
                 </p>
               </div>
 
@@ -425,7 +431,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
 
           <p className="text-xs text-neutral-400 mt-2.5 flex items-center gap-1.5 font-semibold">
             <CheckCircle className="w-3.5 h-3.5 text-brand-400" />
-            Lotes especiais de lançamento por tempo limitado
+            Lote promocional de lançamento por tempo limitado
           </p>
         </div>
 

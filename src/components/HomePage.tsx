@@ -62,6 +62,33 @@ const promoCategories: Record<PromoCategoryKey, CategoryInfo> = {
   }
 };
 
+const coordinatorsData: Speaker[] = [
+  {
+    name: "Cristiane da Cruz Silva",
+    title: "Coordenação Geral • Especialista e Professora em Endodontia",
+    location: "Uberlândia - MG",
+    description: "Cirurgiã-dentista, professora de cursos de Endodontia e Diretora Clínica da Odontologia Nossa Clínica.",
+    fullBio: "Cirurgiã-dentista graduada em Odontologia com formação e atuação dedicada à Endodontia e Dentística Restauradora em Uberlândia (MG).\n\nProfessora de cursos na área de Endodontia e Diretora Clínica da Odontologia Nossa Clínica. Possui sólida trajetória clínica voltada para diagnósticos de precisão, preservação biológica e tratamentos endodônticos avançados.\n\nCoordenadora Geral do Endomeeting do Triângulo Mineiro, integrando a comissão organizadora e científica desde as primeiras edições para promover o intercâmbio de conhecimento de alto nível.",
+    image: "/images/coordenadores.jpeg"
+  },
+  {
+    name: "Rodrigo Antonio de Faria",
+    title: "Coordenação Geral • Mestre em Endodontia pela UFMG",
+    location: "Uberlândia - MG",
+    description: "Mestre pela UFMG e Especialista pela PUC Minas, com mais de 30 anos de atuação clínica e docente em Endodontia.",
+    fullBio: "Graduado em Odontologia pela Universidade Federal de Uberlândia (UFU) em 1993.\n\nMestre em Endodontia pela Universidade Federal de Minas Gerais (UFMG), com aperfeiçoamento pela mesma instituição e Especialista em Endodontia pela Pontifícia Universidade Católica de Minas Gerais (PUC Minas).\n\nFoi professor do curso de Odontologia do Centro Universitário do Triângulo (Unitri) por duas décadas, onde atuou como docente e coordenou diversas turmas de especialização e pós-graduação em Endodontia entre 2006 e 2020. Atua também como docente em cursos de aperfeiçoamento clínico (Dental Hall, IQO e INPES) e mantém prática clínica exclusiva em Endodontia em Uberlândia desde 1993.\n\nCoordenador Geral e idealizador do Endomeeting do Triângulo Mineiro.",
+    image: "/images/coordenadores.jpeg"
+  },
+  {
+    name: "Renata Pereira Georjutti",
+    title: "Coordenação Geral • Doutora pela UFU & Mestre pela SLMandic",
+    location: "Uberlândia - MG",
+    description: "Doutora em Clínica Odontológica pela UFU, Mestre pela SLMandic e coordenadora do curso de Odontologia da UNITRI.",
+    fullBio: "Cirurgiã-dentista com Doutorado em Clínica Odontológica Integrada pela Universidade Federal de Uberlândia (UFU) e Mestrado em Endodontia pela Faculdade de Odontologia São Leopoldo Mandic (Campinas).\n\nDocente e Coordenadora do curso de Odontologia do Centro Universitário do Triângulo (Unitri). Possui ampla experiência acadêmica e clínica com ênfase em instrumentação mecanizada, medicamentos intracanais, prevenção de reabsorções radiculares e novos materiais em Endodontia.\n\nAutora de publicações científicas e artigos em periódicos especializados. Atua na clínica privada e é Coordenadora Geral do Endomeeting do Triângulo Mineiro.",
+    image: "/images/coordenadores.jpeg"
+  }
+];
+
 export default function Home() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupContent, setPopupContent] = useState<{ title: string, message: string, url: string } | undefined>(undefined);
@@ -92,10 +119,10 @@ export default function Home() {
 
   const handleOpenPopup = (title: string, audience: string | null, url: string) => {
     setPopupContent({
-      title: `Ingresso: ${title}`,
+      title: `Inscrição: ${title}`,
       message: audience
-        ? `Atenção: Este ingresso é destinado exclusivamente para ${audience}. Será necessário comprovar sua categoria no credenciamento do evento. Caso não haja comprovação, será cobrada a diferença para o valor do ingresso integral no local. Deseja prosseguir?`
-        : "Você está sendo redirecionado para a plataforma de pagamentos (Kiwify). Os ingressos são limitados e os lotes podem esgotar rapidamente. Tem certeza que deseja continuar?",
+        ? `Atenção: Esta inscrição é destinada exclusivamente para ${audience}. Será necessário comprovar sua categoria no credenciamento do evento. Caso não haja comprovação, será cobrada a diferença para o valor da inscrição integral no local. Deseja prosseguir?`
+        : "Você está sendo redirecionado para a plataforma de pagamentos (Kiwify). As inscrições são limitadas e os lotes podem esgotar rapidamente. Tem certeza que deseja continuar?",
       url: url
     });
     setIsPopupOpen(true);
@@ -176,7 +203,7 @@ export default function Home() {
           >
             <Image
               src="/logo.png.png"
-              alt="4º Endomeeting"
+              alt="4º Endomeeting TM"
               width={520}
               height={160}
               className="w-full max-w-[320px] md:max-w-[480px] h-auto brightness-200 invert grayscale drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)]"
@@ -232,7 +259,7 @@ export default function Home() {
                 onClick={scrollToTickets}
                 className="flex items-center justify-center gap-3 px-10 py-5 bg-brand-900 text-white rounded-2xl text-lg font-bold shadow-2xl shadow-brand-900/40"
               >
-                Garantir Ingresso
+                Garantir Inscrição
                 <ChevronRight className="w-5 h-5" />
               </motion.button>
 
@@ -326,7 +353,7 @@ export default function Home() {
 
                     <div>
                       <span className="text-white font-black uppercase tracking-widest text-xs sm:text-sm block drop-shadow-md">
-                        Vídeo Oficial • 4º Endomeeting
+                        Vídeo Oficial • 4º Endomeeting TM
                       </span>
                       <span className="text-neutral-200 text-xs font-semibold mt-1.5 block drop-shadow-sm">
                         Aperte o play para assistir com áudio
@@ -566,7 +593,7 @@ export default function Home() {
                     onClick={() => handleOpenPopup(currentPromo.label, currentPromo.audience, currentPromo.url)}
                     className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-brand-600 to-brand-700 hover:from-brand-500 hover:to-brand-600 hover:scale-[1.02] transition-all duration-300 shadow-xl shadow-brand-950 flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <span>Garantir Ingresso de Lançamento</span>
+                    <span>Garantir Inscrição de Lançamento</span>
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 ) : (
@@ -646,9 +673,9 @@ export default function Home() {
               <div>
                 <h4 className="text-lg font-bold text-white mb-2">Política de Inscrição e Responsabilidade</h4>
                 <p className="text-brand-100/70 text-sm leading-relaxed">
-                  Ao adquirir seu ingresso, o participante assume a responsabilidade de garantir que sua categoria profissional condiz com o ingresso selecionado.
+                  Ao realizar sua inscrição, o participante assume a responsabilidade de garantir que sua categoria profissional condiz com a inscrição selecionada.
                   <strong className="text-white"> É obrigatória a comprovação da categoria no momento do credenciamento.</strong>
-                  Caso não seja apresentada a documentação comprobatória, será cobrada a diferença de valor para o ingresso integral vigente no dia do evento para a liberação da credencial.
+                  Caso não seja apresentada a documentação comprobatória, será cobrada a diferença de valor para a inscrição integral vigente no dia do evento para a liberação da credencial.
                 </p>
               </div>
             </div>
@@ -677,7 +704,7 @@ export default function Home() {
                 Local do Evento
               </h2>
               <p className="text-neutral-600 text-base sm:text-lg leading-relaxed mb-8 max-w-xl font-medium">
-                O 4º Endomeeting será sediado no moderno complexo de convenções da CDL Uberlândia, com auditório climatizado de alta capacidade, infraestrutura tecnológica e localização privilegiada.
+                O 4º Endomeeting do Triângulo Mineiro será sediado no moderno complexo de convenções da CDL Uberlândia, com auditório climatizado de alta capacidade, infraestrutura tecnológica e localização privilegiada.
               </p>
 
               <div className="flex items-start gap-5 p-6 bg-white rounded-3xl shadow-lg shadow-neutral-200/50 border border-neutral-200/80">
@@ -809,7 +836,7 @@ export default function Home() {
               viewport={{ once: true }}
               className="text-3xl md:text-5xl font-black text-neutral-900 mb-4 tracking-tight"
             >
-              Onde se hospedar para o <span className="text-brand-900">Endomeeting</span>
+              Onde se hospedar para o <span className="text-brand-900">4º Endomeeting TM</span>
             </motion.h2>
             <p className="text-neutral-500 max-w-2xl text-base sm:text-lg font-medium leading-relaxed">
               Selecionamos as melhores opções de hotéis em Uberlândia, garantindo alto padrão, praticidade e fácil acesso ao evento.
@@ -936,8 +963,8 @@ export default function Home() {
                   link: "https://www.google.com/maps/search/?api=1&query=Lym+Flat+Hotel+Uberlandia"
                 },
                 {
-                  name: "Hotel Presidente (B&B - Tubal Vilela)",
-                  badge: "Central & Tradicional",
+                  name: "B&B Hotels (Praça Tubal Vilela)",
+                  badge: "Central & Prático",
                   address: "Praça Tubal Vilela, 192 - Centro",
                   link: "https://www.google.com/maps/search/?api=1&query=BB+Hotels+Uberlandia+Tubal+Vilela"
                 }
@@ -986,20 +1013,14 @@ export default function Home() {
 
         <div className="container mx-auto px-6 relative z-10 max-w-6xl">
           <div className="flex flex-col items-center text-center mb-16">
-            <span className="text-brand-400 font-black uppercase tracking-[0.3em] text-xs sm:text-sm mb-4 px-4 py-1.5 rounded-full bg-brand-950/80 border border-brand-800/50">
-              Coordenação Geral & Realização
-            </span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight"
+              className="text-3xl sm:text-4xl md:text-6xl font-black text-white tracking-tight"
             >
-              Comissão Organizadora
+              Coordenação Geral & Realização
             </motion.h2>
-            <p className="text-neutral-400 max-w-2xl text-lg sm:text-xl font-medium leading-relaxed">
-              Conheça os profissionais dedicados a realizar uma experiência científica, clínica e humana inesquecível no Endomeeting.
-            </p>
           </div>
 
           <motion.div
@@ -1015,7 +1036,7 @@ export default function Home() {
                 <div className="relative w-full max-w-[540px] aspect-[627/481] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
                   <Image
                     src="/images/coordenadores.jpeg"
-                    alt="Equipe de coordenadores Endomeeting TM"
+                    alt="Equipe de coordenadores do 4º Endomeeting TM"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-contain"
@@ -1028,7 +1049,7 @@ export default function Home() {
                 <div className="inline-flex items-center gap-2 mb-4">
                   <span className="w-2.5 h-2.5 rounded-full bg-brand-500 animate-pulse" />
                   <span className="text-xs font-bold uppercase tracking-widest text-brand-400">
-                    Equipe de coordenadores Endomeeting TM
+                    Equipe de coordenadores do 4º Endomeeting TM
                   </span>
                 </div>
 
@@ -1037,36 +1058,31 @@ export default function Home() {
                 </h3>
 
                 <p className="text-neutral-300 text-sm sm:text-base leading-relaxed mb-8">
-                  Com vasta trajetória na endodontia e no ensino odontológico de alto nível, a comissão coordenadora atua em cada detalhe do congresso: da curadoria científica e recepção de palestrantes de renome à infraestrutura de excelência para todos os congressistas.
+                  Com vasta trajetória na Endodontia e no ensino odontológico de alto nível, os coordenadores deste evento estão à frente de cada detalhe, para a excelência do 4º Endomeeting do Triângulo Mineiro em 2027.
                 </p>
 
                 <div className="space-y-3 pt-6 border-t border-white/10">
-                  <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-brand-500/30 transition-colors">
-                    <p className="text-base font-bold text-white leading-tight">
-                      Dra. Cristiane da Cruz Silva
-                    </p>
-                    <span className="text-xs text-neutral-400 font-medium mt-1 block">
-                      Coordenação Geral
-                    </span>
-                  </div>
-
-                  <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-brand-500/30 transition-colors">
-                    <p className="text-base font-bold text-white leading-tight">
-                      Dr. Rodrigo Antonio de Faria
-                    </p>
-                    <span className="text-xs text-neutral-400 font-medium mt-1 block">
-                      Coordenação Geral
-                    </span>
-                  </div>
-
-                  <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-brand-500/30 transition-colors">
-                    <p className="text-base font-bold text-white leading-tight">
-                      Dra. Renata Pereira Georjutti
-                    </p>
-                    <span className="text-xs text-neutral-400 font-medium mt-1 block">
-                      Coordenação Geral
-                    </span>
-                  </div>
+                  {coordinatorsData.map((coord, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => handleOpenSpeakerModal(coord)}
+                      className="w-full text-left p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-brand-500/60 hover:bg-white/[0.07] transition-all cursor-pointer flex items-center justify-between group shadow-sm"
+                    >
+                      <div>
+                        <p className="text-base font-bold text-white leading-tight group-hover:text-brand-300 transition-colors">
+                          {coord.name}
+                        </p>
+                        <span className="text-xs text-neutral-400 font-medium mt-1 block">
+                          Coordenação Geral
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-brand-400 opacity-80 group-hover:opacity-100 group-hover:translate-x-1 transition-all">
+                        <span>Conheça</span>
+                        <ChevronRight className="w-4 h-4" />
+                      </div>
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>

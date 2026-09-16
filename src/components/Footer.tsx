@@ -34,7 +34,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li><a href="#palestrantes" className="hover:text-brand-400 transition-colors">Palestrantes</a></li>
               <li><a href="#cronograma" className="hover:text-brand-400 transition-colors">Cronograma</a></li>
-              <li><a href="#ingressos" className="hover:text-brand-400 transition-colors">Ingressos</a></li>
+              <li><a href="#ingressos" className="hover:text-brand-400 transition-colors">Inscrições</a></li>
               <li><a href="#localizacao" className="hover:text-brand-400 transition-colors">Localização</a></li>
             </ul>
           </div>
@@ -45,27 +45,24 @@ export function Footer() {
               <li className="flex flex-col">
                 <span className="text-sm text-neutral-500">WhatsApp</span>
                 <a
-                  href="https://api.whatsapp.com/send/?phone=5534998121269&text&type=phone_number&app_absent=0"
+                  href="https://api.whatsapp.com/send/?phone=5534999923672&text&type=phone_number&app_absent=0"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-brand-400 hover:text-brand-300 font-medium"
                 >
-                  (34) 99812-1269
+                  (34) 99992-3672
                 </a>
               </li>
               <li className="flex flex-col mt-2">
                 <span className="text-sm text-neutral-500">Realização</span>
-                <span className="font-medium text-white">EndomeetingTM</span>
+                <span className="font-medium text-white">Endomeeting TM</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-16 pt-8 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
-          <p>© {new Date().getFullYear()} EndomeetingTM LTDA. Todos os direitos reservados.</p>
-          <div className="flex items-center gap-4">
-            <span>Desenvolvido por Is Help</span>
-          </div>
+          <p>© {new Date().getFullYear()} Endomeeting TM. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>

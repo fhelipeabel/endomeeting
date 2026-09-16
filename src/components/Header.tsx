@@ -23,7 +23,7 @@ export function Header() {
 
   const navLinks = [
     { name: "Palestrantes", href: "#palestrantes" },
-    { name: "Ingressos", href: "#ingressos" },
+    { name: "Inscrições", href: "#ingressos" },
     { name: "Localização", href: "#localizacao" },
   ];
 

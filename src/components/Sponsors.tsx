@@ -26,7 +26,7 @@ export function Sponsors() {
             Patrocinadores
           </motion.h2>
           <p className="text-neutral-500 max-w-2xl text-xl font-medium">
-            Parceiros que tornam o <span className="text-brand-900">Endomeeting</span> uma realidade.
+            Parceiros que tornam o <span className="text-brand-900 font-bold">4º Endomeeting TM</span> uma grande realidade.
           </p>
         </div>
 
