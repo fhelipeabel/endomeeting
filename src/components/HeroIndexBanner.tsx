@@ -74,7 +74,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
     {
       name: "Profª. Mª. Amanda Lavor",
       shortName: "Amanda Lavor",
-      origin: "Juazeiro do Norte - CE",
+      origin: "Jz. do Norte - CE",
       image: "/images/palestrantes/amanda-lavor.jpg"
     },
     {

@@ -18,6 +18,7 @@ const sponsorsData: {
   diamante: [
     { name: "Ceddro Diagnóstico por Imagem", logo: "/images/patrocinadores/diamante/ceddro.png" },
     { name: "Easy Bassi", logo: "/images/patrocinadores/diamante/easy-bassi.png" },
+    { name: "Helse", logo: "/images/patrocinadores/diamante/Helse.webp" },
     { name: "Ricardo Oliveira", logo: "/images/patrocinadores/diamante/ricardo-oliveira.png" },
     { name: "Solla", logo: "/images/patrocinadores/diamante/solla.png" },
     { name: "Uniodonto", logo: "/images/patrocinadores/diamante/uniodonto.png" },
@@ -171,24 +172,33 @@ export function Sponsors() {
               <h3 className="text-xs font-bold text-neutral-400 tracking-[0.25em] uppercase mb-8">
                 Apoiadores
               </h3>
-              <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 max-w-4xl">
-                {sponsorsData.apoiadores.map((item, i) => (
-                  <motion.div 
-                    key={i} 
-                    whileHover={{ scale: 1.05 }}
-                    className="w-44 h-22 sm:w-52 sm:h-26 bg-neutral-50/90 rounded-2xl border border-neutral-200/80 hover:bg-white hover:border-brand-300 hover:shadow-md transition-all duration-300 p-4 flex items-center justify-center group relative overflow-hidden"
-                  >
-                    <div className="relative w-full h-full flex items-center justify-center">
-                      <Image
-                        src={item.logo}
-                        alt={item.name}
-                        fill
-                        sizes="(max-width: 640px) 160px, 200px"
-                        className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 max-w-5xl">
+                {sponsorsData.apoiadores.map((item, i) => {
+                  const isRodrigo = item.name.toLowerCase().includes("rodrigo");
+                  return (
+                    <motion.div 
+                      key={i} 
+                      whileHover={{ scale: 1.05 }}
+                      className={`${
+                        isRodrigo ? "w-52 h-26 sm:w-64 sm:h-32 shadow-sm" : "w-44 h-22 sm:w-52 sm:h-26"
+                      } bg-neutral-50/90 rounded-2xl border border-neutral-200/80 hover:bg-white hover:border-brand-300 hover:shadow-md transition-all duration-300 ${
+                        isRodrigo ? "p-2 sm:p-3" : "p-4"
+                      } flex items-center justify-center group relative overflow-hidden`}
+                    >
+                      <div className="relative w-full h-full flex items-center justify-center">
+                        <Image
+                          src={item.logo}
+                          alt={item.name}
+                          fill
+                          sizes="(max-width: 640px) 180px, 240px"
+                          className={`object-contain transition-transform duration-300 group-hover:scale-105 ${
+                            isRodrigo ? "p-0.5 scale-110 sm:scale-115" : "p-2"
+                          }`}
+                        />
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </motion.div>
           )}

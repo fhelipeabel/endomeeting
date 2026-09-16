@@ -76,8 +76,8 @@ export const speakers: Speaker[] = [
   },
   {
     name: "Profª. Mª. Amanda Lavor",
-    title: "Mestre em Endodontia • Referência em MV2 & Atrésicos",
-    location: "Juazeiro do Norte - CE",
+    title: "Mestre em Endodontia • Criadora do Protocolo AL-MV2",
+    location: "Jz. do Norte - CE",
     description: "Mestre em Endodontia e criadora do Protocolo AL-MV2 para localização e instrumentação de canais atrésicos e complexos.",
     fullBio: "Cirurgiã-dentista, Mestre e Especialista em Endodontia. Reconhecida nacionalmente pela sua metodologia e didática clínica inovadora na abordagem de anatomias desafiadoras, sendo criadora do consagrado Protocolo AL-MV2 voltado para localização, desinfecção e instrumentação segura de canais atrésicos e de alta complexidade. Mentora de centenas de especialistas pelo país, unindo evidência científica rigorosa, previsibilidade e resolutividade no consultório.",
     socials: {

@@ -12,7 +12,7 @@ import SpeakerModal from "@/components/SpeakerModal";
 import HeroIndexBanner from "@/components/HeroIndexBanner";
 import { Speaker } from "@/data/speakers";
 
-type PromoCategoryKey = "academicos" | "pos" | "dentistas";
+type PromoCategoryKey = "academicos" | "pos" | "patricia_ferrari" | "uniodonto" | "dentistas";
 
 interface CategoryInfo {
   id: PromoCategoryKey;
@@ -40,14 +40,36 @@ const promoCategories: Record<PromoCategoryKey, CategoryInfo> = {
   },
   pos: {
     id: "pos",
-    label: "Alunos de Pós-graduação",
-    badge: "Pós-graduação",
+    label: "Pós-Graduação",
+    badge: "Pós-Graduação",
     price: "350,00",
     installments: "Em até 10x no cartão",
     description: "Destinado para alunos matriculados em cursos de pós-graduação e especialização.",
     requirement: "Necessário comprovante de matrícula na pós-graduação.",
     url: "https://pay.kiwify.com.br/pZjGeTV?afid=oSUqXXjK",
     audience: "alunos de pós-graduação em Odontologia"
+  },
+  patricia_ferrari: {
+    id: "patricia_ferrari",
+    label: "Grupo de estudos Patrícia Ferrari",
+    badge: "Grupo Patrícia Ferrari",
+    price: "350,00",
+    installments: "Em até 10x no cartão",
+    description: "Destinado exclusivamente para participantes do Grupo de estudos Patrícia Ferrari.",
+    requirement: "Necessário comprovação de vínculo com o Grupo de estudos Patrícia Ferrari.",
+    url: "https://pay.kiwify.com.br/pZjGeTV?afid=oSUqXXjK",
+    audience: "membros do Grupo de estudos Patrícia Ferrari"
+  },
+  uniodonto: {
+    id: "uniodonto",
+    label: "Uniodonto",
+    badge: "Uniodonto",
+    price: "350,00",
+    installments: "Em até 10x no cartão",
+    description: "Destinado para cirurgiões-dentistas cooperados e credenciados Uniodonto.",
+    requirement: "Necessário comprovação de cooperado ou credenciado Uniodonto.",
+    url: "https://pay.kiwify.com.br/pZjGeTV?afid=oSUqXXjK",
+    audience: "cooperados e credenciados Uniodonto"
   },
   dentistas: {
     id: "dentistas",
@@ -69,7 +91,7 @@ const coordinatorsData: Speaker[] = [
     location: "Uberlândia - MG",
     description: "Cirurgiã-dentista, professora de cursos de Endodontia e Diretora Clínica da Odontologia Nossa Clínica.",
     fullBio: "Cirurgiã-dentista graduada em Odontologia com formação e atuação dedicada à Endodontia e Dentística Restauradora em Uberlândia (MG).\n\nProfessora de cursos na área de Endodontia e Diretora Clínica da Odontologia Nossa Clínica. Possui sólida trajetória clínica voltada para diagnósticos de precisão, preservação biológica e tratamentos endodônticos avançados.\n\nCoordenadora Geral do Endomeeting do Triângulo Mineiro, integrando a comissão organizadora e científica desde as primeiras edições para promover o intercâmbio de conhecimento de alto nível.",
-    image: "/images/coordenadores.jpeg"
+    image: "/images/coordenadores/cris.jpeg"
   },
   {
     name: "Rodrigo Antonio de Faria",
@@ -77,7 +99,7 @@ const coordinatorsData: Speaker[] = [
     location: "Uberlândia - MG",
     description: "Mestre pela UFMG e Especialista pela PUC Minas, com mais de 30 anos de atuação clínica e docente em Endodontia.",
     fullBio: "Graduado em Odontologia pela Universidade Federal de Uberlândia (UFU) em 1993.\n\nMestre em Endodontia pela Universidade Federal de Minas Gerais (UFMG), com aperfeiçoamento pela mesma instituição e Especialista em Endodontia pela Pontifícia Universidade Católica de Minas Gerais (PUC Minas).\n\nProfessor do curso de Odontologia do Centro Universitário do Triângulo (Unitri), onde coordena a pós-graduação e especialização em Endodontia ininterruptamente desde 2006, completando 20 anos de formação e liderança acadêmica contínua. Atua também como docente em cursos de aperfeiçoamento clínico (Dental Hall, IQO e INPES) e mantém prática clínica exclusiva em Endodontia em Uberlândia desde 1993.\n\nCoordenador Geral e idealizador do Endomeeting do Triângulo Mineiro.",
-    image: "/images/coordenadores.jpeg"
+    image: "/images/coordenadores/rodrigo.jpeg"
   },
   {
     name: "Renata Pereira Georjutti",
@@ -85,7 +107,7 @@ const coordinatorsData: Speaker[] = [
     location: "Uberlândia - MG",
     description: "Doutora em Clínica Odontológica pela UFU, Mestre pela SLMandic e coordenadora do curso de Odontologia da UNITRI.",
     fullBio: "Cirurgiã-dentista com Doutorado em Clínica Odontológica Integrada pela Universidade Federal de Uberlândia (UFU) e Mestrado em Endodontia pela Faculdade de Odontologia São Leopoldo Mandic (Campinas).\n\nDocente e Coordenadora do curso de Odontologia do Centro Universitário do Triângulo (Unitri). Possui ampla experiência acadêmica e clínica com ênfase em instrumentação mecanizada, medicamentos intracanais, prevenção de reabsorções radiculares e novos materiais em Endodontia.\n\nAutora de publicações científicas e artigos em periódicos especializados. Atua na clínica privada e é Coordenadora Geral do Endomeeting do Triângulo Mineiro.",
-    image: "/images/coordenadores.jpeg"
+    image: "/images/coordenadores/renata.jpeg"
   }
 ];
 
@@ -369,33 +391,22 @@ export default function Home() {
 
 
       {/* SPEAKERS SECTION */}
-      <section id="palestrantes" className="w-full py-32 bg-neutral-50/50 relative overflow-hidden">
-        {/* International Badge/Text Highlight */}
-        <div className="absolute top-0 left-0 w-full bg-brand-900 text-white py-3 z-20 shadow-lg">
-          <div className="container mx-auto px-4 text-center">
-            <p className="text-xs md:text-sm font-black tracking-wide uppercase text-neutral-100 max-w-4xl mx-auto leading-relaxed flex items-center justify-center gap-2.5 flex-wrap">
-              <MapPin className="w-4 h-4 text-brand-400 shrink-0 animate-pulse inline-block" />
-              <span>
-                O maior congresso de odontologia do triângulo mineiro, agora se torna{" "}
-                <span className="text-brand-400 font-black inline-block">Internacional!</span>
-              </span>
-              <MapPin className="w-4 h-4 text-brand-400 shrink-0 animate-pulse inline-block" />
-            </p>
-          </div>
-        </div>
-
-        <div className="container mx-auto px-6 mt-12">
-          <div className="flex flex-col items-center mb-16 text-center max-w-4xl mx-auto">
+      <section id="palestrantes" className="w-full bg-neutral-50/50 relative overflow-hidden">
+        {/* Faixa Vermelha com o Título Oficial dos Palestrantes */}
+        <div className="w-full bg-brand-900 text-white py-12 md:py-16 shadow-lg border-b border-brand-800 relative z-20">
+          <div className="container mx-auto px-6 text-center max-w-4xl">
             <motion.h2
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-snug max-w-3xl mx-auto"
             >
               Palestrantes de renome internacional que alinham alta tecnologia e resultados de relevância científica.
             </motion.h2>
           </div>
+        </div>
 
+        <div className="container mx-auto px-6 py-16 md:py-24">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {speakers.map((speaker, index) => (
               <motion.div
@@ -533,7 +544,9 @@ export default function Home() {
                         Selecione sua categoria...
                       </option>
                       <option value="academicos" className="text-white bg-neutral-900">Acadêmicos (Graduação) — R$ 250,00</option>
-                      <option value="pos" className="text-white bg-neutral-900">Alunos de Pós-graduação — R$ 350,00</option>
+                      <option value="pos" className="text-white bg-neutral-900">Pós-Graduação — R$ 350,00</option>
+                      <option value="patricia_ferrari" className="text-white bg-neutral-900">Grupo de estudos Patrícia Ferrari — R$ 350,00</option>
+                      <option value="uniodonto" className="text-white bg-neutral-900">Uniodonto — R$ 350,00</option>
                       <option value="dentistas" className="text-white bg-neutral-900">Cirurgiões-dentistas — R$ 550,00</option>
                     </select>
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-brand-400 text-xs font-bold">
@@ -542,8 +555,8 @@ export default function Home() {
                   </div>
 
                   {/* Tabs / Pills para seleção rápida */}
-                  <div className="grid grid-cols-3 gap-1.5 pt-2">
-                    {(["academicos", "pos", "dentistas"] as PromoCategoryKey[]).map((key) => {
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {(["academicos", "pos", "patricia_ferrari", "uniodonto", "dentistas"] as PromoCategoryKey[]).map((key) => {
                       const isSelected = selectedPromoCategory === key;
                       const cat = promoCategories[key];
                       return (
@@ -551,7 +564,7 @@ export default function Home() {
                           key={key}
                           type="button"
                           onClick={() => setSelectedPromoCategory(key)}
-                          className={`py-2 px-2 rounded-lg text-[11px] font-bold transition-all truncate text-center cursor-pointer ${
+                          className={`flex-1 min-w-[70px] py-2 px-2 rounded-lg text-[11px] font-bold transition-all truncate text-center cursor-pointer ${
                             isSelected
                               ? "bg-brand-600 text-white shadow-sm border border-brand-400/50 scale-[1.02]"
                               : "bg-white/5 text-neutral-400 hover:text-white hover:bg-white/10 border border-white/5"
@@ -767,7 +780,7 @@ export default function Home() {
             <div className="grid sm:grid-cols-3 gap-6 sm:gap-8">
               <div className="relative aspect-square rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-xl border-4 border-white group">
                 <Image
-                  src="/images/cdl/cdl-6.jpeg"
+                  src="/images/cdl/1-palco.jpeg"
                   alt="CDL Uberlândia - Auditório Principal"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -785,7 +798,7 @@ export default function Home() {
 
               <div className="relative aspect-square rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-xl border-4 border-white group">
                 <Image
-                  src="/images/cdl/cdl-7.jpeg"
+                  src="/images/cdl/2-estandes.jpeg"
                   alt="CDL Uberlândia - Espaço e Recepção"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -803,7 +816,7 @@ export default function Home() {
 
               <div className="relative aspect-square rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-xl border-4 border-white group">
                 <Image
-                  src="/images/cdl/cdl-5.jpeg"
+                  src="/images/cdl/3-estrutura.jpeg"
                   alt="CDL Uberlândia - Fachada e Estrutura"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -868,13 +881,13 @@ export default function Home() {
 
               <div>
                 <div className="p-4 bg-white rounded-2xl border border-neutral-100 text-xs text-neutral-700 mb-6 space-y-1">
-                  <p><strong className="text-neutral-900">Endereço:</strong> Av. Rondon Pacheco, 2465 - Saraiva</p>
-                  <p><strong className="text-neutral-900">Telefone:</strong> (34) 3230-9000</p>
+                  <p><strong className="text-neutral-900">Endereço:</strong> Av. Paulo Gracindo, 5 - Gávea (próximo ao Uberlândia Shopping)</p>
+                  <p><strong className="text-neutral-900">WhatsApp / Telefone:</strong> (34) 2028-4429</p>
                 </div>
 
                 <div className="flex flex-wrap gap-2.5">
                   <a
-                    href="https://www.google.com/maps/search/?api=1&query=Novotel+Uberlandia"
+                    href="https://www.google.com/maps/search/?api=1&query=Novotel+Uberlandia+Av+Paulo+Gracindo+5"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 py-3 px-4 bg-neutral-900 hover:bg-neutral-950 text-white text-xs font-bold rounded-xl text-center transition-all shadow-sm"
@@ -882,7 +895,7 @@ export default function Home() {
                     Ver no Maps
                   </a>
                   <a
-                    href="https://api.whatsapp.com/send/?phone=553432309000"
+                    href="https://api.whatsapp.com/send/?phone=553420284429"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 py-3 px-4 bg-white hover:bg-neutral-100 text-neutral-900 text-xs font-bold rounded-xl border border-neutral-300 text-center transition-all"
@@ -1067,15 +1080,26 @@ export default function Home() {
                       key={idx}
                       type="button"
                       onClick={() => handleOpenSpeakerModal(coord)}
-                      className="w-full text-left p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-brand-500/60 hover:bg-white/[0.07] transition-all cursor-pointer flex items-center justify-between group shadow-sm"
+                      className="w-full text-left p-3.5 sm:p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-brand-500/60 hover:bg-white/[0.07] transition-all cursor-pointer flex items-center justify-between group shadow-sm"
                     >
-                      <div>
-                        <p className="text-base font-bold text-white leading-tight group-hover:text-brand-300 transition-colors">
-                          {coord.name}
-                        </p>
-                        <span className="text-xs text-neutral-400 font-medium mt-1 block">
-                          Coordenação Geral
-                        </span>
+                      <div className="flex items-center gap-3.5">
+                        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-brand-500/40 shrink-0 bg-neutral-800 shadow-md">
+                          <Image
+                            src={coord.image || "/images/coordenadores.jpeg"}
+                            alt={coord.name}
+                            fill
+                            sizes="48px"
+                            className="object-cover group-hover:scale-110 transition-transform duration-300"
+                          />
+                        </div>
+                        <div>
+                          <p className="text-base font-bold text-white leading-tight group-hover:text-brand-300 transition-colors">
+                            {coord.name}
+                          </p>
+                          <span className="text-xs text-neutral-400 font-medium mt-0.5 block">
+                            Coordenação Geral
+                          </span>
+                        </div>
                       </div>
                       <div className="flex items-center gap-1.5 text-xs font-bold text-brand-400 opacity-80 group-hover:opacity-100 group-hover:translate-x-1 transition-all">
                         <span>Conheça</span>
