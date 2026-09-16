@@ -35,7 +35,7 @@ export const speakers: Speaker[] = [
     video: "/videos/video-mario-zuolo.mp4"
   },
   {
-    name: "Prof. Dr. Carlos Eduardo Bueno",
+    name: "Prof. Dr. Carlos Bueno",
     title: "Autor do Livro 'Excelência em Endodontia Clínica'",
     location: "Campinas",
     description: "Mestre e Doutor pela FOP-UNICAMP. Coordenador de Especialização e Mestrado na SLMandic.",
@@ -66,7 +66,7 @@ export const speakers: Speaker[] = [
     isComingSoon: false
   },
   {
-    name: "Prof. Dr. Marco Antonio Hungaro Duarte",
+    name: "Prof. Dr. Marco Hungaro",
     title: "Professor Titular da FOB-USP",
     location: "Bauru - SP",
     description: "Bolsista Produtividade CNPq nível 1B, autor de mais de 500 artigos e livros de referência.",
@@ -96,7 +96,7 @@ export const speakers: Speaker[] = [
     isComingSoon: false
   },
   {
-    name: "Prof. Dr. Murilo Priori Alcalde",
+    name: "Prof. Dr. Murilo Alcalde",
     title: "Professor da FOB-USP • Pesquisador & Autor",
     location: "Bauru - SP",
     description: "Mestre, Doutor e Pós-Doutor pela FOB/USP, coautor de livro e Coordenador de Pesquisa da Bondent América Latina.",

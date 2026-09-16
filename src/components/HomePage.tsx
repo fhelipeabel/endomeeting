@@ -345,26 +345,28 @@ export default function Home() {
       <section id="palestrantes" className="w-full py-32 bg-neutral-50/50 relative overflow-hidden">
         {/* International Badge/Text Highlight */}
         <div className="absolute top-0 left-0 w-full bg-brand-900 text-white py-3 z-20 shadow-lg">
-          <div className="container mx-auto px-6 text-center">
-            <p className="text-xs md:text-sm font-black tracking-[0.2em] uppercase flex items-center justify-center gap-4">
-              <MapPin className="w-4 h-4 text-brand-400 animate-pulse" />
-              O maior congresso de odontologia do triângulo mineiro, agora se torna <span className="text-brand-400">Internacional!</span>
-              <MapPin className="w-4 h-4 text-brand-400 animate-pulse" />
+          <div className="container mx-auto px-4 text-center">
+            <p className="text-xs md:text-sm font-black tracking-wide uppercase text-neutral-100 max-w-4xl mx-auto leading-relaxed flex items-center justify-center gap-2.5 flex-wrap">
+              <MapPin className="w-4 h-4 text-brand-400 shrink-0 animate-pulse inline-block" />
+              <span>
+                O maior congresso de odontologia do triângulo mineiro, agora se torna{" "}
+                <span className="text-brand-400 font-black inline-block">Internacional!</span>
+              </span>
+              <MapPin className="w-4 h-4 text-brand-400 shrink-0 animate-pulse inline-block" />
             </p>
           </div>
         </div>
 
         <div className="container mx-auto px-6 mt-12">
-          <div className="flex flex-col items-center mb-20 text-center">
+          <div className="flex flex-col items-center mb-16 text-center max-w-4xl mx-auto">
             <motion.h2
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-black text-neutral-900 mb-6 tracking-tight"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight"
             >
-              Mestres da Endodontia
+              Palestrantes de renome internacional que alinham alta tecnologia e resultados de relevância científica.
             </motion.h2>
-            <p className="text-neutral-500 max-w-2xl text-xl font-medium">Aprenda com professores experientes que aliam alta tecnologia e resultados de excelência.</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -401,8 +403,16 @@ export default function Home() {
                       />
                       <div className="absolute inset-0 bg-brand-900/0 group-hover:bg-brand-900/10 transition-colors duration-500" />
                       {speaker.isInternational && (
-                        <div className="absolute top-3 left-3 bg-brand-600 text-white p-1.5 rounded-xl z-10 shadow-md">
-                          <MapPin className="w-4 h-4" />
+                        <div
+                          className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm p-1.5 rounded-xl z-10 shadow-lg border border-white/30 flex items-center justify-center"
+                          title="Portugal - Convidado Internacional"
+                        >
+                          <svg viewBox="0 0 600 400" className="w-6 h-4 rounded-xs shadow-xs" aria-label="Bandeira de Portugal">
+                            <rect width="600" height="400" fill="#DA291C" />
+                            <rect width="240" height="400" fill="#046A38" />
+                            <circle cx="240" cy="200" r="80" fill="#FFCC00" stroke="#000000" strokeWidth="4" />
+                            <rect x="212" y="165" width="56" height="70" rx="8" fill="#FFFFFF" stroke="#003399" strokeWidth="4" />
+                          </svg>
                         </div>
                       )}
                     </>
@@ -575,39 +585,49 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Card 2: 1º Lote (BLOQUEADO / APENAS CADEADO NO MEIO) */}
+            {/* Card 2: 1º Lote (BLOQUEADO / CARD CLARO / CADEADO DOBRADO) */}
             <motion.div
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white/[0.02] backdrop-blur-xl rounded-[2rem] p-8 border border-white/10 flex flex-col items-center justify-center min-h-[380px] relative overflow-hidden group opacity-60 hover:opacity-80 transition-opacity"
+              className="bg-white rounded-[2rem] p-8 border-2 border-neutral-200/80 shadow-2xl flex flex-col items-center justify-center min-h-[380px] relative overflow-hidden group hover:scale-[1.01] transition-all duration-300"
             >
-              <div className="flex flex-col items-center justify-center gap-4 text-center">
-                <div className="w-20 h-20 rounded-3xl bg-neutral-900/90 border border-white/10 flex items-center justify-center text-neutral-400 shadow-2xl group-hover:border-white/20 transition-all">
-                  <Lock className="w-9 h-9 text-neutral-400" />
+              <div className="flex flex-col items-center justify-center gap-5 text-center">
+                <div className="w-40 h-40 rounded-[2.5rem] bg-neutral-100 border-2 border-neutral-200/80 shadow-inner flex items-center justify-center text-neutral-500 group-hover:scale-105 transition-all duration-300">
+                  <Lock className="w-20 h-20 text-neutral-500 stroke-[1.75]" />
                 </div>
-                <span className="text-sm font-bold uppercase tracking-widest text-neutral-400">
-                  1º Lote
-                </span>
+                <div>
+                  <span className="text-base font-black uppercase tracking-widest text-neutral-900 block">
+                    1º Lote
+                  </span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 mt-1 block">
+                    Em Breve
+                  </span>
+                </div>
               </div>
             </motion.div>
 
-            {/* Card 3: 2º Lote (BLOQUEADO / APENAS CADEADO NO MEIO) */}
+            {/* Card 3: 2º Lote (BLOQUEADO / TOM INTERMEDIÁRIO / CADEADO DOBRADO) */}
             <motion.div
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white/[0.02] backdrop-blur-xl rounded-[2rem] p-8 border border-white/10 flex flex-col items-center justify-center min-h-[380px] relative overflow-hidden group opacity-60 hover:opacity-80 transition-opacity"
+              className="bg-neutral-800/95 backdrop-blur-xl rounded-[2rem] p-8 border-2 border-neutral-700/80 shadow-xl flex flex-col items-center justify-center min-h-[380px] relative overflow-hidden group hover:scale-[1.01] transition-all duration-300"
             >
-              <div className="flex flex-col items-center justify-center gap-4 text-center">
-                <div className="w-20 h-20 rounded-3xl bg-neutral-900/90 border border-white/10 flex items-center justify-center text-neutral-400 shadow-2xl group-hover:border-white/20 transition-all">
-                  <Lock className="w-9 h-9 text-neutral-400" />
+              <div className="flex flex-col items-center justify-center gap-5 text-center">
+                <div className="w-40 h-40 rounded-[2.5rem] bg-neutral-900/90 border-2 border-neutral-700/70 shadow-2xl flex items-center justify-center text-neutral-400 group-hover:scale-105 transition-all duration-300">
+                  <Lock className="w-20 h-20 text-neutral-400 stroke-[1.75]" />
                 </div>
-                <span className="text-sm font-bold uppercase tracking-widest text-neutral-400">
-                  2º Lote
-                </span>
+                <div>
+                  <span className="text-base font-black uppercase tracking-widest text-neutral-200 block">
+                    2º Lote
+                  </span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 mt-1 block">
+                    Em Breve
+                  </span>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -796,75 +816,26 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Destaque: Hotel Oficial & Novotel em Grid de Destaque */}
+          {/* Hotéis Principais: Novotel & Hotel San Diego (Nobile Suites) em Grid de Destaque */}
           <div className="grid lg:grid-cols-2 gap-6 mb-10">
-            {/* Mercure - Hotel Oficial */}
-            <motion.div
-              initial={{ opacity: 1, y: 0 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-neutral-50 border border-neutral-200/80 rounded-3xl p-6 sm:p-8 shadow-lg flex flex-col justify-between relative overflow-hidden hover:border-brand-500/30 transition-all"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-brand-700 font-black uppercase tracking-wider text-[11px] px-3 py-1 rounded-full bg-brand-100/60 border border-brand-200">
-                    ★ Hotel Oficial do Evento
-                  </span>
-                </div>
-                <h3 className="text-xl sm:text-2xl font-black text-neutral-900 mb-2">
-                  Mercure Uberlândia Plaza Shopping
-                </h3>
-                <p className="text-xs sm:text-sm text-neutral-600 mb-6 leading-relaxed">
-                  Conectado ao Plaza Shopping, oferece localização estratégica, alto conforto e facilidade de acesso ao evento.
-                </p>
-              </div>
-
-              <div>
-                <div className="p-4 bg-white rounded-2xl border border-neutral-100 text-xs text-neutral-700 mb-6 space-y-1">
-                  <p><strong className="text-neutral-900">Endereço:</strong> Rua da Bandeira, 400 - Tibery</p>
-                  <p><strong className="text-neutral-900">Telefone:</strong> (34) 3239-8000</p>
-                </div>
-
-                <div className="flex flex-wrap gap-2.5">
-                  <a
-                    href="https://www.google.com/maps/search/?api=1&query=Mercure+Uberlândia+Plaza+Shopping"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 py-3 px-4 bg-brand-900 hover:bg-brand-950 text-white text-xs font-bold rounded-xl text-center transition-all shadow-sm"
-                  >
-                    Ver no Maps
-                  </a>
-                  <a
-                    href="https://api.whatsapp.com/send/?phone=553432398000"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 py-3 px-4 bg-white hover:bg-neutral-100 text-neutral-900 text-xs font-bold rounded-xl border border-neutral-300 text-center transition-all"
-                  >
-                    Contato WhatsApp
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-
             {/* Novotel Uberlândia */}
             <motion.div
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
               className="bg-neutral-50 border border-neutral-200/80 rounded-3xl p-6 sm:p-8 shadow-lg flex flex-col justify-between relative overflow-hidden hover:border-brand-500/30 transition-all"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">
                   <span className="text-neutral-800 font-black uppercase tracking-wider text-[11px] px-3 py-1 rounded-full bg-neutral-200/70 border border-neutral-300">
-                    ◆ Executivo & Internacional
+                    ◆ Conforto & Padrão Internacional
                   </span>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-black text-neutral-900 mb-2">
                   Novotel Uberlândia
                 </h3>
                 <p className="text-xs sm:text-sm text-neutral-600 mb-6 leading-relaxed">
-                  Infraestrutura moderna e sofisticada de padrão internacional, excelente para quem busca conforto e alta gastronomia.
+                  Infraestrutura moderna e sofisticada de padrão internacional, excelente para quem busca conforto, alta gastronomia e fácil acesso ao evento.
                 </p>
               </div>
 
@@ -894,6 +865,55 @@ export default function Home() {
                 </div>
               </div>
             </motion.div>
+
+            {/* Hotel San Diego (Nobile Suites) */}
+            <motion.div
+              initial={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-neutral-50 border border-neutral-200/80 rounded-3xl p-6 sm:p-8 shadow-lg flex flex-col justify-between relative overflow-hidden hover:border-brand-500/30 transition-all"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-neutral-800 font-black uppercase tracking-wider text-[11px] px-3 py-1 rounded-full bg-neutral-200/70 border border-neutral-300">
+                    ◆ Executivo & Sofisticação
+                  </span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-black text-neutral-900 mb-2">
+                  Hotel San Diego (Nobile Suites)
+                </h3>
+                <p className="text-xs sm:text-sm text-neutral-600 mb-6 leading-relaxed">
+                  Estrutura executiva de alto padrão na Av. Rondon Pacheco, com suítes amplas, serviços completos e localização estratégica em Uberlândia.
+                </p>
+              </div>
+
+              <div>
+                <div className="p-4 bg-white rounded-2xl border border-neutral-100 text-xs text-neutral-700 mb-6 space-y-1">
+                  <p><strong className="text-neutral-900">Endereço:</strong> Av. Rondon Pacheco, 3500 - Santa Maria</p>
+                  <p><strong className="text-neutral-900">Telefone:</strong> (34) 3233-4000</p>
+                </div>
+
+                <div className="flex flex-wrap gap-2.5">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Hotel+San+Diego+Suites+Uberlandia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-3 px-4 bg-neutral-900 hover:bg-neutral-950 text-white text-xs font-bold rounded-xl text-center transition-all shadow-sm"
+                  >
+                    Ver no Maps
+                  </a>
+                  <a
+                    href="https://api.whatsapp.com/send/?phone=553432334000"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-3 px-4 bg-white hover:bg-neutral-100 text-neutral-900 text-xs font-bold rounded-xl border border-neutral-300 text-center transition-all"
+                  >
+                    Contato WhatsApp
+                  </a>
+                </div>
+              </div>
+            </motion.div>
           </div>
 
           {/* Outras Opções em Grid Limpo e Compacto */}
@@ -906,20 +926,20 @@ export default function Home() {
                 {
                   name: "Ibis Uberlândia",
                   badge: "Custo-Benefício",
-                  address: "Av. João Naves de Ávila, 1590",
+                  address: "Av. João Naves de Ávila, 1590 - Santa Mônica",
                   link: "https://www.google.com/maps/search/?api=1&query=Ibis+Uberlandia"
                 },
                 {
-                  name: "Ibis Budget Uberlândia",
-                  badge: "Econômico",
-                  address: "Av. João Naves de Ávila, 1460",
-                  link: "https://www.google.com/maps/search/?api=1&query=Ibis+Budget+Uberlandia"
+                  name: "Lym Flat Hotel",
+                  badge: "Praticidade & Conforto",
+                  address: "Rua José Rezende dos Santos, 1140 - Brasil",
+                  link: "https://www.google.com/maps/search/?api=1&query=Lym+Flat+Hotel+Uberlandia"
                 },
                 {
-                  name: "Villalba Hotel",
-                  badge: "Conforto Executivo",
-                  address: "Av. Rondon Pacheco, 4651",
-                  link: "https://www.google.com/maps/search/?api=1&query=Villalba+Hotel+Uberlandia"
+                  name: "Hotel Presidente (B&B - Tubal Vilela)",
+                  badge: "Central & Tradicional",
+                  address: "Praça Tubal Vilela, 192 - Centro",
+                  link: "https://www.google.com/maps/search/?api=1&query=BB+Hotels+Uberlandia+Tubal+Vilela"
                 }
               ].map((hotel, idx) => (
                 <motion.div

@@ -48,8 +48,8 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
       image: "/images/palestrantes/img-mario-zuolo.jpeg"
     },
     {
-      name: "Carlos Eduardo Bueno",
-      shortName: "Carlos E. Bueno",
+      name: "Carlos Bueno",
+      shortName: "Carlos Bueno",
       origin: "Campinas",
       image: "/images/palestrantes/img-bueno.jpeg"
     },
@@ -66,7 +66,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
       image: "/images/palestrantes/maria-ilma_e_juliana.jpeg"
     },
     {
-      name: "Marco Antonio Hungaro Duarte",
+      name: "Marco Hungaro",
       shortName: "Marco Hungaro",
       origin: "Bauru - SP",
       image: "/images/palestrantes/perfil-hungaro.jpeg"
@@ -84,7 +84,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
       image: "/images/palestrantes/paulo_vinicius.jpeg"
     },
     {
-      name: "Murilo Priori Alcalde",
+      name: "Murilo Alcalde",
       shortName: "Murilo Alcalde",
       origin: "Bauru - SP",
       image: "/images/palestrantes/murilo-alcalde.jpeg"
@@ -273,9 +273,16 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
 
                       {speaker.isInternational && (
                         <div
-                          className="absolute top-1.5 right-1.5 w-3 h-3 rounded-full bg-brand-500 border-2 border-neutral-950 ring-1 ring-brand-400"
-                          title="Convidado Internacional"
-                        />
+                          className="absolute top-1 right-1 w-4 h-3 rounded-xs overflow-hidden border border-white/50 shadow-sm flex items-center justify-center bg-black/60"
+                          title="Portugal - Convidado Internacional"
+                        >
+                          <svg viewBox="0 0 600 400" className="w-full h-full" aria-label="Bandeira de Portugal">
+                            <rect width="600" height="400" fill="#DA291C" />
+                            <rect width="240" height="400" fill="#046A38" />
+                            <circle cx="240" cy="200" r="80" fill="#FFCC00" stroke="#000000" strokeWidth="4" />
+                            <rect x="212" y="165" width="56" height="70" rx="8" fill="#FFFFFF" stroke="#003399" strokeWidth="4" />
+                          </svg>
+                        </div>
                       )}
                     </div>
 

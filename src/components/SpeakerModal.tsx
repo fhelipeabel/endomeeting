@@ -78,8 +78,16 @@ export default function SpeakerModal({ speaker, isOpen, onClose }: SpeakerModalP
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
                   {speaker.isInternational && (
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-600 text-white text-xs font-bold uppercase tracking-wider mb-4">
-                      <MapPin className="w-3 h-3" /> Convidado Internacional
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-600/90 text-white text-xs font-bold uppercase tracking-wider mb-4 shadow-md backdrop-blur-sm border border-white/20">
+                      <span className="w-4 h-3 rounded-xs overflow-hidden inline-flex items-center justify-center shadow-xs">
+                        <svg viewBox="0 0 600 400" className="w-full h-full" aria-label="Bandeira de Portugal">
+                          <rect width="600" height="400" fill="#DA291C" />
+                          <rect width="240" height="400" fill="#046A38" />
+                          <circle cx="240" cy="200" r="80" fill="#FFCC00" stroke="#000000" strokeWidth="4" />
+                          <rect x="212" y="165" width="56" height="70" rx="8" fill="#FFFFFF" stroke="#003399" strokeWidth="4" />
+                        </svg>
+                      </span>
+                      Convidado Internacional
                     </div>
                   )}
                   <h3 className="text-3xl font-black text-white leading-tight">{speaker.name}</h3>
