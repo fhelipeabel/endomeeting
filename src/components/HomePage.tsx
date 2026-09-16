@@ -146,17 +146,17 @@ export default function Home() {
         </>
       )}
 
-      {/* INTRO SECTION ORIGINAL (1ª TELA ESCURA) */}
-      <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-neutral-950">
+      {/* INTRO SECTION ORIGINAL (1ª TELA - FUNDO CLAREADO) */}
+      <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-neutral-900">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <Image
             src="/intro-dark.png"
             alt="Endomeeting Background"
             fill
-            className="object-cover opacity-35 scale-105"
+            className="object-cover opacity-65 scale-105"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-neutral-950" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-neutral-950/75" />
         </div>
 
         <motion.div

@@ -12,6 +12,15 @@ import {
   User
 } from "lucide-react";
 
+interface BannerSpeaker {
+  name: string;
+  shortName: string;
+  origin?: string;
+  isInternational?: boolean;
+  image?: string;
+  initials?: string;
+}
+
 interface HeroIndexBannerProps {
   onSelectSpeaker?: (speakerName: string) => void;
 }
@@ -24,7 +33,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
     }
   };
 
-  const speakersList = [
+  const speakersList: BannerSpeaker[] = [
     {
       name: "Rui Pereira Costa",
       shortName: "Rui Pereira",
@@ -51,8 +60,8 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
       image: "/images/palestrantes/img-patricia.webp"
     },
     {
-      name: "Maria Ilma & Juliana Vilela",
-      shortName: "Maria Ilma & Juliana",
+      name: "Profª. Dra. Maria Ilma & Profª. Dra. Juliana Vilela",
+      shortName: "Dras. Maria Ilma & Juliana",
       origin: "MG / GO",
       image: "/images/palestrantes/maria-ilma_e_juliana.jpeg"
     },
@@ -63,7 +72,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
       image: "/images/palestrantes/perfil-hungaro.jpeg"
     },
     {
-      name: "Amanda Lavor",
+      name: "Profª. Mª. Amanda Lavor",
       shortName: "Amanda Lavor",
       origin: "Brasil",
       image: "/images/palestrantes/amanda-lavor.jpg"
@@ -71,8 +80,8 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
     {
       name: "Paulo Vinícius",
       shortName: "Paulo Vinícius",
-      origin: "Uberlândia",
-      initials: "PV"
+      origin: "Uberlândia - MG",
+      image: "/images/palestrantes/paulo_vinicius.jpeg"
     },
     {
       name: "Murilo Priori Alcalde",
@@ -83,8 +92,8 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
     {
       name: "Samuel Nogueira",
       shortName: "Samuel Nogueira",
-      origin: "São Paulo",
-      initials: "SN"
+      origin: "Fortaleza - CE",
+      image: "/images/palestrantes/samuel_nogueira.jpeg"
     },
   ];
 
@@ -96,19 +105,19 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
 
   return (
     <section id="painel-info" className="relative w-full min-h-screen bg-neutral-950 text-white overflow-hidden flex flex-col justify-between py-6 md:py-10 px-4 sm:px-6 lg:px-8 border-b border-white/10">
-      {/* BACKGROUND AMBIENCE & LIGHTING (Fundo Escuro Premium) */}
+      {/* BACKGROUND AMBIENCE & LIGHTING (Fundo Escuro Premium Clareado) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
         {/* Imagem de Fundo Original com Opacidade e Escala Suave */}
         <Image
           src="/intro-dark.png"
           alt="Endomeeting Background"
           fill
-          className="object-cover opacity-25 scale-105"
+          className="object-cover opacity-35 scale-105"
           priority
         />
 
-        {/* Gradiente Vignette Cinematográfico */}
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/90 via-neutral-950/70 to-neutral-950" />
+        {/* Gradiente Vignette Cinematográfico Suave */}
+        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/80 via-neutral-950/55 to-neutral-950" />
 
         {/* Glows Radiais Tons Vinho / Brand Red de Alta Sofisticação */}
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[850px] h-[520px] bg-brand-900/35 rounded-full blur-[140px]" />

@@ -43,7 +43,7 @@ export default function SpeakerModal({ speaker, isOpen, onClose }: SpeakerModalP
               <div className="relative w-full md:w-1/2 aspect-[3/4] md:aspect-auto min-h-[440px] md:min-h-0 bg-neutral-900 overflow-hidden">
                 {(() => {
                   const name = speaker.name.toLowerCase();
-                  const isTopFocus = name.includes("patrícia") || name.includes("zuolo");
+                  const isTopFocus = name.includes("patrícia") || name.includes("zuolo") || name.includes("paulo");
                   const objectPositionClass = isTopFocus ? "object-top" : "object-center";
 
                   return speaker.video ? (

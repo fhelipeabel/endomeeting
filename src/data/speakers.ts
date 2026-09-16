@@ -57,7 +57,7 @@ export const speakers: Speaker[] = [
     video: "/videos/video-patricia.mp4"
   },
   {
-    name: "Profª. Maria Ilma & Profª. Juliana Vilela",
+    name: "Profª. Dra. Maria Ilma & Profª. Dra. Juliana Vilela",
     title: "Dupla Palestrante • Prática Clínica & Excelência",
     location: "Minas Gerais / Goiás",
     description: "Abordagem integrada combinando experiência acadêmica consagrada e protocolos contemporâneos de alta previsibilidade.",
@@ -75,7 +75,7 @@ export const speakers: Speaker[] = [
     isComingSoon: false
   },
   {
-    name: "Profª. Dra. Amanda Lavor",
+    name: "Profª. Mª. Amanda Lavor",
     title: "Mestre em Endodontia • Referência em MV2 & Atrésicos",
     location: "Brasil",
     description: "Mestre em Endodontia e criadora do Protocolo AL-MV2 para localização e instrumentação de canais atrésicos e complexos.",
@@ -88,9 +88,11 @@ export const speakers: Speaker[] = [
   },
   {
     name: "Prof. Dr. Paulo Vinícius",
-    title: "Professor e Pesquisador em Endodontia",
-    location: "Uberlândia",
-    description: "Referência em protocolos clínicos avançados, instrumentação mecanizada e biomecânica.",
+    title: "Prof. Associado FOUFU • Pós-Doutor UIC Chicago",
+    location: "Uberlândia - MG",
+    description: "Professor Associado da FOUFU, Pós-Doutor pela University of Illinois at Chicago (EUA), autor de livros internacionais e referência em Reabilitação Oral e Estética.",
+    fullBio: "Professor Associado de Dentística e Materiais Odontológicos da Faculdade de Odontologia da Universidade Federal de Uberlândia (FOUFU).\n\nPossui Pós-Doutorado pelo College of Dentistry, University of Illinois at Chicago (EUA), Doutorado em Clínica Odontológica pela UNICAMP, Mestrado em Reabilitação Oral pela FOUFU e Especialização em Dentística pela FOUFU.\n\nProfessor e Orientador do Programa de Pós-Graduação (Mestrado/Doutorado) da FOUFU, Fundador e Líder do Grupo de Pesquisa LCNC-FOUFU (CNPq) e Consultor e Professor de Pós-Graduação da Faculdade São Leopoldo Mandic (Campinas).\n\nAtua como cirurgião-dentista no corpo clínico do Instituto Paulo Vinícius (Uberlândia-MG) como responsável pela área de Reabilitação Oral e Estética. Fundador do Instituto IPV Odontologia e Centro de Treinamentos, sócio-fundador do Iknow Odonto Cursos e IK Journal, e mentor do ecossistema digital DENTISTA PRO.\n\nMembro da Sociedade Brasileira de Odontologia Estética (SBOE) e da Sociedade Brasileira de Pesquisa Odontológica (SBPqO). Autor dos livros de referência internacional 'Non Carious Cervical Lesions and Cervical Dentin Hypersensitivity' (Ed. Quintessence Publishing, Chicago - traduzido para português e mandarim), 'Hipersensibilidade Dentinária - Guia Clínico' (Editora Santos/IKnow) e da série 'ChairSide Guide - Bridges' (Volumes 1 e 2).\n\nEditor-Chefe da Journal of Clinical and Dental Research, revisor de conceituadas revistas científicas internacionais (Operative Dentistry, Journal of Prosthetic Dentistry, Australian Dental Journal, Clinical Oral Investigations, Journal of Oral Rehabilitation) e autor de dezenas de artigos científicos e capítulos de livros.",
+    image: "/images/palestrantes/paulo_vinicius.jpeg",
     isComingSoon: false
   },
   {
@@ -103,10 +105,12 @@ export const speakers: Speaker[] = [
     isComingSoon: false
   },
   {
-    name: "Prof. Dr. Samuel Nogueira",
-    title: "Cirurgião-Dentista e Especialista",
-    location: "São Paulo",
-    description: "Prática clínica focada em microscopia operatória, obturação termoplastificada e resoluções anatômicas.",
+    name: "Prof. Dr. Samuel Nogueira Lima",
+    title: "Doutor em Clínica Odontológica & Mestre em Endodontia",
+    location: "Fortaleza - CE",
+    description: "Doutor e Mestre pela SLMandic, especialista em Endodontia e Ortodontia, com sólida atuação clínica e ex-1º Tenente da FAB.",
+    fullBio: "Graduado em Odontologia pela Universidade de Fortaleza (UNIFOR) em 2000.\n\nDoutor em Clínica Odontológica (concluído em 2024) e Mestre em Endodontia (2018) pela Faculdade São Leopoldo Mandic.\n\nEspecialista em Endodontia pela Associação Brasileira de Endodontia - Seção Ceará (2002), Especialista em Ortodontia pela Universidade Vale do Acaraú (2011) e pós-graduado em Prótese Dentária pela Academia Cearense de Odontologia (2008).\n\nAtua na clínica privada nas áreas de Clínica Geral e Endodontia desde 2000. Atuou como cirurgião-dentista de saúde da família na cidade de Fortaleza (2001 a 2006) e como 1º Tenente Dentista / Endodontista da Força Aérea Brasileira (FAB) de 2006 a 2012.",
+    image: "/images/palestrantes/samuel_nogueira.jpeg",
     isComingSoon: false
   }
 ];
