@@ -35,7 +35,7 @@ const promoCategories: Record<PromoCategoryKey, CategoryInfo> = {
     installments: "Em até 10x no cartão",
     description: "Destinado exclusivamente para estudantes de graduação em Odontologia.",
     requirement: "Necessário comprovação de matrícula ativa no credenciamento.",
-    url: "https://pay.kiwify.com.br/rrtPxfL",
+    url: "https://pay.kiwify.com.br/HK8eGlB?afid=oSUqXXjK",
     audience: "estudantes de graduação em Odontologia"
   },
   pos: {
@@ -46,7 +46,7 @@ const promoCategories: Record<PromoCategoryKey, CategoryInfo> = {
     installments: "Em até 10x no cartão",
     description: "Destinado para alunos matriculados em cursos de pós-graduação e especialização.",
     requirement: "Necessário comprovante de matrícula na pós-graduação.",
-    url: "https://pay.kiwify.com.br/sQSX4he",
+    url: "https://pay.kiwify.com.br/pZjGeTV?afid=oSUqXXjK",
     audience: "alunos de pós-graduação em Odontologia"
   },
   dentistas: {
@@ -57,7 +57,7 @@ const promoCategories: Record<PromoCategoryKey, CategoryInfo> = {
     installments: "Em até 10x no cartão",
     description: "Destinado a Cirurgiões-dentistas formados que buscam atualização e excelência clínica.",
     requirement: "Acesso completo a todas as palestras e feira comercial.",
-    url: "https://pay.kiwify.com.br/7HjGskz",
+    url: "https://pay.kiwify.com.br/Pv8qrvV?afid=oSUqXXjK",
     audience: null
   }
 };
@@ -76,7 +76,7 @@ const coordinatorsData: Speaker[] = [
     title: "Coordenação Geral • Mestre em Endodontia pela UFMG",
     location: "Uberlândia - MG",
     description: "Mestre pela UFMG e Especialista pela PUC Minas, com mais de 30 anos de atuação clínica e docente em Endodontia.",
-    fullBio: "Graduado em Odontologia pela Universidade Federal de Uberlândia (UFU) em 1993.\n\nMestre em Endodontia pela Universidade Federal de Minas Gerais (UFMG), com aperfeiçoamento pela mesma instituição e Especialista em Endodontia pela Pontifícia Universidade Católica de Minas Gerais (PUC Minas).\n\nFoi professor do curso de Odontologia do Centro Universitário do Triângulo (Unitri) por duas décadas, onde atuou como docente e coordenou diversas turmas de especialização e pós-graduação em Endodontia entre 2006 e 2020. Atua também como docente em cursos de aperfeiçoamento clínico (Dental Hall, IQO e INPES) e mantém prática clínica exclusiva em Endodontia em Uberlândia desde 1993.\n\nCoordenador Geral e idealizador do Endomeeting do Triângulo Mineiro.",
+    fullBio: "Graduado em Odontologia pela Universidade Federal de Uberlândia (UFU) em 1993.\n\nMestre em Endodontia pela Universidade Federal de Minas Gerais (UFMG), com aperfeiçoamento pela mesma instituição e Especialista em Endodontia pela Pontifícia Universidade Católica de Minas Gerais (PUC Minas).\n\nProfessor do curso de Odontologia do Centro Universitário do Triângulo (Unitri), onde coordena a pós-graduação e especialização em Endodontia ininterruptamente desde 2006, completando 20 anos de formação e liderança acadêmica contínua. Atua também como docente em cursos de aperfeiçoamento clínico (Dental Hall, IQO e INPES) e mantém prática clínica exclusiva em Endodontia em Uberlândia desde 1993.\n\nCoordenador Geral e idealizador do Endomeeting do Triângulo Mineiro.",
     image: "/images/coordenadores.jpeg"
   },
   {
