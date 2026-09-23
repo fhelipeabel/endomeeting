@@ -94,20 +94,20 @@ const coordinatorsData: Speaker[] = [
     image: "/images/coordenadores/cris.jpeg"
   },
   {
-    name: "Rodrigo Antonio de Faria",
-    title: "Coordenação Geral • Mestre em Endodontia pela UFMG",
-    location: "Uberlândia - MG",
-    description: "Mestre pela UFMG e Especialista pela PUC Minas, com mais de 30 anos de atuação clínica e docente em Endodontia.",
-    fullBio: "Graduado em Odontologia pela Universidade Federal de Uberlândia (UFU) em 1993.\n\nMestre em Endodontia pela Universidade Federal de Minas Gerais (UFMG), com aperfeiçoamento pela mesma instituição e Especialista em Endodontia pela Pontifícia Universidade Católica de Minas Gerais (PUC Minas).\n\nProfessor do curso de Odontologia do Centro Universitário do Triângulo (Unitri), onde coordena a pós-graduação e especialização em Endodontia ininterruptamente desde 2006, completando 20 anos de formação e liderança acadêmica contínua. Atua também como docente em cursos de aperfeiçoamento clínico (Dental Hall, IQO e INPES) e mantém prática clínica exclusiva em Endodontia em Uberlândia desde 1993.\n\nCoordenador Geral e idealizador do Endomeeting do Triângulo Mineiro.",
-    image: "/images/coordenadores/rodrigo.jpeg"
-  },
-  {
     name: "Renata Pereira Georjutti",
     title: "Coordenação Geral • Doutora pela UFU & Mestre pela SLMandic",
     location: "Uberlândia - MG",
     description: "Doutora em Clínica Odontológica pela UFU, Mestre pela SLMandic e coordenadora do curso de Odontologia da UNITRI.",
     fullBio: "Cirurgiã-dentista com Doutorado em Clínica Odontológica Integrada pela Universidade Federal de Uberlândia (UFU) e Mestrado em Endodontia pela Faculdade de Odontologia São Leopoldo Mandic (Campinas).\n\nDocente e Coordenadora do curso de Odontologia do Centro Universitário do Triângulo (Unitri). Possui ampla experiência acadêmica e clínica com ênfase em instrumentação mecanizada, medicamentos intracanais, prevenção de reabsorções radiculares e novos materiais em Endodontia.\n\nAutora de publicações científicas e artigos em periódicos especializados. Atua na clínica privada e é Coordenadora Geral do Endomeeting do Triângulo Mineiro.",
     image: "/images/coordenadores/renata.jpeg"
+  },
+  {
+    name: "Rodrigo Antonio de Faria",
+    title: "Coordenação Geral • Mestre em Endodontia pela UFMG",
+    location: "Uberlândia - MG",
+    description: "Mestre pela UFMG e Especialista pela PUC Minas, com mais de 30 anos de atuação clínica e docente em Endodontia.",
+    fullBio: "Graduado em Odontologia pela Universidade Federal de Uberlândia (UFU) em 1993.\n\nMestre em Endodontia pela Universidade Federal de Minas Gerais (UFMG), com aperfeiçoamento pela mesma instituição e Especialista em Endodontia pela Pontifícia Universidade Católica de Minas Gerais (PUC Minas).\n\nProfessor do curso de Odontologia do Centro Universitário do Triângulo (Unitri), onde coordena a pós-graduação e especialização em Endodontia ininterruptamente desde 2006, completando 20 anos de formação e liderança acadêmica contínua. Atua também como docente em cursos de aperfeiçoamento clínico (Dental Hall, IQO e INPES) e mantém prática clínica exclusiva em Endodontia em Uberlândia desde 1993.\n\nCoordenador Geral e idealizador do Endomeeting do Triângulo Mineiro.",
+    image: "/images/coordenadores/rodrigo.jpeg"
   }
 ];
 
