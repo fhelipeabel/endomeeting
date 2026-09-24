@@ -6,7 +6,7 @@ import Image from "next/image";
 import { PaymentPopup } from "@/components/PaymentPopup";
 import { Sponsors } from "@/components/Sponsors";
 import { speakers } from "@/data/speakers";
-import { MapPin, ChevronRight, User, Sparkles, AlertCircle, Lock, Play, Building2 } from "lucide-react";
+import { MapPin, ChevronRight, User, Sparkles, AlertCircle, Lock, Play, Pause, Music, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
 import SpeakerModal from "@/components/SpeakerModal";
 import HeroIndexBanner from "@/components/HeroIndexBanner";
@@ -123,6 +123,20 @@ export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlay = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   useEffect(() => {
     setMounted(true);
     // Data de virada de lote: 02 de maio de 2026 às 08:00 (Horário de Brasília)
@@ -196,6 +210,34 @@ export default function Home() {
             isOpen={isSpeakerModalOpen}
             onClose={() => setIsSpeakerModalOpen(false)}
           />
+
+          {/* GLOBAL BACKGROUND AUDIO PLAYER */}
+          <audio
+            ref={audioRef}
+            src="/alex-morgan-flamenco-spanish-guitar-fire-passion-530943.mp3"
+            loop
+          />
+
+          {/* GLOBAL FLOATING AUDIO CONTROLS */}
+          <div className="fixed bottom-6 right-6 lg:bottom-8 lg:right-8 z-50">
+            <button
+              onClick={togglePlay}
+              className="flex items-center gap-2 px-3 py-2 bg-neutral-900/80 backdrop-blur-md border border-white/10 rounded-full text-white hover:bg-brand-900/50 hover:border-brand-500/50 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] group"
+              title="Música de Fundo"
+            >
+              <div className="w-10 h-10 rounded-full bg-brand-600 group-hover:bg-brand-500 transition-colors flex items-center justify-center shrink-0 shadow-md">
+                {isPlaying ? (
+                  <Pause className="w-5 h-5 text-white" fill="currentColor" />
+                ) : (
+                  <Play className="w-5 h-5 text-white ml-0.5" fill="currentColor" />
+                )}
+              </div>
+              <span className="text-xs font-bold uppercase tracking-wider hidden sm:block pr-1">
+                {isPlaying ? "Música On" : "Música Off"}
+              </span>
+              <Music className={`w-4 h-4 text-brand-400 hidden sm:block ${isPlaying ? "animate-pulse" : ""}`} />
+            </button>
+          </div>
         </>
       )}
 

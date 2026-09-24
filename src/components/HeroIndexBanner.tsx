@@ -111,6 +111,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
 
   return (
     <section id="painel-info" className="relative w-full min-h-screen bg-neutral-950 text-white overflow-hidden flex flex-col justify-between py-6 md:py-10 px-4 sm:px-6 lg:px-8 border-b border-white/10">
+      
       {/* BACKGROUND AMBIENCE & LIGHTING (Fundo Escuro Premium Clareado) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
         {/* Imagem de Fundo Original com Opacidade e Escala Suave */}
