@@ -139,6 +139,12 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
+    
+    // Configura o volume do áudio global para 50%
+    if (audioRef.current) {
+      audioRef.current.volume = 0.5;
+    }
+
     // Data de virada de lote: 02 de maio de 2026 às 08:00 (Horário de Brasília)
     const switchDate = new Date('2026-05-02T08:00:00-03:00');
     if (new Date() >= switchDate) {
@@ -374,7 +380,13 @@ export default function Home() {
                 controls={isVideoPlaying}
                 playsInline
                 preload="metadata"
-                onPlay={() => setIsVideoPlaying(true)}
+                onPlay={() => {
+                  setIsVideoPlaying(true);
+                  if (audioRef.current && isPlaying) {
+                    audioRef.current.pause();
+                    setIsPlaying(false);
+                  }
+                }}
                 onPause={() => setIsVideoPlaying(false)}
                 onEnded={() => setIsVideoPlaying(false)}
                 className="w-full h-full object-cover"
