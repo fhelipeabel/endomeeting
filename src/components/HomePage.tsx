@@ -157,10 +157,14 @@ export default function Home() {
   };
 
   const handleSelectSpeakerByName = (speakerName: string) => {
-    const found = speakers.find(s =>
-      s.name.toLowerCase().includes(speakerName.toLowerCase()) ||
-      speakerName.toLowerCase().includes(s.name.toLowerCase())
-    );
+    const clean = (str: string) =>
+      str.toLowerCase().replace(/profª?\.|\bdrª?\.|\bprof\.|\bmª\.|\bdr\.|\bdras?\./gi, "").replace(/\s+/g, " ").trim();
+    const target = clean(speakerName);
+    const found = speakers.find(s => {
+      const sName = clean(s.name);
+      return sName.includes(target) || target.includes(sName) ||
+        (target.includes("maria ilma") && sName.includes("maria ilma"));
+    });
     if (found && !found.isComingSoon) {
       setSelectedSpeaker(found);
       setIsSpeakerModalOpen(true);

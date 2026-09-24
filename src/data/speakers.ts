@@ -22,6 +22,10 @@ export const speakers: Speaker[] = [
     description: "Diretor do Instituto Português de Endodontia e Professor na Universidade de Lisboa e Barcelona.",
     fullBio: "Licenciado pela Faculdade de Medicina Dentária da Universidade do Porto. Mestre em Endodontia pela Universitat Internacional de Catalunya - Barcelona. Doutor em Ciências (Endodontia) pela Faculdade de Odontologia de Ribeirão Preto da USP. Fellow do International College of Dentists. Professor Associado no Curso de Especialização em Endodontia e nas disciplinas de Endodontia da Faculdade de Medicina Dentária da Universidade de Lisboa. Professor no Mestrado em Endodontia na Universitat Internacional de Catalunya - Barcelona. Professor convidado na Pós-Graduação em Endodontia da CESPU – Porto. Autor de diversos artigos científicos em revistas nacionais e internacionais na área da Endodontia. Palestrante em congressos nacionais e internacionais, incluindo Espanha, Itália, Brasil, Chile, Argentina, Colômbia, Uruguai, Angola, Dubai, Bahrein, Líbano, Itália, Hungria, etc. Coordenador dos cursos de formação pós-graduada em Endodontia RPCendo. Diretor do Instituto Português de Endodontia. Prática exclusiva em Endodontia em Portugal e na Irlanda.",
     isInternational: true,
+    socials: {
+      instagram: "https://www.instagram.com/rpcendo/",
+      website: "https://rpcendo.com/"
+    },
     image: "/images/palestrantes/rui-pereira.jpeg",
     video: "/videos/video-rui.mp4"
   },
@@ -58,11 +62,12 @@ export const speakers: Speaker[] = [
   },
   {
     name: "Profª. Dra. Maria Ilma & Profª. Dra. Juliana Vilela",
-    title: "Dupla Palestrante • Prática Clínica & Excelência",
+    title: "Referências em Endodontia e Traumatologia Dentária",
     location: "B. Horizonte - MG",
-    description: "Abordagem integrada combinando experiência acadêmica consagrada e protocolos contemporâneos de alta previsibilidade.",
-    fullBio: "Palestra em conjunto unindo o conhecimento acadêmico de gerações e os protocolos contemporâneos de tratamento endodôntico.\n\nProfª. Dra. Maria Ilma: Doutora e docente com trajetória exemplar, formadora de inúmeros especialistas e referência no ensino odontológico.\n\nProfª. Dra. Juliana Vilela: Especialista e pesquisadora com atuação focada em técnicas de desinfecção tridimensional, condutas conservadoras e resoluções clínicas de alta performance.",
+    description: "Professoras e Doutoras com trajetória marcante no ensino e pesquisa, pioneiras na criação do Programa de Traumatismos Dentários da UFMG.",
+    fullBio: "Palestra em conjunto unindo décadas de dedicação à ciência e à clínica, com destaque para a atuação inovadora em traumatismos dentários na Universidade Federal de Minas Gerais (UFMG).\n\nProfª. Dra. Maria Ilma: Docente de grande relevância na formação de mestres e doutores (UFMG e PUCMG). Idealizou e criou em 1986 a Clínica de Traumatismos Dentários da UFMG, projeto de extensão pioneiro que se tornou centro de referência nacional em assistência, ensino e produção científica, transformando problemas clínicos em pesquisas de impacto.\n\nProfª. Dra. Juliana Vilela: Mestre em Endodontia e Doutora em Biologia Celular pela UFMG. Com forte atuação em pesquisas sobre resposta pulpar e reabsorções radiculares decorrentes de trauma, participou da criação da Clínica de Traumatismos da UFMG e, posteriormente, assumiu sua coordenação, conduzindo estudos longitudinais focados em fraturas radiculares e sobrevivência pulpar.",
     image: "/images/palestrantes/maria-ilma_e_juliana.jpeg",
+    video: "/videos/video-maria-ilma-e-juliana.mp4",
     isComingSoon: false
   },
   {
@@ -84,6 +89,7 @@ export const speakers: Speaker[] = [
       instagram: "https://www.instagram.com/amandadelavor/"
     },
     image: "/images/palestrantes/amanda-lavor.jpg",
+    video: "/videos/video-amanda-lavor.mp4",
     isComingSoon: false
   },
   {
@@ -92,6 +98,10 @@ export const speakers: Speaker[] = [
     location: "Uberlândia - MG",
     description: "Professor Associado da FOUFU, Pós-Doutor pela University of Illinois at Chicago (EUA), autor de livros internacionais e referência em Reabilitação Oral e Estética.",
     fullBio: "Professor Associado de Dentística e Materiais Odontológicos da Faculdade de Odontologia da Universidade Federal de Uberlândia (FOUFU).\n\nPossui Pós-Doutorado pelo College of Dentistry, University of Illinois at Chicago (EUA), Doutorado em Clínica Odontológica pela UNICAMP, Mestrado em Reabilitação Oral pela FOUFU e Especialização em Dentística pela FOUFU.\n\nProfessor e Orientador do Programa de Pós-Graduação (Mestrado/Doutorado) da FOUFU, Fundador e Líder do Grupo de Pesquisa LCNC-FOUFU (CNPq) e Consultor e Professor de Pós-Graduação da Faculdade São Leopoldo Mandic (Campinas).\n\nAtua como cirurgião-dentista no corpo clínico do Instituto Paulo Vinícius (Uberlândia-MG) como responsável pela área de Reabilitação Oral e Estética. Fundador do Instituto IPV Odontologia e Centro de Treinamentos, sócio-fundador do Iknow Odonto Cursos e IK Journal, e mentor do ecossistema digital DENTISTA PRO.\n\nMembro da Sociedade Brasileira de Odontologia Estética (SBOE) e da Sociedade Brasileira de Pesquisa Odontológica (SBPqO). Autor dos livros de referência internacional 'Non Carious Cervical Lesions and Cervical Dentin Hypersensitivity' (Ed. Quintessence Publishing, Chicago - traduzido para português e mandarim), 'Hipersensibilidade Dentinária - Guia Clínico' (Editora Santos/IKnow) e da série 'ChairSide Guide - Bridges' (Volumes 1 e 2).\n\nEditor-Chefe da Journal of Clinical and Dental Research, revisor de conceituadas revistas científicas internacionais (Operative Dentistry, Journal of Prosthetic Dentistry, Australian Dental Journal, Clinical Oral Investigations, Journal of Oral Rehabilitation) e autor de dezenas de artigos científicos e capítulos de livros.",
+    socials: {
+      instagram: "https://www.instagram.com/dr.paulovsoares/",
+      website: "https://paulovsoares.com.br/"
+    },
     image: "/images/palestrantes/paulo_vinicius.jpeg",
     isComingSoon: false
   },
@@ -110,6 +120,9 @@ export const speakers: Speaker[] = [
     location: "Maceió - AL",
     description: "Doutor, Mestre e Especialista em Endodontia, fundador do CIENDO (Congresso Internacional Online) e mentor da comunidade ENDONINJAS.",
     fullBio: "Cirurgião-dentista com Doutorado em Clínica Odontológica (2024) e Mestrado em Endodontia (2018) pela Faculdade São Leopoldo Mandic (Campinas).\n\nEspecialista em Endodontia (ABO/CE) e em Ortodontia (UVA), graduado pela UNIFOR (2000), com mais de duas décadas de sólida atuação clínica e docente.\n\nIdealizador e fundador do CIENDO (Congresso Internacional de Endodontia 100% Online) e criador do treinamento e comunidade ENDONINJAS, ecossistema inovador que capacita milhares de cirurgiões-dentistas e especialistas com foco em diagnósticos precisos, instrumentação mecanizada e resoluções clínicas de alta performance.\n\nEx-1º Tenente Dentista/Endodontista da Força Aérea Brasileira (FAB). Ministra cursos, palestras e conferências de destaque em âmbito nacional e internacional.",
+    socials: {
+      instagram: "https://www.instagram.com/samunogueira/"
+    },
     image: "/images/palestrantes/samuel_nogueira.jpeg",
     isComingSoon: false
   },

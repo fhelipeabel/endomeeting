@@ -1,6 +1,7 @@
 "use client";
 
-import { X, MapPin } from "lucide-react";
+import { useEffect } from "react";
+import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Speaker } from "@/data/speakers";
 import Image from "next/image";
@@ -12,12 +13,40 @@ interface SpeakerModalProps {
 }
 
 export default function SpeakerModal({ speaker, isOpen, onClose }: SpeakerModalProps) {
+  // Fix #3: lock body scroll when modal is open so the background page doesn't scroll
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
+  }, [isOpen]);
+
   if (!speaker) return null;
+
+  const name = speaker.name.toLowerCase();
+  const isTopFocus =
+    name.includes("patrícia") ||
+    name.includes("zuolo") ||
+    name.includes("paulo") ||
+    name.includes("capelli") ||
+    name.includes("rui");
+  const objectPositionClass = isTopFocus ? "object-top" : "object-center";
+
+  const hasVideo = Boolean(speaker.video);
+  const hasImage = Boolean(speaker.image);
 
   return (
     <AnimatePresence>
       {isOpen && (
         <>
+          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -25,13 +54,23 @@ export default function SpeakerModal({ speaker, isOpen, onClose }: SpeakerModalP
             className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md"
             onClick={onClose}
           />
+
+          {/*
+            Fix #3: overflow-y-auto + overscroll-contain → modal scrolls internally,
+            scroll does NOT chain to the page behind it.
+            Fix #2: max-h-[90vh] keeps modal bounded; video is max-h-[48vh] on mobile
+            so text below peeks out hinting the user can scroll.
+            style touchAction pan-y allows the modal itself to capture touch scroll.
+          */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="fixed left-1/2 top-1/2 z-[101] w-[95%] max-w-4xl -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[2.5rem] bg-white shadow-2xl"
+            style={{ touchAction: "pan-y" }}
+            className="fixed left-1/2 top-1/2 z-[101] w-[95%] max-w-4xl -translate-x-1/2 -translate-y-1/2 max-h-[90vh] overflow-y-auto overscroll-contain rounded-[2.5rem] bg-white shadow-2xl"
           >
-            <div className="relative flex flex-col md:flex-row h-full max-h-[90vh] overflow-y-auto md:overflow-hidden">
+            <div className="relative flex flex-col md:flex-row">
+              {/* Close button */}
               <button
                 onClick={onClose}
                 aria-label="Fechar"
@@ -40,49 +79,87 @@ export default function SpeakerModal({ speaker, isOpen, onClose }: SpeakerModalP
                 <X className="h-5 w-5" />
               </button>
 
-              {/* Speaker Visual Side (Image or Video) - 1:1 Aspect Ratio Quadrado Padrão */}
-              <div className="relative w-full md:w-1/2 aspect-square bg-neutral-950 overflow-hidden shrink-0 flex items-center justify-center">
-                {(() => {
-                  const name = speaker.name.toLowerCase();
-                  const isTopFocus = name.includes("patrícia") || name.includes("zuolo") || name.includes("paulo") || name.includes("capelli") || name.includes("rui");
-                  const objectPositionClass = isTopFocus ? "object-top" : "object-center";
+              {/*
+                Media side:
+                - Efeito ambient/espelhado: vídeo/imagem duplicado no fundo com blur e escala,
+                  preenchendo as bordas com as cores vivas e movimento em vez do fundo preto estático.
+                - Foreground: vídeo/imagem nítido com drop-shadow e proporções preservadas.
+              */}
+              <div className="relative w-full md:w-1/2 bg-neutral-950 overflow-hidden shrink-0 flex items-center justify-center rounded-t-[2.5rem] md:rounded-l-[2.5rem] md:rounded-tr-none min-h-[240px]">
+                {hasVideo ? (
+                  <>
+                    {/* Efeito espelhado/ambient blur de fundo */}
+                    <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+                      <video
+                        src={speaker.video}
+                        aria-hidden="true"
+                        tabIndex={-1}
+                        className="w-full h-full object-cover scale-135 blur-2xl opacity-78 brightness-105 saturate-125"
+                        autoPlay
+                        loop
+                        playsInline
+                        muted
+                      />
+                      <div className="absolute inset-0 bg-black/15 backdrop-blur-xs" />
+                    </div>
 
-                  return speaker.video ? (
-                    <video 
+                    {/* Vídeo principal nítido */}
+                    <video
                       src={speaker.video}
-                      className={`w-full h-full object-cover ${objectPositionClass}`}
+                      className={`relative z-10 w-full h-auto max-h-[48vh] md:max-h-none md:h-full object-contain ${objectPositionClass} drop-shadow-2xl`}
                       autoPlay
                       loop
                       playsInline
+                      muted
                       onError={(e) => {
                         console.error("Video error:", e);
-                        const target = e.target as HTMLVideoElement;
-                        target.style.display = 'none';
+                        (e.target as HTMLVideoElement).style.display = "none";
                       }}
                     />
-                  ) : speaker.image ? (
-                    <Image
-                      src={speaker.image}
-                      alt={speaker.name || "Palestrante"}
-                      fill
-                      className={`w-full h-full object-cover ${objectPositionClass}`}
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-neutral-900 via-brand-950 to-neutral-900 flex flex-col items-center justify-center text-brand-300">
-                      <span className="font-black text-5xl tracking-widest">
-                        {speaker.name.replace(/Profª?\.|Drª?\./g, "").trim().slice(0, 2).toUpperCase()}
-                      </span>
-                      <span className="text-xs uppercase font-bold text-neutral-400 mt-3">Foto em breve</span>
+                  </>
+                ) : hasImage ? (
+                  <>
+                    {/* Efeito espelhado/ambient blur para imagem */}
+                    <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+                      <Image
+                        src={speaker.image!}
+                        alt=""
+                        fill
+                        aria-hidden="true"
+                        className="object-cover scale-135 blur-2xl opacity-70 brightness-90 saturate-110"
+                      />
+                      <div className="absolute inset-0 bg-black/15" />
                     </div>
-                  );
-                })()}
+
+                    <div className="relative z-10 w-full aspect-square md:h-full md:aspect-auto min-h-[240px]">
+                      <Image
+                        src={speaker.image!}
+                        alt={speaker.name || "Palestrante"}
+                        fill
+                        className={`object-cover ${objectPositionClass}`}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <div className="w-full aspect-square flex flex-col items-center justify-center bg-gradient-to-br from-neutral-900 via-brand-950 to-neutral-900 text-brand-300">
+                    <span className="font-black text-5xl tracking-widest">
+                      {speaker.name
+                        .replace(/Profª?\.|\bDrª?\./g, "")
+                        .trim()
+                        .slice(0, 2)
+                        .toUpperCase()}
+                    </span>
+                    <span className="text-xs uppercase font-bold text-neutral-400 mt-3">
+                      Foto em breve
+                    </span>
+                  </div>
+                )}
               </div>
 
-              {/* Content Side */}
-              <div className="flex-1 p-6 sm:p-8 md:p-10 overflow-y-auto bg-white flex flex-col justify-between">
+              {/* Content side */}
+              <div className="flex-1 p-6 sm:p-8 md:p-10 bg-white flex flex-col justify-between md:overflow-y-auto">
                 <div>
-                  {/* Cabeçalho do Palestrante / Coordenador */}
                   <div className="mb-6 pb-6 border-b border-neutral-100 pr-8">
                     {speaker.isInternational && (
                       <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 text-brand-800 border border-brand-200 text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">

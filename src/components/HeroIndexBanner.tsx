@@ -60,8 +60,8 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
       image: "/images/palestrantes/img-patricia.webp"
     },
     {
-      name: "Profª. Dra. Maria Ilma & Profª. Dra. Juliana Vilela",
-      shortName: "Dras. Maria Ilma & Juliana",
+      name: "Maria Ilma & Juliana Vilela",
+      shortName: "Maria Ilma & Juliana",
       origin: "B. Horizonte - MG",
       image: "/images/palestrantes/maria-ilma_e_juliana.jpeg"
     },
