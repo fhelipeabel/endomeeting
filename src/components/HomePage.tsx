@@ -220,7 +220,7 @@ export default function Home() {
           {/* GLOBAL BACKGROUND AUDIO PLAYER */}
           <audio
             ref={audioRef}
-            src="/alex-morgan-flamenco-spanish-guitar-fire-passion-530943.mp3"
+            src="/alex-morgan-flamenco-spanish-guitar-fire-passion-530943.mpeg"
             loop
           />
 
