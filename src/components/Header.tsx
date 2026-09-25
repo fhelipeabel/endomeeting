@@ -36,18 +36,16 @@ export function Header() {
       }}
       transition={{ duration: 0.5, ease: "circOut" }}
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-        isScrolled ? "bg-white/70 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.03)] py-3 border-b border-white/20" : "bg-white/40 backdrop-blur-md py-5"
+        isScrolled ? "bg-white/70 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.03)] py-3" : "bg-white/40 backdrop-blur-md py-5"
       }`}
     >
-      {/* Scroll Progress Bar */}
-      {isScrolled && (
-        <motion.div 
-          className="absolute bottom-0 left-0 h-[2px] bg-brand-900"
-          initial={{ width: 0 }}
-          animate={{ width: "100%" }}
-          transition={{ duration: 0.3 }}
-        />
-      )}
+      {/* Scroll Progress Bar — colada na borda inferior do header */}
+      <motion.div
+        className="absolute inset-x-0 bottom-0 h-[2.5px] bg-brand-900 origin-left"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: isScrolled ? 1 : 0 }}
+        transition={{ duration: 0.4, ease: "circOut" }}
+      />
 
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2 group">

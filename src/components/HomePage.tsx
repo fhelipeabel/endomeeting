@@ -173,6 +173,11 @@ export default function Home() {
   const handleOpenSpeakerModal = (speaker: Speaker) => {
     if (speaker.isComingSoon) return;
     setSelectedSpeaker(speaker);
+    // Pause background music when speaker modal opens (same as VSL)
+    if (audioRef.current && isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    }
     setIsSpeakerModalOpen(true);
   };
 
@@ -215,6 +220,7 @@ export default function Home() {
             speaker={selectedSpeaker}
             isOpen={isSpeakerModalOpen}
             onClose={() => setIsSpeakerModalOpen(false)}
+            audioRef={audioRef}
           />
 
           {/* GLOBAL BACKGROUND AUDIO PLAYER */}
