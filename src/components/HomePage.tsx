@@ -554,20 +554,20 @@ export default function Home() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-            {/* Card 1: 1º Lote (ENCERRADO / CARD CLARO / CADEADO DOBRADO) */}
+            {/* Card 1: 1º Lote (ENCERRADO / TOM ESCURO / CADEADO DOBRADO) */}
             <motion.div
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-white rounded-[2rem] p-8 border-2 border-neutral-200/80 shadow-2xl flex flex-col items-center justify-center min-h-[380px] relative overflow-hidden group hover:scale-[1.01] transition-all duration-300"
+              className="bg-neutral-800/95 backdrop-blur-xl rounded-[2rem] p-8 border-2 border-neutral-700/80 shadow-xl flex flex-col items-center justify-center min-h-[380px] relative overflow-hidden group hover:scale-[1.01] transition-all duration-300"
             >
               <div className="flex flex-col items-center justify-center gap-5 text-center">
-                <div className="w-40 h-40 rounded-[2.5rem] bg-neutral-100 border-2 border-neutral-200/80 shadow-inner flex items-center justify-center text-neutral-500 group-hover:scale-105 transition-all duration-300">
-                  <Lock className="w-20 h-20 text-neutral-500 stroke-[1.75]" />
+                <div className="w-40 h-40 rounded-[2.5rem] bg-neutral-900/90 border-2 border-neutral-700/70 shadow-2xl flex items-center justify-center text-neutral-400 group-hover:scale-105 transition-all duration-300">
+                  <Lock className="w-20 h-20 text-neutral-400 stroke-[1.75]" />
                 </div>
                 <div>
-                  <span className="text-base font-black uppercase tracking-widest text-neutral-900 block">
+                  <span className="text-base font-black uppercase tracking-widest text-neutral-200 block">
                     1º Lote
                   </span>
                   <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 mt-1 block">
@@ -703,20 +703,20 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Card 3: 3º Lote (BLOQUEADO / TOM INTERMEDIÁRIO / CADEADO DOBRADO) */}
+            {/* Card 3: 3º Lote (BLOQUEADO / CARD CLARO / CADEADO DOBRADO) */}
             <motion.div
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-neutral-800/95 backdrop-blur-xl rounded-[2rem] p-8 border-2 border-neutral-700/80 shadow-xl flex flex-col items-center justify-center min-h-[380px] relative overflow-hidden group hover:scale-[1.01] transition-all duration-300"
+              className="bg-white rounded-[2rem] p-8 border-2 border-neutral-200/80 shadow-2xl flex flex-col items-center justify-center min-h-[380px] relative overflow-hidden group hover:scale-[1.01] transition-all duration-300"
             >
               <div className="flex flex-col items-center justify-center gap-5 text-center">
-                <div className="w-40 h-40 rounded-[2.5rem] bg-neutral-900/90 border-2 border-neutral-700/70 shadow-2xl flex items-center justify-center text-neutral-400 group-hover:scale-105 transition-all duration-300">
-                  <Lock className="w-20 h-20 text-neutral-400 stroke-[1.75]" />
+                <div className="w-40 h-40 rounded-[2.5rem] bg-neutral-100 border-2 border-neutral-200/80 shadow-inner flex items-center justify-center text-neutral-500 group-hover:scale-105 transition-all duration-300">
+                  <Lock className="w-20 h-20 text-neutral-500 stroke-[1.75]" />
                 </div>
                 <div>
-                  <span className="text-base font-black uppercase tracking-widest text-neutral-200 block">
+                  <span className="text-base font-black uppercase tracking-widest text-neutral-900 block">
                     3º Lote
                   </span>
                   <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 mt-1 block">
