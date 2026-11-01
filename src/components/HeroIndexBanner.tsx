@@ -12,6 +12,15 @@ import {
   User
 } from "lucide-react";
 
+interface BannerSpeaker {
+  name: string;
+  shortName: string;
+  origin?: string;
+  isInternational?: boolean;
+  image?: string;
+  initials?: string;
+}
+
 interface HeroIndexBannerProps {
   onSelectSpeaker?: (speakerName: string) => void;
 }
@@ -24,58 +33,58 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
     }
   };
 
-  const speakersList = [
+  const speakersList: BannerSpeaker[] = [
     {
       name: "Rui Pereira Costa",
       shortName: "Rui Pereira",
-      origin: "Portugal",
+      origin: "Lisboa - Portugal",
       isInternational: true,
       image: "/images/palestrantes/rui-pereira.jpeg"
     },
     {
       name: "Mário Zuolo",
       shortName: "Mário Zuolo",
-      origin: "São Paulo",
+      origin: "São Paulo - SP",
       image: "/images/palestrantes/img-mario-zuolo.jpeg"
     },
     {
-      name: "Carlos Eduardo Bueno",
-      shortName: "Carlos E. Bueno",
-      origin: "Campinas",
+      name: "Carlos Bueno",
+      shortName: "Carlos Bueno",
+      origin: "Campinas - SP",
       image: "/images/palestrantes/img-bueno.jpeg"
     },
     {
       name: "Patrícia Ferrari",
       shortName: "Patrícia Ferrari",
-      origin: "São Paulo",
+      origin: "Santo André - SP",
       image: "/images/palestrantes/img-patricia.webp"
     },
     {
       name: "Maria Ilma & Juliana Vilela",
       shortName: "Maria Ilma & Juliana",
-      origin: "MG / GO",
+      origin: "B. Horizonte - MG",
       image: "/images/palestrantes/maria-ilma_e_juliana.jpeg"
     },
     {
-      name: "Marco Antonio Hungaro Duarte",
+      name: "Marco Hungaro",
       shortName: "Marco Hungaro",
       origin: "Bauru - SP",
       image: "/images/palestrantes/perfil-hungaro.jpeg"
     },
     {
-      name: "Amanda Lavor",
+      name: "Profª. Mª. Amanda Lavor",
       shortName: "Amanda Lavor",
-      origin: "Brasil",
+      origin: "Jz. do Norte - CE",
       image: "/images/palestrantes/amanda-lavor.jpg"
     },
     {
       name: "Paulo Vinícius",
       shortName: "Paulo Vinícius",
-      origin: "Uberlândia",
-      initials: "PV"
+      origin: "Uberlândia - MG",
+      image: "/images/palestrantes/paulo_vinicius.jpeg"
     },
     {
-      name: "Murilo Priori Alcalde",
+      name: "Murilo Alcalde",
       shortName: "Murilo Alcalde",
       origin: "Bauru - SP",
       image: "/images/palestrantes/murilo-alcalde.jpeg"
@@ -83,8 +92,14 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
     {
       name: "Samuel Nogueira",
       shortName: "Samuel Nogueira",
-      origin: "São Paulo",
-      initials: "SN"
+      origin: "Maceió - AL",
+      image: "/images/palestrantes/samuel_nogueira.jpeg"
+    },
+    {
+      name: "Alexandre Capelli",
+      shortName: "Alexandre Capelli",
+      origin: "Ribeirão Preto - SP",
+      image: "/images/palestrantes/alexandre_capelli.jpeg"
     },
   ];
 
@@ -96,19 +111,20 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
 
   return (
     <section id="painel-info" className="relative w-full min-h-screen bg-neutral-950 text-white overflow-hidden flex flex-col justify-between py-6 md:py-10 px-4 sm:px-6 lg:px-8 border-b border-white/10">
-      {/* BACKGROUND AMBIENCE & LIGHTING (Fundo Escuro Premium) */}
+      
+      {/* BACKGROUND AMBIENCE & LIGHTING (Fundo Escuro Premium Clareado) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
         {/* Imagem de Fundo Original com Opacidade e Escala Suave */}
         <Image
           src="/intro-dark.png"
           alt="Endomeeting Background"
           fill
-          className="object-cover opacity-25 scale-105"
+          className="object-cover opacity-35 scale-105"
           priority
         />
 
-        {/* Gradiente Vignette Cinematográfico */}
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/90 via-neutral-950/70 to-neutral-950" />
+        {/* Gradiente Vignette Cinematográfico Suave */}
+        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/80 via-neutral-950/55 to-neutral-950" />
 
         {/* Glows Radiais Tons Vinho / Brand Red de Alta Sofisticação */}
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[850px] h-[520px] bg-brand-900/35 rounded-full blur-[140px]" />
@@ -142,7 +158,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                 <div className="relative transition-transform duration-500 hover:scale-105 flex items-center justify-center">
                   <Image
                     src="/logo.png.png"
-                    alt="4º Endomeeting"
+                    alt="4º Endomeeting TM"
                     width={280}
                     height={75}
                     className="w-full max-w-[200px] sm:max-w-[220px] md:max-w-[240px] h-auto object-contain brightness-200 invert grayscale transition-all duration-500 hover:brightness-250 drop-shadow-[0_4px_25px_rgba(220,38,38,0.35)]"
@@ -264,9 +280,16 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
 
                       {speaker.isInternational && (
                         <div
-                          className="absolute top-1.5 right-1.5 w-3 h-3 rounded-full bg-brand-500 border-2 border-neutral-950 ring-1 ring-brand-400"
-                          title="Convidado Internacional"
-                        />
+                          className="absolute top-1 right-1 w-4 h-3 rounded-xs overflow-hidden border border-white/50 shadow-sm flex items-center justify-center bg-black/60"
+                          title="Portugal - Convidado Internacional"
+                        >
+                          <svg viewBox="0 0 600 400" className="w-full h-full" aria-label="Bandeira de Portugal">
+                            <rect width="600" height="400" fill="#DA291C" />
+                            <rect width="240" height="400" fill="#046A38" />
+                            <circle cx="240" cy="200" r="80" fill="#FFCC00" stroke="#000000" strokeWidth="4" />
+                            <rect x="212" y="165" width="56" height="70" rx="8" fill="#FFFFFF" stroke="#003399" strokeWidth="4" />
+                          </svg>
+                        </div>
                       )}
                     </div>
 
@@ -354,7 +377,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
                 </div>
 
                 <p className="text-xs sm:text-sm text-neutral-300 mb-4 leading-relaxed font-medium">
-                  Trajetória e registros marcantes que consolidaram o Endomeeting como referência em Minas Gerais:
+                  Trajetória e registros marcantes que consolidaram o Endomeeting TM como referência em Minas Gerais:
                 </p>
               </div>
 
@@ -409,7 +432,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
 
           <p className="text-xs text-neutral-400 mt-2.5 flex items-center gap-1.5 font-semibold">
             <CheckCircle className="w-3.5 h-3.5 text-brand-400" />
-            Lotes especiais de lançamento por tempo limitado
+            Lote promocional de lançamento por tempo limitado
           </p>
         </div>
 

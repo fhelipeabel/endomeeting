@@ -6,13 +6,13 @@ import Image from "next/image";
 import { PaymentPopup } from "@/components/PaymentPopup";
 import { Sponsors } from "@/components/Sponsors";
 import { speakers } from "@/data/speakers";
-import { MapPin, ChevronRight, User, Sparkles, AlertCircle, Lock, Play, Building2 } from "lucide-react";
+import { MapPin, ChevronRight, User, Sparkles, AlertCircle, Lock, Play, Pause, Music, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
 import SpeakerModal from "@/components/SpeakerModal";
 import HeroIndexBanner from "@/components/HeroIndexBanner";
 import { Speaker } from "@/data/speakers";
 
-type PromoCategoryKey = "academicos" | "pos" | "dentistas";
+type PromoCategoryKey = "academicos" | "pos" | "patricia_ferrari" | "uniodonto" | "dentistas";
 
 interface CategoryInfo {
   id: PromoCategoryKey;
@@ -35,19 +35,41 @@ const promoCategories: Record<PromoCategoryKey, CategoryInfo> = {
     installments: "Em até 10x no cartão",
     description: "Destinado exclusivamente para estudantes de graduação em Odontologia.",
     requirement: "Necessário comprovação de matrícula ativa no credenciamento.",
-    url: "https://pay.kiwify.com.br/rrtPxfL",
+    url: "https://pay.kiwify.com.br/HK8eGlB?afid=oSUqXXjK",
     audience: "estudantes de graduação em Odontologia"
   },
   pos: {
     id: "pos",
-    label: "Alunos de Pós-graduação",
-    badge: "Pós-graduação",
+    label: "Pós-Graduação",
+    badge: "Pós-Graduação",
     price: "350,00",
     installments: "Em até 10x no cartão",
     description: "Destinado para alunos matriculados em cursos de pós-graduação e especialização.",
     requirement: "Necessário comprovante de matrícula na pós-graduação.",
-    url: "https://pay.kiwify.com.br/sQSX4he",
+    url: "https://pay.kiwify.com.br/pZjGeTV?afid=oSUqXXjK",
     audience: "alunos de pós-graduação em Odontologia"
+  },
+  patricia_ferrari: {
+    id: "patricia_ferrari",
+    label: "Grupo de estudos Patrícia Ferrari",
+    badge: "Grupo Patrícia Ferrari",
+    price: "350,00",
+    installments: "Em até 10x no cartão",
+    description: "Destinado exclusivamente para participantes do Grupo de estudos Patrícia Ferrari.",
+    requirement: "Necessário comprovação de vínculo com o Grupo de estudos Patrícia Ferrari.",
+    url: "https://pay.kiwify.com.br/pZjGeTV?afid=oSUqXXjK",
+    audience: "membros do Grupo de estudos Patrícia Ferrari"
+  },
+  uniodonto: {
+    id: "uniodonto",
+    label: "Uniodonto",
+    badge: "Uniodonto",
+    price: "350,00",
+    installments: "Em até 10x no cartão",
+    description: "Destinado para cirurgiões-dentistas cooperados e credenciados Uniodonto.",
+    requirement: "Necessário comprovação de cooperado ou credenciado Uniodonto.",
+    url: "https://pay.kiwify.com.br/pZjGeTV?afid=oSUqXXjK",
+    audience: "cooperados e credenciados Uniodonto"
   },
   dentistas: {
     id: "dentistas",
@@ -57,10 +79,37 @@ const promoCategories: Record<PromoCategoryKey, CategoryInfo> = {
     installments: "Em até 10x no cartão",
     description: "Destinado a Cirurgiões-dentistas formados que buscam atualização e excelência clínica.",
     requirement: "Acesso completo a todas as palestras e feira comercial.",
-    url: "https://pay.kiwify.com.br/7HjGskz",
+    url: "https://pay.kiwify.com.br/Pv8qrvV?afid=oSUqXXjK",
     audience: null
   }
 };
+
+const coordinatorsData: Speaker[] = [
+  {
+    name: "Cristiane da Cruz Silva",
+    title: "Coordenação Geral • Especialista e Professora em Endodontia",
+    location: "Uberlândia - MG",
+    description: "Cirurgiã-dentista, professora de cursos de Endodontia e Diretora Clínica da Odontologia Nossa Clínica.",
+    fullBio: "Cirurgiã-dentista graduada em Odontologia com formação e atuação dedicada à Endodontia e Dentística Restauradora em Uberlândia (MG).\n\nProfessora de cursos na área de Endodontia e Diretora Clínica da Odontologia Nossa Clínica. Possui sólida trajetória clínica voltada para diagnósticos de precisão, preservação biológica e tratamentos endodônticos avançados.\n\nCoordenadora Geral do Endomeeting do Triângulo Mineiro, integrando a comissão organizadora e científica desde as primeiras edições para promover o intercâmbio de conhecimento de alto nível.",
+    image: "/images/coordenadores/cris.jpeg"
+  },
+  {
+    name: "Renata Pereira Georjutti",
+    title: "Coordenação Geral • Doutora pela UFU & Mestre pela SLMandic",
+    location: "Uberlândia - MG",
+    description: "Doutora em Clínica Odontológica pela UFU, Mestre pela SLMandic e coordenadora do curso de Odontologia da UNITRI.",
+    fullBio: "Cirurgiã-dentista com Doutorado em Clínica Odontológica Integrada pela Universidade Federal de Uberlândia (UFU) e Mestrado em Endodontia pela Faculdade de Odontologia São Leopoldo Mandic (Campinas).\n\nDocente e Coordenadora do curso de Odontologia do Centro Universitário do Triângulo (Unitri). Possui ampla experiência acadêmica e clínica com ênfase em instrumentação mecanizada, medicamentos intracanais, prevenção de reabsorções radiculares e novos materiais em Endodontia.\n\nAutora de publicações científicas e artigos em periódicos especializados. Atua na clínica privada e é Coordenadora Geral do Endomeeting do Triângulo Mineiro.",
+    image: "/images/coordenadores/renata.jpeg"
+  },
+  {
+    name: "Rodrigo Antonio de Faria",
+    title: "Coordenação Geral • Mestre em Endodontia pela UFMG",
+    location: "Uberlândia - MG",
+    description: "Mestre pela UFMG e Especialista pela PUC Minas, com mais de 30 anos de atuação clínica e docente em Endodontia.",
+    fullBio: "Graduado em Odontologia pela Universidade Federal de Uberlândia (UFU) em 1993.\n\nMestre em Endodontia pela Universidade Federal de Minas Gerais (UFMG), com aperfeiçoamento pela mesma instituição e Especialista em Endodontia pela Pontifícia Universidade Católica de Minas Gerais (PUC Minas).\n\nProfessor do curso de Odontologia do Centro Universitário do Triângulo (Unitri), onde coordena a pós-graduação e especialização em Endodontia ininterruptamente desde 2006, completando 20 anos de formação e liderança acadêmica contínua. Atua também como docente em cursos de aperfeiçoamento clínico (Dental Hall, IQO e INPES) e mantém prática clínica exclusiva em Endodontia em Uberlândia desde 1993.\n\nCoordenador Geral e idealizador do Endomeeting do Triângulo Mineiro.",
+    image: "/images/coordenadores/rodrigo.jpeg"
+  }
+];
 
 export default function Home() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -74,8 +123,28 @@ export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlay = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   useEffect(() => {
     setMounted(true);
+    
+    // Configura o volume do áudio global para 50%
+    if (audioRef.current) {
+      audioRef.current.volume = 0.5;
+    }
+
     // Data de virada de lote: 02 de maio de 2026 às 08:00 (Horário de Brasília)
     const switchDate = new Date('2026-05-02T08:00:00-03:00');
     if (new Date() >= switchDate) {
@@ -92,10 +161,10 @@ export default function Home() {
 
   const handleOpenPopup = (title: string, audience: string | null, url: string) => {
     setPopupContent({
-      title: `Ingresso: ${title}`,
+      title: `Inscrição: ${title}`,
       message: audience
-        ? `Atenção: Este ingresso é destinado exclusivamente para ${audience}. Será necessário comprovar sua categoria no credenciamento do evento. Caso não haja comprovação, será cobrada a diferença para o valor do ingresso integral no local. Deseja prosseguir?`
-        : "Você está sendo redirecionado para a plataforma de pagamentos (Kiwify). Os ingressos são limitados e os lotes podem esgotar rapidamente. Tem certeza que deseja continuar?",
+        ? `Atenção: Esta inscrição é destinada exclusivamente para ${audience}. Será necessário comprovar sua categoria no credenciamento do evento. Caso não haja comprovação, será cobrada a diferença para o valor da inscrição integral no local. Deseja prosseguir?`
+        : "Você está sendo redirecionado para a plataforma de pagamentos (Kiwify). As inscrições são limitadas e os lotes podem esgotar rapidamente. Tem certeza que deseja continuar?",
       url: url
     });
     setIsPopupOpen(true);
@@ -104,14 +173,23 @@ export default function Home() {
   const handleOpenSpeakerModal = (speaker: Speaker) => {
     if (speaker.isComingSoon) return;
     setSelectedSpeaker(speaker);
+    // Pause background music when speaker modal opens (same as VSL)
+    if (audioRef.current && isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    }
     setIsSpeakerModalOpen(true);
   };
 
   const handleSelectSpeakerByName = (speakerName: string) => {
-    const found = speakers.find(s =>
-      s.name.toLowerCase().includes(speakerName.toLowerCase()) ||
-      speakerName.toLowerCase().includes(s.name.toLowerCase())
-    );
+    const clean = (str: string) =>
+      str.toLowerCase().replace(/profª?\.|\bdrª?\.|\bprof\.|\bmª\.|\bdr\.|\bdras?\./gi, "").replace(/\s+/g, " ").trim();
+    const target = clean(speakerName);
+    const found = speakers.find(s => {
+      const sName = clean(s.name);
+      return sName.includes(target) || target.includes(sName) ||
+        (target.includes("maria ilma") && sName.includes("maria ilma"));
+    });
     if (found && !found.isComingSoon) {
       setSelectedSpeaker(found);
       setIsSpeakerModalOpen(true);
@@ -142,21 +220,50 @@ export default function Home() {
             speaker={selectedSpeaker}
             isOpen={isSpeakerModalOpen}
             onClose={() => setIsSpeakerModalOpen(false)}
+            audioRef={audioRef}
           />
+
+          {/* GLOBAL BACKGROUND AUDIO PLAYER */}
+          <audio
+            ref={audioRef}
+            src="/alex-morgan-flamenco-spanish-guitar-fire-passion-530943.mpeg"
+            loop
+          />
+
+          {/* GLOBAL FLOATING AUDIO CONTROLS */}
+          <div className="fixed bottom-6 right-6 lg:bottom-8 lg:right-8 z-50">
+            <button
+              onClick={togglePlay}
+              className="flex items-center gap-2 px-3 py-2 bg-neutral-900/80 backdrop-blur-md border border-white/10 rounded-full text-white hover:bg-brand-900/50 hover:border-brand-500/50 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] group"
+              title="Música de Fundo"
+            >
+              <div className="w-10 h-10 rounded-full bg-brand-600 group-hover:bg-brand-500 transition-colors flex items-center justify-center shrink-0 shadow-md">
+                {isPlaying ? (
+                  <Pause className="w-5 h-5 text-white" fill="currentColor" />
+                ) : (
+                  <Play className="w-5 h-5 text-white ml-0.5" fill="currentColor" />
+                )}
+              </div>
+              <span className="text-xs font-bold uppercase tracking-wider hidden sm:block pr-1">
+                {isPlaying ? "Música On" : "Música Off"}
+              </span>
+              <Music className={`w-4 h-4 text-brand-400 hidden sm:block ${isPlaying ? "animate-pulse" : ""}`} />
+            </button>
+          </div>
         </>
       )}
 
-      {/* INTRO SECTION ORIGINAL (1ª TELA ESCURA) */}
-      <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-neutral-950">
+      {/* INTRO SECTION ORIGINAL (1ª TELA - FUNDO CLAREADO) */}
+      <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-neutral-900">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <Image
             src="/intro-dark.png"
             alt="Endomeeting Background"
             fill
-            className="object-cover opacity-35 scale-105"
+            className="object-cover opacity-65 scale-105"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-neutral-950" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-neutral-950/75" />
         </div>
 
         <motion.div
@@ -176,7 +283,7 @@ export default function Home() {
           >
             <Image
               src="/logo.png.png"
-              alt="4º Endomeeting"
+              alt="4º Endomeeting TM"
               width={520}
               height={160}
               className="w-full max-w-[320px] md:max-w-[480px] h-auto brightness-200 invert grayscale drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)]"
@@ -232,7 +339,7 @@ export default function Home() {
                 onClick={scrollToTickets}
                 className="flex items-center justify-center gap-3 px-10 py-5 bg-brand-900 text-white rounded-2xl text-lg font-bold shadow-2xl shadow-brand-900/40"
               >
-                Garantir Ingresso
+                Garantir Inscrição
                 <ChevronRight className="w-5 h-5" />
               </motion.button>
 
@@ -279,7 +386,13 @@ export default function Home() {
                 controls={isVideoPlaying}
                 playsInline
                 preload="metadata"
-                onPlay={() => setIsVideoPlaying(true)}
+                onPlay={() => {
+                  setIsVideoPlaying(true);
+                  if (audioRef.current && isPlaying) {
+                    audioRef.current.pause();
+                    setIsPlaying(false);
+                  }
+                }}
                 onPause={() => setIsVideoPlaying(false)}
                 onEnded={() => setIsVideoPlaying(false)}
                 className="w-full h-full object-cover"
@@ -326,7 +439,7 @@ export default function Home() {
 
                     <div>
                       <span className="text-white font-black uppercase tracking-widest text-xs sm:text-sm block drop-shadow-md">
-                        Vídeo Oficial • 4º Endomeeting
+                        Vídeo Oficial • 4º Endomeeting TM
                       </span>
                       <span className="text-neutral-200 text-xs font-semibold mt-1.5 block drop-shadow-sm">
                         Aperte o play para assistir com áudio
@@ -342,31 +455,22 @@ export default function Home() {
 
 
       {/* SPEAKERS SECTION */}
-      <section id="palestrantes" className="w-full py-32 bg-neutral-50/50 relative overflow-hidden">
-        {/* International Badge/Text Highlight */}
-        <div className="absolute top-0 left-0 w-full bg-brand-900 text-white py-3 z-20 shadow-lg">
-          <div className="container mx-auto px-6 text-center">
-            <p className="text-xs md:text-sm font-black tracking-[0.2em] uppercase flex items-center justify-center gap-4">
-              <MapPin className="w-4 h-4 text-brand-400 animate-pulse" />
-              O maior congresso de odontologia do triângulo mineiro, agora se torna <span className="text-brand-400">Internacional!</span>
-              <MapPin className="w-4 h-4 text-brand-400 animate-pulse" />
-            </p>
-          </div>
-        </div>
-
-        <div className="container mx-auto px-6 mt-12">
-          <div className="flex flex-col items-center mb-20 text-center">
+      <section id="palestrantes" className="w-full bg-neutral-50/50 relative overflow-hidden">
+        {/* Faixa Vermelha com o Título Oficial dos Palestrantes */}
+        <div className="w-full bg-brand-900 text-white py-12 md:py-16 shadow-lg border-b border-brand-800 relative z-20">
+          <div className="container mx-auto px-6 text-center max-w-4xl">
             <motion.h2
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-black text-neutral-900 mb-6 tracking-tight"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-snug max-w-3xl mx-auto"
             >
-              Mestres da Endodontia
+              Palestrantes de renome internacional que alinham alta tecnologia e resultados de relevância científica.
             </motion.h2>
-            <p className="text-neutral-500 max-w-2xl text-xl font-medium">Aprenda com professores experientes que aliam alta tecnologia e resultados de excelência.</p>
           </div>
+        </div>
 
+        <div className="container mx-auto px-6 py-16 md:py-24">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {speakers.map((speaker, index) => (
               <motion.div
@@ -401,8 +505,16 @@ export default function Home() {
                       />
                       <div className="absolute inset-0 bg-brand-900/0 group-hover:bg-brand-900/10 transition-colors duration-500" />
                       {speaker.isInternational && (
-                        <div className="absolute top-3 left-3 bg-brand-600 text-white p-1.5 rounded-xl z-10 shadow-md">
-                          <MapPin className="w-4 h-4" />
+                        <div
+                          className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm p-1.5 rounded-xl z-10 shadow-lg border border-white/30 flex items-center justify-center"
+                          title="Portugal - Convidado Internacional"
+                        >
+                          <svg viewBox="0 0 600 400" className="w-6 h-4 rounded-xs shadow-xs" aria-label="Bandeira de Portugal">
+                            <rect width="600" height="400" fill="#DA291C" />
+                            <rect width="240" height="400" fill="#046A38" />
+                            <circle cx="240" cy="200" r="80" fill="#FFCC00" stroke="#000000" strokeWidth="4" />
+                            <rect x="212" y="165" width="56" height="70" rx="8" fill="#FFFFFF" stroke="#003399" strokeWidth="4" />
+                          </svg>
                         </div>
                       )}
                     </>
@@ -495,7 +607,9 @@ export default function Home() {
                         Selecione sua categoria...
                       </option>
                       <option value="academicos" className="text-white bg-neutral-900">Acadêmicos (Graduação) — R$ 250,00</option>
-                      <option value="pos" className="text-white bg-neutral-900">Alunos de Pós-graduação — R$ 350,00</option>
+                      <option value="pos" className="text-white bg-neutral-900">Pós-Graduação — R$ 350,00</option>
+                      <option value="patricia_ferrari" className="text-white bg-neutral-900">Grupo de estudos Patrícia Ferrari — R$ 350,00</option>
+                      <option value="uniodonto" className="text-white bg-neutral-900">Uniodonto — R$ 350,00</option>
                       <option value="dentistas" className="text-white bg-neutral-900">Cirurgiões-dentistas — R$ 550,00</option>
                     </select>
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-brand-400 text-xs font-bold">
@@ -504,8 +618,8 @@ export default function Home() {
                   </div>
 
                   {/* Tabs / Pills para seleção rápida */}
-                  <div className="grid grid-cols-3 gap-1.5 pt-2">
-                    {(["academicos", "pos", "dentistas"] as PromoCategoryKey[]).map((key) => {
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {(["academicos", "pos", "patricia_ferrari", "uniodonto", "dentistas"] as PromoCategoryKey[]).map((key) => {
                       const isSelected = selectedPromoCategory === key;
                       const cat = promoCategories[key];
                       return (
@@ -513,10 +627,11 @@ export default function Home() {
                           key={key}
                           type="button"
                           onClick={() => setSelectedPromoCategory(key)}
-                          className={`py-2 px-2 rounded-lg text-[11px] font-bold transition-all truncate text-center cursor-pointer ${isSelected
-                            ? "bg-brand-600 text-white shadow-sm border border-brand-400/50 scale-[1.02]"
-                            : "bg-white/5 text-neutral-400 hover:text-white hover:bg-white/10 border border-white/5"
-                            }`}
+                          className={`flex-1 min-w-[70px] py-2 px-2 rounded-lg text-[11px] font-bold transition-all truncate text-center cursor-pointer ${
+                            isSelected
+                              ? "bg-brand-600 text-white shadow-sm border border-brand-400/50 scale-[1.02]"
+                              : "bg-white/5 text-neutral-400 hover:text-white hover:bg-white/10 border border-white/5"
+                          }`}
                         >
                           {cat.badge}
                         </button>
@@ -553,7 +668,7 @@ export default function Home() {
                     onClick={() => handleOpenPopup(currentPromo.label, currentPromo.audience, currentPromo.url)}
                     className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-brand-600 to-brand-700 hover:from-brand-500 hover:to-brand-600 hover:scale-[1.02] transition-all duration-300 shadow-xl shadow-brand-950 flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <span>Garantir Ingresso de Lançamento</span>
+                    <span>Garantir Inscrição de Lançamento</span>
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 ) : (
@@ -572,39 +687,49 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Card 2: 1º Lote (BLOQUEADO / APENAS CADEADO NO MEIO) */}
+            {/* Card 2: 1º Lote (BLOQUEADO / CARD CLARO / CADEADO DOBRADO) */}
             <motion.div
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white/[0.02] backdrop-blur-xl rounded-[2rem] p-8 border border-white/10 flex flex-col items-center justify-center min-h-[380px] relative overflow-hidden group opacity-60 hover:opacity-80 transition-opacity"
+              className="bg-white rounded-[2rem] p-8 border-2 border-neutral-200/80 shadow-2xl flex flex-col items-center justify-center min-h-[380px] relative overflow-hidden group hover:scale-[1.01] transition-all duration-300"
             >
-              <div className="flex flex-col items-center justify-center gap-4 text-center">
-                <div className="w-20 h-20 rounded-3xl bg-neutral-900/90 border border-white/10 flex items-center justify-center text-neutral-400 shadow-2xl group-hover:border-white/20 transition-all">
-                  <Lock className="w-9 h-9 text-neutral-400" />
+              <div className="flex flex-col items-center justify-center gap-5 text-center">
+                <div className="w-40 h-40 rounded-[2.5rem] bg-neutral-100 border-2 border-neutral-200/80 shadow-inner flex items-center justify-center text-neutral-500 group-hover:scale-105 transition-all duration-300">
+                  <Lock className="w-20 h-20 text-neutral-500 stroke-[1.75]" />
                 </div>
-                <span className="text-sm font-bold uppercase tracking-widest text-neutral-400">
-                  1º Lote
-                </span>
+                <div>
+                  <span className="text-base font-black uppercase tracking-widest text-neutral-900 block">
+                    1º Lote
+                  </span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 mt-1 block">
+                    Em Breve
+                  </span>
+                </div>
               </div>
             </motion.div>
 
-            {/* Card 3: 2º Lote (BLOQUEADO / APENAS CADEADO NO MEIO) */}
+            {/* Card 3: 2º Lote (BLOQUEADO / TOM INTERMEDIÁRIO / CADEADO DOBRADO) */}
             <motion.div
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white/[0.02] backdrop-blur-xl rounded-[2rem] p-8 border border-white/10 flex flex-col items-center justify-center min-h-[380px] relative overflow-hidden group opacity-60 hover:opacity-80 transition-opacity"
+              className="bg-neutral-800/95 backdrop-blur-xl rounded-[2rem] p-8 border-2 border-neutral-700/80 shadow-xl flex flex-col items-center justify-center min-h-[380px] relative overflow-hidden group hover:scale-[1.01] transition-all duration-300"
             >
-              <div className="flex flex-col items-center justify-center gap-4 text-center">
-                <div className="w-20 h-20 rounded-3xl bg-neutral-900/90 border border-white/10 flex items-center justify-center text-neutral-400 shadow-2xl group-hover:border-white/20 transition-all">
-                  <Lock className="w-9 h-9 text-neutral-400" />
+              <div className="flex flex-col items-center justify-center gap-5 text-center">
+                <div className="w-40 h-40 rounded-[2.5rem] bg-neutral-900/90 border-2 border-neutral-700/70 shadow-2xl flex items-center justify-center text-neutral-400 group-hover:scale-105 transition-all duration-300">
+                  <Lock className="w-20 h-20 text-neutral-400 stroke-[1.75]" />
                 </div>
-                <span className="text-sm font-bold uppercase tracking-widest text-neutral-400">
-                  2º Lote
-                </span>
+                <div>
+                  <span className="text-base font-black uppercase tracking-widest text-neutral-200 block">
+                    2º Lote
+                  </span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 mt-1 block">
+                    Em Breve
+                  </span>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -623,9 +748,9 @@ export default function Home() {
               <div>
                 <h4 className="text-lg font-bold text-white mb-2">Política de Inscrição e Responsabilidade</h4>
                 <p className="text-brand-100/70 text-sm leading-relaxed">
-                  Ao adquirir seu ingresso, o participante assume a responsabilidade de garantir que sua categoria profissional condiz com o ingresso selecionado.
+                  Ao realizar sua inscrição, o participante assume a responsabilidade de garantir que sua categoria profissional condiz com a inscrição selecionada.
                   <strong className="text-white"> É obrigatória a comprovação da categoria no momento do credenciamento.</strong>
-                  Caso não seja apresentada a documentação comprobatória, será cobrada a diferença de valor para o ingresso integral vigente no dia do evento para a liberação da credencial.
+                  Caso não seja apresentada a documentação comprobatória, será cobrada a diferença de valor para a inscrição integral vigente no dia do evento para a liberação da credencial.
                 </p>
               </div>
             </div>
@@ -654,7 +779,7 @@ export default function Home() {
                 Local do Evento
               </h2>
               <p className="text-neutral-600 text-base sm:text-lg leading-relaxed mb-8 max-w-xl font-medium">
-                O 4º Endomeeting será sediado no moderno complexo de convenções da CDL Uberlândia, com auditório climatizado de alta capacidade, infraestrutura tecnológica e localização privilegiada.
+                O 4º Endomeeting do Triângulo Mineiro será sediado no moderno complexo de convenções da CDL Uberlândia, com auditório climatizado de alta capacidade, infraestrutura tecnológica e localização privilegiada.
               </p>
 
               <div className="flex items-start gap-5 p-6 bg-white rounded-3xl shadow-lg shadow-neutral-200/50 border border-neutral-200/80">
@@ -717,7 +842,7 @@ export default function Home() {
             <div className="grid sm:grid-cols-3 gap-6 sm:gap-8">
               <div className="relative aspect-square rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-xl border-4 border-white group">
                 <Image
-                  src="/images/cdl/cdl-6.jpeg"
+                  src="/images/cdl/1-palco.jpeg"
                   alt="CDL Uberlândia - Auditório Principal"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -735,7 +860,7 @@ export default function Home() {
 
               <div className="relative aspect-square rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-xl border-4 border-white group">
                 <Image
-                  src="/images/cdl/cdl-7.jpeg"
+                  src="/images/cdl/2-estandes.jpeg"
                   alt="CDL Uberlândia - Espaço e Recepção"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -753,7 +878,7 @@ export default function Home() {
 
               <div className="relative aspect-square rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-xl border-4 border-white group">
                 <Image
-                  src="/images/cdl/cdl-5.jpeg"
+                  src="/images/cdl/3-estrutura.jpeg"
                   alt="CDL Uberlândia - Fachada e Estrutura"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -786,16 +911,16 @@ export default function Home() {
               viewport={{ once: true }}
               className="text-3xl md:text-5xl font-black text-neutral-900 mb-4 tracking-tight"
             >
-              Onde se hospedar para o <span className="text-brand-900">Endomeeting</span>
+              Onde se hospedar para o <span className="text-brand-900">4º Endomeeting TM</span>
             </motion.h2>
             <p className="text-neutral-500 max-w-2xl text-base sm:text-lg font-medium leading-relaxed">
               Selecionamos as melhores opções de hotéis em Uberlândia, garantindo alto padrão, praticidade e fácil acesso ao evento.
             </p>
           </div>
 
-          {/* Destaque: Hotel Oficial & Novotel em Grid de Destaque */}
+          {/* Hotéis Principais: Novotel & Hotel San Diego (Nobile Suites) em Grid de Destaque */}
           <div className="grid lg:grid-cols-2 gap-6 mb-10">
-            {/* Mercure - Hotel Oficial */}
+            {/* Novotel Uberlândia */}
             <motion.div
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -804,35 +929,35 @@ export default function Home() {
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-brand-700 font-black uppercase tracking-wider text-[11px] px-3 py-1 rounded-full bg-brand-100/60 border border-brand-200">
-                    ★ Hotel Oficial do Evento
+                  <span className="text-neutral-800 font-black uppercase tracking-wider text-[11px] px-3 py-1 rounded-full bg-neutral-200/70 border border-neutral-300">
+                    ◆ Conforto & Padrão Internacional
                   </span>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-black text-neutral-900 mb-2">
-                  Mercure Uberlândia Plaza Shopping
+                  Novotel Uberlândia
                 </h3>
                 <p className="text-xs sm:text-sm text-neutral-600 mb-6 leading-relaxed">
-                  Conectado ao Plaza Shopping, oferece localização estratégica, alto conforto e facilidade de acesso ao evento.
+                  Infraestrutura moderna e sofisticada de padrão internacional, excelente para quem busca conforto, alta gastronomia e fácil acesso ao evento.
                 </p>
               </div>
 
               <div>
                 <div className="p-4 bg-white rounded-2xl border border-neutral-100 text-xs text-neutral-700 mb-6 space-y-1">
-                  <p><strong className="text-neutral-900">Endereço:</strong> Rua da Bandeira, 400 - Tibery</p>
-                  <p><strong className="text-neutral-900">Telefone:</strong> (34) 3239-8000</p>
+                  <p><strong className="text-neutral-900">Endereço:</strong> Av. Paulo Gracindo, 5 - Gávea (próximo ao Uberlândia Shopping)</p>
+                  <p><strong className="text-neutral-900">WhatsApp / Telefone:</strong> (34) 2028-4429</p>
                 </div>
 
                 <div className="flex flex-wrap gap-2.5">
                   <a
-                    href="https://www.google.com/maps/search/?api=1&query=Mercure+Uberlândia+Plaza+Shopping"
+                    href="https://www.google.com/maps/search/?api=1&query=Novotel+Uberlandia+Av+Paulo+Gracindo+5"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-3 px-4 bg-brand-900 hover:bg-brand-950 text-white text-xs font-bold rounded-xl text-center transition-all shadow-sm"
+                    className="flex-1 py-3 px-4 bg-neutral-900 hover:bg-neutral-950 text-white text-xs font-bold rounded-xl text-center transition-all shadow-sm"
                   >
                     Ver no Maps
                   </a>
                   <a
-                    href="https://api.whatsapp.com/send/?phone=553432398000"
+                    href="https://api.whatsapp.com/send/?phone=553420284429"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 py-3 px-4 bg-white hover:bg-neutral-100 text-neutral-900 text-xs font-bold rounded-xl border border-neutral-300 text-center transition-all"
@@ -843,7 +968,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Novotel Uberlândia */}
+            {/* Hotel San Diego (Nobile Suites) */}
             <motion.div
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -854,26 +979,26 @@ export default function Home() {
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">
                   <span className="text-neutral-800 font-black uppercase tracking-wider text-[11px] px-3 py-1 rounded-full bg-neutral-200/70 border border-neutral-300">
-                    ◆ Executivo & Internacional
+                    ◆ Executivo & Sofisticação
                   </span>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-black text-neutral-900 mb-2">
-                  Novotel Uberlândia
+                  Hotel San Diego (Nobile Suites)
                 </h3>
                 <p className="text-xs sm:text-sm text-neutral-600 mb-6 leading-relaxed">
-                  Infraestrutura moderna e sofisticada de padrão internacional, excelente para quem busca conforto e alta gastronomia.
+                  Estrutura executiva de alto padrão na Av. Rondon Pacheco, com suítes amplas, serviços completos e localização estratégica em Uberlândia.
                 </p>
               </div>
 
               <div>
                 <div className="p-4 bg-white rounded-2xl border border-neutral-100 text-xs text-neutral-700 mb-6 space-y-1">
-                  <p><strong className="text-neutral-900">Endereço:</strong> Av. Rondon Pacheco, 2465 - Saraiva</p>
-                  <p><strong className="text-neutral-900">Telefone:</strong> (34) 3230-9000</p>
+                  <p><strong className="text-neutral-900">Endereço:</strong> Av. Rondon Pacheco, 3500 - Santa Maria</p>
+                  <p><strong className="text-neutral-900">Telefone:</strong> (34) 3233-4000</p>
                 </div>
 
                 <div className="flex flex-wrap gap-2.5">
                   <a
-                    href="https://www.google.com/maps/search/?api=1&query=Novotel+Uberlandia"
+                    href="https://www.google.com/maps/search/?api=1&query=Hotel+San+Diego+Suites+Uberlandia"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 py-3 px-4 bg-neutral-900 hover:bg-neutral-950 text-white text-xs font-bold rounded-xl text-center transition-all shadow-sm"
@@ -881,7 +1006,7 @@ export default function Home() {
                     Ver no Maps
                   </a>
                   <a
-                    href="https://api.whatsapp.com/send/?phone=553432309000"
+                    href="https://api.whatsapp.com/send/?phone=553432334000"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 py-3 px-4 bg-white hover:bg-neutral-100 text-neutral-900 text-xs font-bold rounded-xl border border-neutral-300 text-center transition-all"
@@ -903,20 +1028,20 @@ export default function Home() {
                 {
                   name: "Ibis Uberlândia",
                   badge: "Custo-Benefício",
-                  address: "Av. João Naves de Ávila, 1590",
+                  address: "Av. João Naves de Ávila, 1590 - Santa Mônica",
                   link: "https://www.google.com/maps/search/?api=1&query=Ibis+Uberlandia"
                 },
                 {
-                  name: "Ibis Budget Uberlândia",
-                  badge: "Econômico",
-                  address: "Av. João Naves de Ávila, 1460",
-                  link: "https://www.google.com/maps/search/?api=1&query=Ibis+Budget+Uberlandia"
+                  name: "Lym Flat Hotel",
+                  badge: "Praticidade & Conforto",
+                  address: "Rua José Rezende dos Santos, 1140 - Brasil",
+                  link: "https://www.google.com/maps/search/?api=1&query=Lym+Flat+Hotel+Uberlandia"
                 },
                 {
-                  name: "Villalba Hotel",
-                  badge: "Conforto Executivo",
-                  address: "Av. Rondon Pacheco, 4651",
-                  link: "https://www.google.com/maps/search/?api=1&query=Villalba+Hotel+Uberlandia"
+                  name: "B&B Hotels (Praça Tubal Vilela)",
+                  badge: "Central & Prático",
+                  address: "Praça Tubal Vilela, 192 - Centro",
+                  link: "https://www.google.com/maps/search/?api=1&query=BB+Hotels+Uberlandia+Tubal+Vilela"
                 }
               ].map((hotel, idx) => (
                 <motion.div
@@ -963,20 +1088,14 @@ export default function Home() {
 
         <div className="container mx-auto px-6 relative z-10 max-w-6xl">
           <div className="flex flex-col items-center text-center mb-16">
-            <span className="text-brand-400 font-black uppercase tracking-[0.3em] text-xs sm:text-sm mb-4 px-4 py-1.5 rounded-full bg-brand-950/80 border border-brand-800/50">
-              Coordenação Geral & Realização
-            </span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight"
+              className="text-3xl sm:text-4xl md:text-6xl font-black text-white tracking-tight"
             >
-              Comissão Organizadora
+              Coordenação Geral & Realização
             </motion.h2>
-            <p className="text-neutral-400 max-w-2xl text-lg sm:text-xl font-medium leading-relaxed">
-              Conheça os profissionais dedicados a realizar uma experiência científica, clínica e humana inesquecível no Endomeeting.
-            </p>
           </div>
 
           <motion.div
@@ -992,7 +1111,7 @@ export default function Home() {
                 <div className="relative w-full max-w-[540px] aspect-[627/481] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
                   <Image
                     src="/images/coordenadores.jpeg"
-                    alt="Equipe de coordenadores Endomeeting TM"
+                    alt="Equipe de coordenadores do 4º Endomeeting TM"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-contain"
@@ -1005,7 +1124,7 @@ export default function Home() {
                 <div className="inline-flex items-center gap-2 mb-4">
                   <span className="w-2.5 h-2.5 rounded-full bg-brand-500 animate-pulse" />
                   <span className="text-xs font-bold uppercase tracking-widest text-brand-400">
-                    Equipe de coordenadores Endomeeting TM
+                    Equipe de coordenadores do 4º Endomeeting TM
                   </span>
                 </div>
 
@@ -1014,36 +1133,42 @@ export default function Home() {
                 </h3>
 
                 <p className="text-neutral-300 text-sm sm:text-base leading-relaxed mb-8">
-                  Com vasta trajetória na endodontia e no ensino odontológico de alto nível, a comissão coordenadora atua em cada detalhe do congresso: da curadoria científica e recepção de palestrantes de renome à infraestrutura de excelência para todos os congressistas.
+                  Com vasta trajetória na Endodontia e no ensino odontológico de alto nível, os coordenadores deste evento estão à frente de cada detalhe, para a excelência do 4º Endomeeting do Triângulo Mineiro em 2027.
                 </p>
 
                 <div className="space-y-3 pt-6 border-t border-white/10">
-                  <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-brand-500/30 transition-colors">
-                    <p className="text-base font-bold text-white leading-tight">
-                      Dra. Cristiane da Cruz Silva
-                    </p>
-                    <span className="text-xs text-neutral-400 font-medium mt-1 block">
-                      Coordenação Geral
-                    </span>
-                  </div>
-
-                  <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-brand-500/30 transition-colors">
-                    <p className="text-base font-bold text-white leading-tight">
-                      Dr. Rodrigo Antonio de Faria
-                    </p>
-                    <span className="text-xs text-neutral-400 font-medium mt-1 block">
-                      Coordenação Geral
-                    </span>
-                  </div>
-
-                  <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-brand-500/30 transition-colors">
-                    <p className="text-base font-bold text-white leading-tight">
-                      Dra. Renata Pereira Georjutti
-                    </p>
-                    <span className="text-xs text-neutral-400 font-medium mt-1 block">
-                      Coordenação Geral
-                    </span>
-                  </div>
+                  {coordinatorsData.map((coord, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => handleOpenSpeakerModal(coord)}
+                      className="w-full text-left p-3.5 sm:p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-brand-500/60 hover:bg-white/[0.07] transition-all cursor-pointer flex items-center justify-between group shadow-sm"
+                    >
+                      <div className="flex items-center gap-3.5">
+                        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-brand-500/40 shrink-0 bg-neutral-800 shadow-md">
+                          <Image
+                            src={coord.image || "/images/coordenadores.jpeg"}
+                            alt={coord.name}
+                            fill
+                            sizes="48px"
+                            className="object-cover group-hover:scale-110 transition-transform duration-300"
+                          />
+                        </div>
+                        <div>
+                          <p className="text-base font-bold text-white leading-tight group-hover:text-brand-300 transition-colors">
+                            {coord.name}
+                          </p>
+                          <span className="text-xs text-neutral-400 font-medium mt-0.5 block">
+                            Coordenação Geral
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-brand-400 opacity-80 group-hover:opacity-100 group-hover:translate-x-1 transition-all">
+                        <span>Conheça</span>
+                        <ChevronRight className="w-4 h-4" />
+                      </div>
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>

@@ -18,26 +18,30 @@ export const speakers: Speaker[] = [
   {
     name: "Prof. Dr. Rui Pereira da Costa",
     title: "Convidado Internacional",
-    location: "Portugal",
+    location: "Lisboa - Portugal",
     description: "Diretor do Instituto Português de Endodontia e Professor na Universidade de Lisboa e Barcelona.",
     fullBio: "Licenciado pela Faculdade de Medicina Dentária da Universidade do Porto. Mestre em Endodontia pela Universitat Internacional de Catalunya - Barcelona. Doutor em Ciências (Endodontia) pela Faculdade de Odontologia de Ribeirão Preto da USP. Fellow do International College of Dentists. Professor Associado no Curso de Especialização em Endodontia e nas disciplinas de Endodontia da Faculdade de Medicina Dentária da Universidade de Lisboa. Professor no Mestrado em Endodontia na Universitat Internacional de Catalunya - Barcelona. Professor convidado na Pós-Graduação em Endodontia da CESPU – Porto. Autor de diversos artigos científicos em revistas nacionais e internacionais na área da Endodontia. Palestrante em congressos nacionais e internacionais, incluindo Espanha, Itália, Brasil, Chile, Argentina, Colômbia, Uruguai, Angola, Dubai, Bahrein, Líbano, Itália, Hungria, etc. Coordenador dos cursos de formação pós-graduada em Endodontia RPCendo. Diretor do Instituto Português de Endodontia. Prática exclusiva em Endodontia em Portugal e na Irlanda.",
     isInternational: true,
+    socials: {
+      instagram: "https://www.instagram.com/rpcendo/",
+      website: "https://rpcendo.com/"
+    },
     image: "/images/palestrantes/rui-pereira.jpeg",
     video: "/videos/video-rui.mp4"
   },
   {
     name: "Prof. Dr. Mário Zuolo",
     title: "Excelência e Prática Clínica em Endodontia",
-    location: "São Paulo",
+    location: "São Paulo - SP",
     description: "Doutor pela FOP/UNICAMP e autor de referências bibliográficas fundamentais na Endodontia.",
     fullBio: "Cirurgião Dentista formado pela Faculdade de Odontologia de Ribeirão Preto – USP em 1981. Especialista em Endodontia pela APCD. Preceptorship Endodontic Course at UHSC - San Antonio (Texas) – USA. Teaching Fellow in Endodontics at University of Iowa – College of Dentistry. Mestre em Biologia Molecular pela UNIFESP – Escola Paulista de Medicina. Doutor em Clínica Odontológica – Endodontia na FOP / UNICAMP. Professor de Endodontia da FAOA – APCD. Autor dos livros: 'Endodontia para o Clínico Geral', 'Reintervenção em Endodontia' e 'Remoção de Pinos: Protocolos Clínicos'. Conferencista nacional e internacional. Autor de inúmeros artigos sobre Endodontia publicados em revistas nacionais e internacionais. Consultório particular limitado à prática de Endodontia na cidade de São Paulo há 35 anos.",
     image: "/images/palestrantes/img-mario-zuolo.jpeg",
     video: "/videos/video-mario-zuolo.mp4"
   },
   {
-    name: "Prof. Dr. Carlos Eduardo Bueno",
+    name: "Prof. Dr. Carlos Bueno",
     title: "Autor do Livro 'Excelência em Endodontia Clínica'",
-    location: "Campinas",
+    location: "Campinas - SP",
     description: "Mestre e Doutor pela FOP-UNICAMP. Coordenador de Especialização e Mestrado na SLMandic.",
     fullBio: "Especialista, Mestre e Doutor em Endodontia pela F.O.P.-UNICAMP. Pós-Doutor pela F.O.P.-UNICAMP. Coordenador dos cursos de Especialização e Mestrado em Endodontia da SLMandic Campinas. Coordenador dos cursos de Especialização em Endodontia da SLMandic de Vitória e São Paulo. Professor do Programa de Pós-Graduação da SLMandic nível Doutorado. Autor do livro 'Excelência em Endodontia Clínica'.",
     image: "/images/palestrantes/img-bueno.jpeg",
@@ -46,7 +50,7 @@ export const speakers: Speaker[] = [
   {
     name: "Profª. Dra. Patrícia Ferrari",
     title: "A Infecção Endodôntica e Sua Resolução",
-    location: "São Paulo",
+    location: "Santo André - SP",
     description: "Doutora em Endodontia pela FOUSP e vencedora do Prêmio Ápice em Endodontia (2022).",
     fullBio: "Cirurgiã-dentista com atuação exclusiva em Endodontia. Graduada, mestre e doutora pela FOUSP e especialista pela APCD, coordena o Instituto PF de Ensino em Endodontia e é autora do livro 'A Infecção Endodôntica e Sua Resolução'. Na clínica privada, alia diagnóstico preciso, tratamento e retratamento com protocolos claros e baseados em evidência, priorizando conforto, segurança e previsibilidade. Em sala, transforma ciência em prática com foco em planejamento, controle da dor, desinfecção e modelagem de canais, além de retratamentos e casos complexos. Vencedora do Prêmio Ápice em Endodontia (2022).",
     socials: {
@@ -57,16 +61,17 @@ export const speakers: Speaker[] = [
     video: "/videos/video-patricia.mp4"
   },
   {
-    name: "Profª. Maria Ilma & Profª. Juliana Vilela",
-    title: "Dupla Palestrante • Prática Clínica & Excelência",
-    location: "Minas Gerais / Goiás",
-    description: "Abordagem integrada combinando experiência acadêmica consagrada e protocolos contemporâneos de alta previsibilidade.",
-    fullBio: "Palestra em conjunto unindo o conhecimento acadêmico de gerações e os protocolos contemporâneos de tratamento endodôntico.\n\nProfª. Dra. Maria Ilma: Doutora e docente com trajetória exemplar, formadora de inúmeros especialistas e referência no ensino odontológico.\n\nProfª. Dra. Juliana Vilela: Especialista e pesquisadora com atuação focada em técnicas de desinfecção tridimensional, condutas conservadoras e resoluções clínicas de alta performance.",
+    name: "Profª. Dra. Maria Ilma & Profª. Dra. Juliana Vilela",
+    title: "Referências em Endodontia e Traumatologia Dentária",
+    location: "B. Horizonte - MG",
+    description: "Professoras e Doutoras com trajetória marcante no ensino e pesquisa, pioneiras na criação do Programa de Traumatismos Dentários da UFMG.",
+    fullBio: "Palestra em conjunto unindo décadas de dedicação à ciência e à clínica, com destaque para a atuação inovadora em traumatismos dentários na Universidade Federal de Minas Gerais (UFMG).\n\nProfª. Dra. Maria Ilma: Docente de grande relevância na formação de mestres e doutores (UFMG e PUCMG). Idealizou e criou em 1986 a Clínica de Traumatismos Dentários da UFMG, projeto de extensão pioneiro que se tornou centro de referência nacional em assistência, ensino e produção científica, transformando problemas clínicos em pesquisas de impacto.\n\nProfª. Dra. Juliana Vilela: Mestre em Endodontia e Doutora em Biologia Celular pela UFMG. Com forte atuação em pesquisas sobre resposta pulpar e reabsorções radiculares decorrentes de trauma, participou da criação da Clínica de Traumatismos da UFMG e, posteriormente, assumiu sua coordenação, conduzindo estudos longitudinais focados em fraturas radiculares e sobrevivência pulpar.",
     image: "/images/palestrantes/maria-ilma_e_juliana.jpeg",
+    video: "/videos/video-maria-ilma-e-juliana.mp4",
     isComingSoon: false
   },
   {
-    name: "Prof. Dr. Marco Antonio Hungaro Duarte",
+    name: "Prof. Dr. Marco Hungaro",
     title: "Professor Titular da FOB-USP",
     location: "Bauru - SP",
     description: "Bolsista Produtividade CNPq nível 1B, autor de mais de 500 artigos e livros de referência.",
@@ -75,26 +80,33 @@ export const speakers: Speaker[] = [
     isComingSoon: false
   },
   {
-    name: "Profª. Dra. Amanda Lavor",
-    title: "Mestre em Endodontia • Referência em MV2 & Atrésicos",
-    location: "Brasil",
+    name: "Profª. Mª. Amanda Lavor",
+    title: "Mestre em Endodontia • Criadora do Protocolo AL-MV2",
+    location: "Jz. do Norte - CE",
     description: "Mestre em Endodontia e criadora do Protocolo AL-MV2 para localização e instrumentação de canais atrésicos e complexos.",
     fullBio: "Cirurgiã-dentista, Mestre e Especialista em Endodontia. Reconhecida nacionalmente pela sua metodologia e didática clínica inovadora na abordagem de anatomias desafiadoras, sendo criadora do consagrado Protocolo AL-MV2 voltado para localização, desinfecção e instrumentação segura de canais atrésicos e de alta complexidade. Mentora de centenas de especialistas pelo país, unindo evidência científica rigorosa, previsibilidade e resolutividade no consultório.",
     socials: {
       instagram: "https://www.instagram.com/amandadelavor/"
     },
     image: "/images/palestrantes/amanda-lavor.jpg",
+    video: "/videos/video-amanda-lavor.mp4",
     isComingSoon: false
   },
   {
     name: "Prof. Dr. Paulo Vinícius",
-    title: "Professor e Pesquisador em Endodontia",
-    location: "Uberlândia",
-    description: "Referência em protocolos clínicos avançados, instrumentação mecanizada e biomecânica.",
+    title: "Prof. Associado FOUFU • Pós-Doutor UIC Chicago",
+    location: "Uberlândia - MG",
+    description: "Professor Associado da FOUFU, Pós-Doutor pela University of Illinois at Chicago (EUA), autor de livros internacionais e referência em Reabilitação Oral e Estética.",
+    fullBio: "Professor Associado de Dentística e Materiais Odontológicos da Faculdade de Odontologia da Universidade Federal de Uberlândia (FOUFU).\n\nPossui Pós-Doutorado pelo College of Dentistry, University of Illinois at Chicago (EUA), Doutorado em Clínica Odontológica pela UNICAMP, Mestrado em Reabilitação Oral pela FOUFU e Especialização em Dentística pela FOUFU.\n\nProfessor e Orientador do Programa de Pós-Graduação (Mestrado/Doutorado) da FOUFU, Fundador e Líder do Grupo de Pesquisa LCNC-FOUFU (CNPq) e Consultor e Professor de Pós-Graduação da Faculdade São Leopoldo Mandic (Campinas).\n\nAtua como cirurgião-dentista no corpo clínico do Instituto Paulo Vinícius (Uberlândia-MG) como responsável pela área de Reabilitação Oral e Estética. Fundador do Instituto IPV Odontologia e Centro de Treinamentos, sócio-fundador do Iknow Odonto Cursos e IK Journal, e mentor do ecossistema digital DENTISTA PRO.\n\nMembro da Sociedade Brasileira de Odontologia Estética (SBOE) e da Sociedade Brasileira de Pesquisa Odontológica (SBPqO). Autor dos livros de referência internacional 'Non Carious Cervical Lesions and Cervical Dentin Hypersensitivity' (Ed. Quintessence Publishing, Chicago - traduzido para português e mandarim), 'Hipersensibilidade Dentinária - Guia Clínico' (Editora Santos/IKnow) e da série 'ChairSide Guide - Bridges' (Volumes 1 e 2).\n\nEditor-Chefe da Journal of Clinical and Dental Research, revisor de conceituadas revistas científicas internacionais (Operative Dentistry, Journal of Prosthetic Dentistry, Australian Dental Journal, Clinical Oral Investigations, Journal of Oral Rehabilitation) e autor de dezenas de artigos científicos e capítulos de livros.",
+    socials: {
+      instagram: "https://www.instagram.com/dr.paulovsoares/",
+      website: "https://paulovsoares.com.br/"
+    },
+    image: "/images/palestrantes/paulo_vinicius.jpeg",
     isComingSoon: false
   },
   {
-    name: "Prof. Dr. Murilo Priori Alcalde",
+    name: "Prof. Dr. Murilo Alcalde",
     title: "Professor da FOB-USP • Pesquisador & Autor",
     location: "Bauru - SP",
     description: "Mestre, Doutor e Pós-Doutor pela FOB/USP, coautor de livro e Coordenador de Pesquisa da Bondent América Latina.",
@@ -103,10 +115,24 @@ export const speakers: Speaker[] = [
     isComingSoon: false
   },
   {
-    name: "Prof. Dr. Samuel Nogueira",
-    title: "Cirurgião-Dentista e Especialista",
-    location: "São Paulo",
-    description: "Prática clínica focada em microscopia operatória, obturação termoplastificada e resoluções anatômicas.",
+    name: "Prof. Dr. Samuel Nogueira Lima",
+    title: "Especialista, Mestre e Doutor • Criador do CIENDO & ENDONINJAS",
+    location: "Maceió - AL",
+    description: "Doutor, Mestre e Especialista em Endodontia, fundador do CIENDO (Congresso Internacional Online) e mentor da comunidade ENDONINJAS.",
+    fullBio: "Cirurgião-dentista com Doutorado em Clínica Odontológica (2024) e Mestrado em Endodontia (2018) pela Faculdade São Leopoldo Mandic (Campinas).\n\nEspecialista em Endodontia (ABO/CE) e em Ortodontia (UVA), graduado pela UNIFOR (2000), com mais de duas décadas de sólida atuação clínica e docente.\n\nIdealizador e fundador do CIENDO (Congresso Internacional de Endodontia 100% Online) e criador do treinamento e comunidade ENDONINJAS, ecossistema inovador que capacita milhares de cirurgiões-dentistas e especialistas com foco em diagnósticos precisos, instrumentação mecanizada e resoluções clínicas de alta performance.\n\nEx-1º Tenente Dentista/Endodontista da Força Aérea Brasileira (FAB). Ministra cursos, palestras e conferências de destaque em âmbito nacional e internacional.",
+    socials: {
+      instagram: "https://www.instagram.com/samunogueira/"
+    },
+    image: "/images/palestrantes/samuel_nogueira.jpeg",
+    isComingSoon: false
+  },
+  {
+    name: "Prof. Dr. Alexandre Capelli",
+    title: "Mestre e Doutor pela USP • Fundador da Helse Ultrasonic",
+    location: "Ribeirão Preto - SP",
+    description: "Mestre e Doutor pela FORP-USP, pioneiro e referência mundial em ultrassom, microscopia e instrumentação minimamente invasiva.",
+    fullBio: "Graduado em Odontologia pela Universidade de São Paulo (USP), Especialista, Mestre e Doutor em Endodontia pela Faculdade de Odontologia de Ribeirão Preto da USP (FORP-USP).\n\nFundador e Head Designer da Helse Ultrasonic, lidera o desenvolvimento e a inovação tecnológica de insertos e pontas ultrassônicas avançadas aplicadas à Endodontia moderna e cirúrgica, com foco em preservação da anatomia dentária, desinfecção e previsibilidade clínica.\n\nPalestrante internacional com cursos, treinamentos e conferências ministrados em mais de 40 países. Autor e coautor de dezenas de artigos científicos publicados em periódicos de alto impacto sobre microscopia, dinâmica de fluidos na irrigação, ativação ultrassônica e materiais biocerâmicos.",
+    image: "/images/palestrantes/alexandre_capelli.jpeg",
     isComingSoon: false
   }
 ];
