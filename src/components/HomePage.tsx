@@ -486,11 +486,10 @@ export default function Home() {
                       id="promo-category-select"
                       value={selectedPromoCategory}
                       onChange={(e) => setSelectedPromoCategory(e.target.value as PromoCategoryKey)}
-                      className={`w-full bg-neutral-900/95 font-bold text-sm px-4 py-3.5 rounded-xl border outline-none transition-all cursor-pointer appearance-none shadow-inner ${
-                        !selectedPromoCategory
-                          ? "text-neutral-400 border-brand-500/60 ring-2 ring-brand-500/20"
-                          : "text-white border-brand-500/40 focus:border-brand-400 focus:ring-2 focus:ring-brand-500/30"
-                      }`}
+                      className={`w-full bg-neutral-900/95 font-bold text-sm px-4 py-3.5 rounded-xl border outline-none transition-all cursor-pointer appearance-none shadow-inner ${!selectedPromoCategory
+                        ? "text-neutral-400 border-brand-500/60 ring-2 ring-brand-500/20"
+                        : "text-white border-brand-500/40 focus:border-brand-400 focus:ring-2 focus:ring-brand-500/30"
+                        }`}
                     >
                       <option value="" disabled className="text-neutral-500 bg-neutral-900">
                         Selecione sua categoria...
@@ -514,11 +513,10 @@ export default function Home() {
                           key={key}
                           type="button"
                           onClick={() => setSelectedPromoCategory(key)}
-                          className={`py-2 px-2 rounded-lg text-[11px] font-bold transition-all truncate text-center cursor-pointer ${
-                            isSelected
-                              ? "bg-brand-600 text-white shadow-sm border border-brand-400/50 scale-[1.02]"
-                              : "bg-white/5 text-neutral-400 hover:text-white hover:bg-white/10 border border-white/5"
-                          }`}
+                          className={`py-2 px-2 rounded-lg text-[11px] font-bold transition-all truncate text-center cursor-pointer ${isSelected
+                            ? "bg-brand-600 text-white shadow-sm border border-brand-400/50 scale-[1.02]"
+                            : "bg-white/5 text-neutral-400 hover:text-white hover:bg-white/10 border border-white/5"
+                            }`}
                         >
                           {cat.badge}
                         </button>
@@ -535,9 +533,8 @@ export default function Home() {
                   </span>
                   <div className="flex items-baseline gap-1">
                     <span className="text-xl font-bold text-neutral-400">R$</span>
-                    <span className={`font-black tracking-tight transition-all ${
-                      currentPromo ? "text-5xl text-white" : "text-4xl text-neutral-400"
-                    }`}>
+                    <span className={`font-black tracking-tight transition-all ${currentPromo ? "text-5xl text-white" : "text-4xl text-neutral-400"
+                      }`}>
                       {currentPromo ? currentPromo.price : "---,--"}
                     </span>
                   </div>
