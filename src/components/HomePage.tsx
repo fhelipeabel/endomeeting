@@ -31,7 +31,7 @@ const promoCategories: Record<PromoCategoryKey, CategoryInfo> = {
     id: "academicos",
     label: "Acadêmicos (Graduação)",
     badge: "Graduação",
-    price: "250,00",
+    price: "300,00",
     installments: "Em até 10x no cartão",
     description: "Destinado exclusivamente para estudantes de graduação em Odontologia.",
     requirement: "Necessário comprovação de matrícula ativa no credenciamento.",
@@ -42,7 +42,7 @@ const promoCategories: Record<PromoCategoryKey, CategoryInfo> = {
     id: "pos",
     label: "Pós-Graduação",
     badge: "Pós-Graduação",
-    price: "350,00",
+    price: "400,00",
     installments: "Em até 10x no cartão",
     description: "Destinado para alunos matriculados em cursos de pós-graduação e especialização.",
     requirement: "Necessário comprovante de matrícula na pós-graduação.",
@@ -53,7 +53,7 @@ const promoCategories: Record<PromoCategoryKey, CategoryInfo> = {
     id: "patricia_ferrari",
     label: "Grupo de estudos Patrícia Ferrari",
     badge: "Grupo Patrícia Ferrari",
-    price: "350,00",
+    price: "400,00",
     installments: "Em até 10x no cartão",
     description: "Destinado exclusivamente para participantes do Grupo de estudos Patrícia Ferrari.",
     requirement: "Necessário comprovação de vínculo com o Grupo de estudos Patrícia Ferrari.",
@@ -64,7 +64,7 @@ const promoCategories: Record<PromoCategoryKey, CategoryInfo> = {
     id: "uniodonto",
     label: "Uniodonto",
     badge: "Uniodonto",
-    price: "350,00",
+    price: "400,00",
     installments: "Em até 10x no cartão",
     description: "Destinado para cirurgiões-dentistas cooperados e credenciados Uniodonto.",
     requirement: "Necessário comprovação de cooperado ou credenciado Uniodonto.",
@@ -75,7 +75,7 @@ const promoCategories: Record<PromoCategoryKey, CategoryInfo> = {
     id: "dentistas",
     label: "Cirurgiões-dentistas",
     badge: "Profissional",
-    price: "550,00",
+    price: "600,00",
     installments: "Em até 10x no cartão",
     description: "Destinado a Cirurgiões-dentistas formados que buscam atualização e excelência clínica.",
     requirement: "Acesso completo a todas as palestras e feira comercial.",
@@ -116,7 +116,6 @@ export default function Home() {
   const [popupContent, setPopupContent] = useState<{ title: string, message: string, url: string } | undefined>(undefined);
   const [selectedPromoCategory, setSelectedPromoCategory] = useState<PromoCategoryKey | "">("");
   const currentPromo = selectedPromoCategory ? promoCategories[selectedPromoCategory] : null;
-  const [currentLot, setCurrentLot] = useState<1 | 2>(1);
   const [mounted, setMounted] = useState(false);
   const [selectedSpeaker, setSelectedSpeaker] = useState<Speaker | null>(null);
   const [isSpeakerModalOpen, setIsSpeakerModalOpen] = useState(false);
@@ -143,12 +142,6 @@ export default function Home() {
     // Configura o volume do áudio global para 50%
     if (audioRef.current) {
       audioRef.current.volume = 0.5;
-    }
-
-    // Data de virada de lote: 02 de maio de 2026 às 08:00 (Horário de Brasília)
-    const switchDate = new Date('2026-05-02T08:00:00-03:00');
-    if (new Date() >= switchDate) {
-      setCurrentLot(2);
     }
   }, []);
 
@@ -322,7 +315,7 @@ export default function Home() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 text-brand-700 font-medium text-sm mb-6 border border-brand-100/50">
               <span className="w-2 h-2 rounded-full bg-brand-500 animate-pulse" />
-              Inscrições Abertas - Lote Promocional
+              Inscrições Abertas - 2º Lote
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-neutral-800 tracking-tight leading-[1.05] mb-6">
               Venha aprimorar sua<br />
@@ -556,17 +549,40 @@ export default function Home() {
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-white mb-4">Garanta sua Vaga</h2>
             <p className="text-amber-400 font-bold text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-              Lote promocional de lançamento durante 30 dias a partir do dia 15/09 (em até 10x no cartão)
+              2º Lote válido até 31/12/2026 (em até 10x no cartão)
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-            {/* Card 1: Lote Promocional de Lançamento (ATIVO / ABERTO) */}
+            {/* Card 1: 1º Lote (ENCERRADO / CARD CLARO / CADEADO DOBRADO) */}
             <motion.div
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
+              className="bg-white rounded-[2rem] p-8 border-2 border-neutral-200/80 shadow-2xl flex flex-col items-center justify-center min-h-[380px] relative overflow-hidden group hover:scale-[1.01] transition-all duration-300"
+            >
+              <div className="flex flex-col items-center justify-center gap-5 text-center">
+                <div className="w-40 h-40 rounded-[2.5rem] bg-neutral-100 border-2 border-neutral-200/80 shadow-inner flex items-center justify-center text-neutral-500 group-hover:scale-105 transition-all duration-300">
+                  <Lock className="w-20 h-20 text-neutral-500 stroke-[1.75]" />
+                </div>
+                <div>
+                  <span className="text-base font-black uppercase tracking-widest text-neutral-900 block">
+                    1º Lote
+                  </span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 mt-1 block">
+                    Encerrado
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Card 2: 2º Lote (ATIVO / ABERTO) */}
+            <motion.div
+              initial={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               className="bg-gradient-to-b from-brand-900/40 via-brand-950/80 to-neutral-950/90 backdrop-blur-xl rounded-[2rem] p-8 border-2 border-brand-500/50 flex flex-col justify-between relative overflow-hidden group shadow-[0_0_50px_rgba(220,38,38,0.25)] ring-1 ring-brand-500/30"
             >
               {/* Glow & Badge de Destaque */}
@@ -579,12 +595,12 @@ export default function Home() {
                     Lote Ativo
                   </span>
                   <span className="text-[11px] font-bold text-brand-300/90">
-                    Válido por 30 dias
+                    Válido até 31/12/2026
                   </span>
                 </div>
 
                 <h3 className="text-2xl font-black text-white mb-6 leading-tight">
-                  Lote Promocional de Lançamento
+                  2º Lote
                 </h3>
 
                 {/* Seletor Suspenso / Menu Suspenso de Categoria */}
@@ -606,11 +622,11 @@ export default function Home() {
                       <option value="" disabled className="text-neutral-500 bg-neutral-900">
                         Selecione sua categoria...
                       </option>
-                      <option value="academicos" className="text-white bg-neutral-900">Acadêmicos (Graduação) — R$ 250,00</option>
-                      <option value="pos" className="text-white bg-neutral-900">Pós-Graduação — R$ 350,00</option>
-                      <option value="patricia_ferrari" className="text-white bg-neutral-900">Grupo de estudos Patrícia Ferrari — R$ 350,00</option>
-                      <option value="uniodonto" className="text-white bg-neutral-900">Uniodonto — R$ 350,00</option>
-                      <option value="dentistas" className="text-white bg-neutral-900">Cirurgiões-dentistas — R$ 550,00</option>
+                      <option value="academicos" className="text-white bg-neutral-900">Acadêmicos (Graduação) — R$ 300,00</option>
+                      <option value="pos" className="text-white bg-neutral-900">Pós-Graduação — R$ 400,00</option>
+                      <option value="patricia_ferrari" className="text-white bg-neutral-900">Grupo de estudos Patrícia Ferrari — R$ 400,00</option>
+                      <option value="uniodonto" className="text-white bg-neutral-900">Uniodonto — R$ 400,00</option>
+                      <option value="dentistas" className="text-white bg-neutral-900">Cirurgiões-dentistas — R$ 600,00</option>
                     </select>
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-brand-400 text-xs font-bold">
                       ▼
@@ -644,7 +660,7 @@ export default function Home() {
               <div className="mt-6">
                 <div className="mb-6">
                   <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 block mb-1">
-                    Valor de Lançamento
+                    Valor do 2º Lote
                   </span>
                   <div className="flex items-baseline gap-1">
                     <span className="text-xl font-bold text-neutral-400">R$</span>
@@ -668,7 +684,7 @@ export default function Home() {
                     onClick={() => handleOpenPopup(currentPromo.label, currentPromo.audience, currentPromo.url)}
                     className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-brand-600 to-brand-700 hover:from-brand-500 hover:to-brand-600 hover:scale-[1.02] transition-all duration-300 shadow-xl shadow-brand-950 flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <span>Garantir Inscrição de Lançamento</span>
+                    <span>Garantir Inscrição</span>
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 ) : (
@@ -687,30 +703,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Card 2: 1º Lote (BLOQUEADO / CARD CLARO / CADEADO DOBRADO) */}
-            <motion.div
-              initial={{ opacity: 1, y: 0 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white rounded-[2rem] p-8 border-2 border-neutral-200/80 shadow-2xl flex flex-col items-center justify-center min-h-[380px] relative overflow-hidden group hover:scale-[1.01] transition-all duration-300"
-            >
-              <div className="flex flex-col items-center justify-center gap-5 text-center">
-                <div className="w-40 h-40 rounded-[2.5rem] bg-neutral-100 border-2 border-neutral-200/80 shadow-inner flex items-center justify-center text-neutral-500 group-hover:scale-105 transition-all duration-300">
-                  <Lock className="w-20 h-20 text-neutral-500 stroke-[1.75]" />
-                </div>
-                <div>
-                  <span className="text-base font-black uppercase tracking-widest text-neutral-900 block">
-                    1º Lote
-                  </span>
-                  <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 mt-1 block">
-                    Em Breve
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Card 3: 2º Lote (BLOQUEADO / TOM INTERMEDIÁRIO / CADEADO DOBRADO) */}
+            {/* Card 3: 3º Lote (BLOQUEADO / TOM INTERMEDIÁRIO / CADEADO DOBRADO) */}
             <motion.div
               initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -724,7 +717,7 @@ export default function Home() {
                 </div>
                 <div>
                   <span className="text-base font-black uppercase tracking-widest text-neutral-200 block">
-                    2º Lote
+                    3º Lote
                   </span>
                   <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 mt-1 block">
                     Em Breve

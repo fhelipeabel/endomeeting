@@ -432,7 +432,7 @@ export default function HeroIndexBanner({ onSelectSpeaker }: HeroIndexBannerProp
 
           <p className="text-xs text-neutral-400 mt-2.5 flex items-center gap-1.5 font-semibold">
             <CheckCircle className="w-3.5 h-3.5 text-brand-400" />
-            Lote promocional de lançamento por tempo limitado
+            2º Lote disponível até 31/12/2026
           </p>
         </div>
 
